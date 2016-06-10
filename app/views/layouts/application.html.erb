@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Franchiz</title>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  
+  <%= csrf_meta_tags %>
+  
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+</head>
+
+<body>
+  <div id="container-ht">
+    
+      <%= render 'layouts/header' %>  
+      
+      <div class="container" id="body">
+      
+      <%= yield %>
+      
+      </div>
+  </div>
+      <%= render 'layouts/footer' %>  
+
+<div id="host_name" style="display: none;"></div>
+<script>
+var host_site = document.referrer
+
+function toLocation(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    return a;
+};
+
+  $("#host_name").text(toLocation(host_site).host);
+</script>
+</body>
+</html>

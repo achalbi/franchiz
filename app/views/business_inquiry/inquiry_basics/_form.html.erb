@@ -1,0 +1,21 @@
+<%= form_for(@business_inquiry_basic, url: inquiry_basics_path) do |f| %>
+  <% if @business_inquiry_basic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business_inquiry_basic.errors.count, "error") %> prohibited this business_inquiry_basic from being saved:</h2>
+
+      <ul>
+      <% @business_inquiry_basic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :req_token %><br>
+    <%= f.text_field :req_token %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

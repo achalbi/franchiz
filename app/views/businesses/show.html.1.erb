@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-6 col-md-offset-3"
+<p>
+  <strong>Name:</strong>
+  <%= @business.name %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @business.detail %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @business.website %>
+</p>
+<h5> Add business questions</h5>
+<%= form_for(@business) do |f| %>
+  <%= f.nested_fields_for :inquiry_questions do |q| %>
+  <div class="form-group">
+    <%= q.label :title, class: "sr-only" %><br>
+    <%= q.text_field :title, class: "form-control" %>
+    <%= q.remove_nested_fields_link 'Remove me', data: { confirm: 'Are you sure?' } %>
+  </div>
+  <% end %>
+  <div>
+    <%= f.add_nested_fields_link :inquiry_questions, 'Add Question' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit Questions', class: "btn btn-primary" %>
+  </div>
+  
+<% end %>
+
+<%= link_to 'Edit', edit_business_path(@business) %> |

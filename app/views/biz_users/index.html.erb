@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Biz Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Salutation</th>
+      <th>Password</th>
+      <th>Business</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @biz_users.each do |biz_user| %>
+      <tr>
+        <td><%= biz_user.fname %></td>
+        <td><%= biz_user.lname %></td>
+        <td><%= biz_user.email %></td>
+        <td><%= biz_user.mobile %></td>
+        <td><%= biz_user.salutation %></td>
+        <td><%= biz_user.password %></td>
+        <td><%= biz_user.business %></td>
+        <td><%= link_to 'Show', biz_user %></td>
+        <td><%= link_to 'Edit', edit_biz_user_path(biz_user) %></td>
+        <td><%= link_to 'Destroy', biz_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Biz user', new_business_biz_user_path(@business) %>

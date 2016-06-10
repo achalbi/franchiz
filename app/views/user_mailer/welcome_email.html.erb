@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="col-md-12" style="margin-top: 20px;">
+        <p>Welcome <%= @user.name %>,</p>
+        
+        <p>
+          Your inquiry request has been successfully sent to <%= @business.name %><br/>
+        </p>
+        <p>
+          Please find below your Inquiry details:
+        </p>
+            <%= render 'inquiries/show' %>
+        
+        
+        <p>Thanks for your interest, have a great day!</p>
+    
+         if email is not visible properly, click <%= link_to 'here', @url %>
+        
+        <p>Regards,</p>
+        <%= @business.name %>
+    </div>
+  </body>
+</html>

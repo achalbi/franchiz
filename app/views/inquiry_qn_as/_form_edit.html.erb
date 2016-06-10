@@ -1,0 +1,17 @@
+
+<%= form_for @inquiry, url: business_inquiry_inquiry_qn_a_path(@business, @inquiry, 0) do |f| %>
+    <%= f.fields_for :inquiry_answers do |a| %>
+      <%= a.fields_for :inquiry_question do |q| %>
+        <div><%= q.object.title %></div>
+              <div class="form-group">
+                <%= a.label :answer, class: "sr-only" %>
+                <%= a.text_field :answer, class: "form-control", placeholder: "Answer" %>
+                <%= a.hidden_field :id %>
+              </div>
+          <% end %>
+      <% end %>
+  
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

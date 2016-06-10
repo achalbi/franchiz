@@ -1,0 +1,23 @@
+
+    Welcome <%= @user.name %>,
+    
+      Your inquiry request has been successfully sent to <%= @business.name %>
+      Please find below your Inquiry details:
+
+  Inquiry no: <%= @inquiry.token %>
+
+===============================================================================
+    #        Title
+===============================================================================    
+      <% @inquiry.inquiry_answers.each_with_index do |a, i| %>
+      
+    <%= i+1 %>. <%= a.inquiry_question.title %>
+                <%= a.answer %> 
+
+      <% end %>        
+        
+    
+    Thanks for your interest, have a great day!
+
+    Regards,
+    <%= @business.name %>

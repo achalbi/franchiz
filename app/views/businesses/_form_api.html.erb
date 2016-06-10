@@ -1,0 +1,77 @@
+<%= form_for(@business, :url => "https://franchiz-achalbi.c9users.io/businesses", :method => :post, remote: true) do |f| %>
+  <% if @business.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
+
+      <ul>
+      <% @business.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
+  </div>
+    <div class="field">
+    <%= f.label :website %><br>
+    <%= f.text_area :website %>
+  </div>
+  
+        <%= f.fields_for :biz_user do |biz_user_field| %>
+        <% if @business.biz_user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@biz_user.errors.count, "error") %> prohibited this biz_user from being saved:</h2>
+      
+            <ul>
+            <% @business.biz_user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+        <div class="form-inline">
+            <div class="form-group">
+              <%= biz_user_field.label :salutation, class: "sr-only"%><br>
+              <%= biz_user_field.select :salutation, options_for_select([ "Mr", "Ms" ], "Mr"),{}, {class: "form-control"} %>
+            </div>
+            <div class="form-group">
+              <%= biz_user_field.label :fname, class: "sr-only" %><br>
+              <%= biz_user_field.text_field :fname, class: "form-control", placeholder: "First Name" %>
+            </div>
+            <div class="form-group">
+              <%= biz_user_field.label :lname, class: "sr-only" %><br>
+              <%= biz_user_field.text_field :lname, class: "form-control", placeholder: "Last Name" %>
+            </div>
+        </div>
+          <div class="form-group">
+            <%= biz_user_field.label :email, class: "sr-only" %><br>
+            <%= biz_user_field.text_field :email, class: "form-control", placeholder: "e-mail" %>
+          </div>
+          <div class="field">
+            <%= biz_user_field.label :password, class: "sr-only" %><br>
+            <%= biz_user_field.text_field :password, class: "form-control", placeholder: "password" %>
+          </div>
+          <div class="field">
+            <%= biz_user_field.label :password, class: "sr-only" %><br>
+            <%= biz_user_field.text_field :password_confirmation, class: "form-control", placeholder: "password again" %>
+          </div>
+          <div class="form-group">
+            <%= biz_user_field.label :mobile, class: "sr-only" %><br>
+            <%= biz_user_field.text_field :mobile, class: "form-control", placeholder: "mobile" %>
+          </div>
+        <br>
+      <% end %>
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

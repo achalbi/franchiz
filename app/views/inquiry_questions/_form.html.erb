@@ -1,0 +1,23 @@
+  
+<%= form_for(@inquiry_question, url: business_inquiry_questions_path(@business), method: :post) do |f| %>
+  <% if @inquiry_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inquiry_question.errors.count, "error") %> found, please fill up highlighted fields:</h2>
+
+      <ul>
+      <% @inquiry_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "sr-only" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Write question here..."  %>
+  </div>
+    <%= f.hidden_field :business_id %>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

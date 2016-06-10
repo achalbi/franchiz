@@ -1,0 +1,22 @@
+  
+<%= form_for(@inquiry_question) do |f| %>
+  <% if @inquiry_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inquiry_question.errors.count, "error") %> prohibited this inquiry_question from being saved:</h2>
+
+      <ul>
+      <% @inquiry_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "sr-only" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Write question here..."  %>
+  </div>
+    <%= f.hidden_field :business_id %>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Delete", @inquiry_question,  method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+<% end %>

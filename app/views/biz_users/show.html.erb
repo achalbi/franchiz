@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @biz_user.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @biz_user.lname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @biz_user.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @biz_user.mobile %>
+</p>
+
+<p>
+  <strong>Salutation:</strong>
+  <%= @biz_user.salutation %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @biz_user.password %>
+</p>
+
+<p>
+  <strong>Business:</strong>
+  <%= @biz_user.business %>
+</p>
+
+<%= link_to 'Edit', edit_biz_user_path(@biz_user) %> |
+<%= link_to 'Back', business_biz_users_path(@business) %>

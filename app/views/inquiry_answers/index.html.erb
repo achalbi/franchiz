@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inquiry Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Answer</th>
+      <th>Inquiry question</th>
+      <th>Inquiry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inquiry_answers.each do |inquiry_answer| %>
+      <tr>
+        <td><%= inquiry_answer.answer %></td>
+        <td><%= inquiry_answer.inquiry_question %></td>
+        <td><%= inquiry_answer.inquiry %></td>
+        <td><%= link_to 'Show', inquiry_answer %></td>
+        <td><%= link_to 'Edit', edit_inquiry_answer_path(inquiry_answer) %></td>
+        <td><%= link_to 'Destroy', inquiry_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inquiry answer', new_inquiry_answer_path %>

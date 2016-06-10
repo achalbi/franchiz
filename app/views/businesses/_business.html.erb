@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-8 col-md-offset-2 col-sm-12">
+<h3 class=" text-sm-center">
+  <%= @business.name %>
+</h3>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @business.detail %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @business.website %>
+</p>
+<div id="question" class="mb20" ></div>
+<div>
+  <p class="lead" >Questions</p>
+  
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <% @business.inquiry_questions.each_with_index do |q, i| %>
+      
+      <tr>
+        <th scope="row"><%= i+1 %>. </th>
+        <td><%= q.title %></td>
+      </tr>
+
+      <% end %>
+
+  </tbody>
+</table>
+</div>
