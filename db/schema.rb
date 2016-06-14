@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607051734) do
+ActiveRecord::Schema.define(version: 20160613162200) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -90,6 +90,72 @@ ActiveRecord::Schema.define(version: 20160607051734) do
   end
 
   add_index "inquiry_questions", ["business_id"], name: "index_inquiry_questions_on_business_id"
+
+  create_table "survey_answers", force: :cascade do |t|
+    t.string   "answer"
+    t.integer  "survey_question_id"
+    t.integer  "inquiry_id"
+    t.integer  "survey_answerable_id"
+    t.string   "survey_answerable_type"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "survey_answers", ["inquiry_id"], name: "index_survey_answers_on_inquiry_id"
+  add_index "survey_answers", ["survey_answerable_id", "survey_answerable_type"], name: "index_survey_answers_on_sa_type_and_sa_id", unique: true
+  add_index "survey_answers", ["survey_question_id"], name: "index_survey_answers_on_survey_question_id"
+
+  create_table "survey_biz_user_answers", force: :cascade do |t|
+    t.text     "answer"
+    t.integer  "survey_question_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "survey_biz_user_answers", ["survey_question_id"], name: "index_survey_biz_user_answers_on_survey_question_id"
+
+  create_table "survey_items", force: :cascade do |t|
+    t.integer  "survey_question_id"
+    t.integer  "survey_user_answer_id"
+    t.integer  "survey_biz_user_answer_id"
+    t.integer  "inquiry_id"
+    t.boolean  "visible"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "survey_id"
+  end
+
+  add_index "survey_items", ["inquiry_id"], name: "index_survey_items_on_inquiry_id"
+  add_index "survey_items", ["survey_biz_user_answer_id"], name: "index_survey_items_on_survey_biz_user_answer_id"
+  add_index "survey_items", ["survey_id"], name: "index_survey_items_on_survey_id"
+  add_index "survey_items", ["survey_question_id"], name: "index_survey_items_on_survey_question_id"
+  add_index "survey_items", ["survey_user_answer_id"], name: "index_survey_items_on_survey_user_answer_id"
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "business_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "survey_questions", ["business_id"], name: "index_survey_questions_on_business_id"
+
+  create_table "survey_user_answers", force: :cascade do |t|
+    t.text     "answer"
+    t.integer  "survey_question_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "survey_user_answers", ["survey_question_id"], name: "index_survey_user_answers_on_survey_question_id"
+
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "surveys", ["inquiry_id"], name: "index_surveys_on_inquiry_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "fname"

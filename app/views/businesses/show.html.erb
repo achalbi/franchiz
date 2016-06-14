@@ -3,64 +3,51 @@
 <h3 class=" text-sm-center">
   <%= @business.name %>
 </h3>
-
+<div>
+  
+<p>
+  <%= link_to 'Edit Business', edit_business_path(@business) , class: "pull-xs-right" %> 
+</p>
+</div>
+<div class="mt10" >
+  
 <p>
   <strong>Detail:</strong>
   <%= @business.detail %>
 </p>
 
+</div>
 <p>
   <strong>Website:</strong>
   <%= @business.website %>
 </p>
-<div id="question" class="mb20" ></div>
-<div>
-  <p class="lead" >Questions</p>
-  
-<table class="table table-hover">
-  <thead class="thead-default">
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <% @business.inquiry_questions.each_with_index do |q, i| %>
-      
-      <tr>
-        <th scope="row"><%= i+1 %>. </th>
-        <td><%= q.title %></td>
-        <td><%= link_to "Edit", "#",id: "edit_question_#{i+1}", class: "text-md-right" %></td>
-      </tr>
-      
-      <script>
-          $("#edit_question_<%= i+1 %>").click(function(){
-            $.get("<%= edit_inquiry_question_path(q) %>", function(data){
-              $("#question").html(data);
-            });
-          });
-      </script>
-      <% end %>
 
-  </tbody>
-</table>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#inquiry_questions_tab" role="tab" data-toggle="tab">Inquiry Questions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#survey_questions_tab" role="tab" data-toggle="tab">Survey Questions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#inquiry_tab" role="tab" data-toggle="tab">Inquiries</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="inquiry_questions_tab">
+      <%= render 'inquiry_questions'%>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="survey_questions_tab">
+      <%= render 'survey_questions'%>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="inquiry_tab">
+      <%= render 'inquiries'%>
+  </div>
 </div>
-  
 
 
 
-
-<div class="mt20" ></div>
-<%= link_to 'Add Questions', "#", id: "add_question" %> |
-<%= link_to 'Edit Business', edit_business_path(@business) %> |
-<script>
-  $("#add_question").click(function(){
-    $.get("<%= new_business_inquiry_question_path(@business) %>", function(data){
-      $("#question").html(data);
-    });
-  });
-
-</script>
 </div>

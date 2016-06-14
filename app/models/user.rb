@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
     has_one :address
     has_one :inquiry
+
+    
     accepts_nested_attributes_for :address
     accepts_nested_attributes_for :inquiry
     

@@ -14,7 +14,11 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
-    @session = Session.new
+    if logged_in?
+      redirect_to current_user.business
+    else    
+      @session = Session.new
+    end
   end
 
   # GET /sessions/1/edit

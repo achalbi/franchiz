@@ -1,0 +1,34 @@
+<div >
+  
+<%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right" %>
+</div>
+<% if @inquiry.survey.present? %>
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+          <% @inquiry.survey.survey_items.each_with_index do |si, i| %>
+          <% if si.visible %>
+      <tr>
+        <td scope="row"><%= i+1 %>. </td>
+        <td><%= si.survey_question.title %><br>
+            <p>Business Answer:</p>
+              <p class="text-success"><%=  si.survey_biz_user_answer.answer.blank? ? "-N/A-" : si.survey_biz_user_answer.answer %></p>
+            <p>User Answer:</p>
+              <p class="text-success"><%=  si.survey_user_answer.answer.blank? ? "-N/A-" : si.survey_user_answer.answer %></p>
+        </td>
+      </tr>
+          <% end %>
+          <% end %>
+  </tbody>
+</table>
+<% else %>
+<h4> No survey details present.</h4>
+<% end %>
+
+

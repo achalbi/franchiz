@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <%= f.label :title, class: "sr-only" %>
-    <%= f.text_field :title, class: "form-control", placeholder: "Write question here..."  %>
+    <%= f.text_field :title, :disable_with => "Updating...", class: "form-control", placeholder: "Write question here..."  %>
   </div>
     <%= f.hidden_field :business_id %>
     <%= f.submit class: "btn btn-primary" %>

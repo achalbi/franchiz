@@ -1,0 +1,44 @@
+<div id="survey_question" class="mb20" ></div>
+<div>
+<%= link_to 'Add Survey Questions', "#survey_question", id: "add_survey_question", class: "pull-xs-right" %>
+  <p class="lead" >Survey Questions</p>
+  
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @business.survey_questions.each_with_index do |q, i| %>
+    
+      
+      <tr>
+        <th scope="row"><%= i+1 %>. </th>
+        <td><%= q.title %></td>
+        <td><%= link_to "Edit", "#survey_question",id: "edit_survey_question_#{i+1}", class: "text-md-right" %></td>
+      </tr>
+      
+      <script>
+          $("#edit_survey_question_<%= i+1 %>").click(function(){
+            $.get("<%= edit_survey_question_path(q) %>", function(data){
+              $("#survey_question").html(data);
+            });
+          });
+      </script>
+
+      <% end %>
+  </tbody>
+</table>
+</div>
+
+<script>
+  $("#add_survey_question").click(function(){
+    $.get("<%= new_business_survey_question_path(@business) %>", function(data){
+      $("#survey_question").html(data);
+    });
+  });
+
+</script>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  survey_question_id: 
+  survey_user_answer_id: 
+  survey_biz_user_answer_id: 
+  inquiry_id: 
+  visible: false
+
+two:
+  survey_question_id: 
+  survey_user_answer_id: 
+  survey_biz_user_answer_id: 
+  inquiry_id: 
+  visible: false

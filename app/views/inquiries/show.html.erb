@@ -1,37 +1,51 @@
-<p id="notice"><%= notice %></p>
-
-<div class="col-md-8 col-md-offset-2 col-sm-12">
-<p>
+<div class="mt20">
+<p class="mb10 mt10">
   <strong>Inquiry no:</strong>
   <%= @inquiry.token %>
 </p>
-<div id="question" class="mb20" ></div>
-<div>
-<table class="table table-hover">
-  <thead class="thead-default">
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <% @inquiry.inquiry_answers.each_with_index do |a, i| %>
-      
-      <tr>
-        <th scope="row"><%= i+1 %>. </th>
-        <td><%= a.inquiry_question.title %><br>
-           <div class="text-success"> <%= a.answer %> </div>
-            
-            
-        </td>
-      </tr>
+<p>
+  <strong>Name:</strong>
+  <%= @inquiry.user.salutation %>
+  <%= @inquiry.user.name %>
+</p>
 
-      <% end %>
+<p>
+  <strong>Email:</strong>
+  <%= @inquiry.user.email %>
+</p>
 
-  </tbody>
-</table>
+<p>
+  <strong>Mobile:</strong>
+  <%= @inquiry.user.mobile %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @inquiry.user.address.city.capitalize %>
+</p>
+
+</div>
+
+<div class="mt20">
+  
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#inquiry_tab" role="tab" data-toggle="tab">Basic</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#survey_tab" role="tab" data-toggle="tab">Survey</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content mt20">
+  <div role="tabpanel" class="tab-pane fade in active" id="inquiry_tab">
+      <%= render 'inquiries'%>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="survey_tab">
+      <%= render 'surveys'%>
+  </div>
 </div>
 
 
-
+</div>

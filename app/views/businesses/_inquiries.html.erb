@@ -1,0 +1,28 @@
+<div >
+
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Inquiry no:</th>
+      <th>Inquirer name</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <% @business.inquiries.reverse.each_with_index do |a, i| %>
+      
+      <tr>
+        <td scope="row"><%= i+1 %>. </td>
+        <td><%= link_to a.token, a %>        </td>
+        <td><%= a.user.name unless a.user.blank? %></td>
+      </tr>
+
+      <% end %>
+
+  </tbody>
+</table>
+</div>
+
+
+

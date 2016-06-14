@@ -3,7 +3,9 @@ class Business < ActiveRecord::Base
     accepts_nested_attributes_for :biz_users
     
     has_many :inquiry_questions
+    has_many :survey_questions
     accepts_nested_attributes_for :inquiry_questions
+    accepts_nested_attributes_for :survey_questions
     
     has_many :inquiries
     
@@ -11,6 +13,7 @@ class Business < ActiveRecord::Base
     validates_associated :biz_users
     
     validates_associated :inquiry_questions
+    validates_associated :survey_questions
     
     validates_presence_of :name
 

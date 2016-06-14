@@ -28,6 +28,7 @@ gem 'schema_to_scaffold'
 gem 'monban'
 gem 'bcrypt'
 gem 'nested_form_fields'
+gem 'quiet_assets', group: :development
 
 gem 'roadie'
 gem 'roadie-rails', '~> 1.0'

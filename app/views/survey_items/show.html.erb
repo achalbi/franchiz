@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>id:</strong>
+  <%= @survey_item.id %>
+</p>
+<p>
+  <strong>Survey question:</strong>
+  <%= @survey_item.survey_question %>
+</p>
+
+<p>
+  <strong>Survey user answer:</strong>
+  <%= @survey_item.survey_user_answer %>
+</p>
+
+<p>
+  <strong>Survey biz user answer:</strong>
+  <%= @survey_item.survey_biz_user_answer %>
+</p>
+
+<p>
+  <strong>Inquiry:</strong>
+  <%= @survey_item.inquiry %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @survey_item.visible %>
+</p>
+
+<%= link_to 'Edit', edit_survey_item_path(@survey_item) %> |
+<%= link_to 'Back', survey_items_path %>

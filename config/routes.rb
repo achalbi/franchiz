@@ -4,6 +4,9 @@
 Rails.application.routes.draw do
   
   
+  resources :surveys
+  resources :survey_items
+  resources :survey_questions
 =begin
   constraints Monban::Constraints::SignedIn.new do
     root "businesses#show", as: :dashboard
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
   resources :businesses do
     resources :biz_users, shallow: true
     resources :inquiry_questions, shallow: true
+    resources :survey_questions, shallow: true
     resources :inquiries, shallow: true do
       resources :users, shallow: true do
         resources :addresses, shallow: true
@@ -40,6 +44,7 @@ Rails.application.routes.draw do
   resources :businesses do
     resources :inquiries do
       resources :inquiry_qn_as
+      resources :surveys
     end
   end
   resources :inquiries
