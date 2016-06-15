@@ -12,7 +12,6 @@
   <% end %>
 
 
-<% @business.survey_questions.each_with_index do |q, i| %>
 <table class="table table-hover">
   <thead class="thead-default">
     <tr>
@@ -23,6 +22,7 @@
   </thead>
 
   <tbody>
+<% @business.survey_questions.each_with_index do |q, i| %>
       <tr>
           <%= f.fields_for :survey_items, @survey.survey_items.build do |si| %>
         <td scope="row"><%= i+1 %>. </td>
@@ -46,11 +46,11 @@
           <% end %>
       </tr>
       
+<% end %>
 
 
   </tbody>
 </table>
-<% end %>
 
     <%= f.hidden_field :inquiry_id %>
 

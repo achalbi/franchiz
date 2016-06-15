@@ -1,5 +1,9 @@
 class SurveyQuestion < ActiveRecord::Base
+  
+  scope :global, -> { where(global: true) } 
+
   belongs_to :business
+
   
   has_one :survey_item
   

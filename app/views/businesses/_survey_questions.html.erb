@@ -1,6 +1,7 @@
 <div id="survey_question" class="mb20" ></div>
 <div>
 <%= link_to 'Add Survey Questions', "#survey_question", id: "add_survey_question", class: "pull-xs-right" %>
+<% if @business.survey_questions.global.present? %>
   <p class="lead" >Survey Questions</p>
   
 <table class="table table-hover">
@@ -12,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-      <% @business.survey_questions.each_with_index do |q, i| %>
+      <% @business.survey_questions.global.each_with_index do |q, i| %>
     
       
       <tr>
@@ -32,11 +33,14 @@
       <% end %>
   </tbody>
 </table>
-</div>
 
+<% else %>
+  <h4>No survey questions present.</h4>
+<% end %>
+</div>
 <script>
   $("#add_survey_question").click(function(){
-    $.get("<%= new_business_survey_question_path(@business) %>", function(data){
+    $.get("<%= new_business_survey_question_path(@business) %>"+"?global=true", function(data){
       $("#survey_question").html(data);
     });
   });

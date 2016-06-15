@@ -1,6 +1,6 @@
-<div >
-  
-<%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right" %>
+<div id="survey_question" class="mb20">
+<%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right plr10" %>
+<%= link_to 'Add Survey Question to Inquiry', "#survey_question", id: "add_survey_question", class: "pull-xs-right plr10" %>
 </div>
 <% if @inquiry.survey.present? %>
 <table class="table table-hover">
@@ -30,5 +30,11 @@
 <% else %>
 <h4> No survey details present.</h4>
 <% end %>
+<script>
+  $("#add_survey_question").click(function(){
+    $.get("<%= new_business_survey_question_path(@business) %>", function(data){
+      $("#survey_question").html(data);
+    });
+  });
 
-
+</script>

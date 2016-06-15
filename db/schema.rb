@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613162200) do
+ActiveRecord::Schema.define(version: 20160615051442) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20160613162200) do
     t.integer  "business_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "global"
   end
 
   add_index "survey_questions", ["business_id"], name: "index_survey_questions_on_business_id"

@@ -18,6 +18,9 @@ class SurveyQuestionsController < ApplicationController
   def new
   #  @survey_question = SurveyQuestion.new
     @survey_question = @business.survey_questions.build
+    if params[:global]
+      @survey_question.global = true
+    end
     render layout: false
   end
 
@@ -33,7 +36,8 @@ class SurveyQuestionsController < ApplicationController
 
     respond_to do |format|
       if @survey_question.save
-        format.html { redirect_to @business, notice: 'Survey question was successfully created.' }
+        format.js { render "location.reload();" }
+        format.html { redirect_to :back, notice: 'Survey question was successfully created.' }
         format.json { render :show, status: :created, location: @survey_question }
       else
         format.html { render :new }
@@ -75,7 +79,7 @@ class SurveyQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_question_params
-      params.require(:survey_question).permit(:title, :business_id)
+      params.require(:survey_question).permit(:title, :business_id, :global)
     end
     
     def set_business
