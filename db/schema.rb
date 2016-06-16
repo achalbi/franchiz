@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615051442) do
+ActiveRecord::Schema.define(version: 20160616041536) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -90,6 +90,24 @@ ActiveRecord::Schema.define(version: 20160615051442) do
   end
 
   add_index "inquiry_questions", ["business_id"], name: "index_inquiry_questions_on_business_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.string   "name"
+    t.string   "place_id"
+    t.string   "city"
+    t.string   "country"
+    t.string   "id_loc"
+    t.string   "pincode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "inquiry_id"
+    t.string   "state"
+  end
+
+  add_index "locations", ["inquiry_id"], name: "index_locations_on_inquiry_id"
 
   create_table "survey_answers", force: :cascade do |t|
     t.string   "answer"

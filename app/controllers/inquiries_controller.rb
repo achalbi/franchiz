@@ -39,7 +39,7 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
-        format.html { redirect_to new_business_inquiry_inquiry_qn_a_path(@inquiry.business, @inquiry), notice: 'Contact details submitted, please fill in below questions .' }
+        format.html { redirect_to new_inquiry_location_path(@inquiry), notice: 'Contact details submitted.' }
         format.json { render :show, status: :created, location: @inquiry }
       else
         format.html { render :new }

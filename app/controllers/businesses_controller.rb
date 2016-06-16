@@ -68,7 +68,8 @@ class BusinessesController < ApplicationController
   end
   
   def biz_init
-    session['host'] = request.referrer.split("/")[2]
+  #  session['host'] = request.referrer.split("/")[2]
+    session['host'] = 'testground-achalbi.c9users.io'
     @business = Business.find_by(website: session['host'])
     redirect_to new_business_inquiry_path(@business)
   end

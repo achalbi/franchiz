@@ -81,7 +81,7 @@
     this.modal = document.createElement("div");
     this.modal.className = "scotch-modal " + this.options.className;
     this.modal.style.minWidth = this.options.minWidth + "px";
-    this.modal.style.maxWidth = this.options.maxWidth + "px";
+//    this.modal.style.maxWidth = this.options.maxWidth + "px";
 
     // If closeButton option is true, add a close button
     if (this.options.closeButton === true) {
@@ -154,4 +154,5 @@ var triggerButton = document.getElementById('trigger');
 triggerButton.addEventListener('click', function() {
   myModal.open();
 });
-$('#franchiz-content').append('<iframe src="https://franchiz-achalbi.c9users.io/businesses/biz_init" width="100%" height="100%" frameborder="0" id="franchiz-iframe"></iframe>');
+//$('#franchiz-content').append('<iframe src="https://franchiz-achalbi.c9users.io/businesses/biz_init" width="100%" height="100%" frameborder="0" id="franchiz-iframe"></iframe>');
+$('#franchiz-content').append('<iframe src="/businesses/biz_init" width="100%" height="100%" frameborder="0" id="franchiz-iframe"></iframe>');

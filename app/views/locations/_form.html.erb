@@ -1,0 +1,86 @@
+        <div class="form-group ">
+        <!-- <%= label_tag :search, "Search For Address" %> -->
+        <%= text_field_tag :address, "", id: "input_address", class: "span12 search-query form-control input-lg", type: "search", :placeholder => "Search for the location... "  %>
+        <small class="text-muted">Search for the nearest landmark</small>
+      </div>
+<%= form_for(@location, url: inquiry_locations_path(@inquiry)) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      <%= f.hidden_field :inquiry_id %>
+<div class="col-sm-4">
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :place_id %>
+      <%= f.hidden_field :id_loc %> 
+<!--  
+      <%= f.hidden_field :latitude  %>
+      <%= f.hidden_field :longitude %>
+
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :city %>
+      <%= f.hidden_field :state %>
+      <%= f.hidden_field :country %>
+      <%= f.hidden_field :pincode %>
+
+  
+   <div class="form-group">
+    <%= f.label :address %><br>
+    <%= f.text_field :address , class: "form-control", placeholder: "Address", readonly: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :place_id %><br>
+    <%= f.text_field :place_id , class: "form-control", placeholder: "Place id", readonly: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :id_loc  %><br>
+    <%= f.text_field :id_loc , class: "form-control", placeholder: "Location id", readonly: true %>
+  </div>
+      -->
+<!--
+   -->
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Name", readonly: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, class: "form-control", placeholder: "City", readonly: true  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :state %><br>
+    <%= f.text_field :state, class: "form-control", placeholder: "State", readonly: true  %>
+  </div>
+   <div class="form-group">
+    <%= f.label :country %><br>
+    <%= f.text_field :country, class: "form-control", placeholder: "Country", readonly: true  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pincode %><br>
+    <%= f.text_field :pincode, class: "form-control", placeholder: "Pincode", readonly: true  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude, class: "form-control", placeholder: "Latitude", readonly: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude, class: "form-control", placeholder: "Longitude", readonly: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary " %>
+  </div>
+</div>
+<div class="col-sm-8">
+      <div class="form-group googlemap mb0">
+        <%= render partial: "googlemap" %>
+      </div>
+</div>
+<% end %>

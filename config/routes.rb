@@ -4,6 +4,7 @@
 Rails.application.routes.draw do
   
   
+  resources :locations
   resources :surveys
   resources :survey_items
   resources :survey_questions
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
     resources :inquiry_questions, shallow: true
     resources :survey_questions, shallow: true
     resources :inquiries, shallow: true do
+      resources :locations, shallow: true
       resources :users, shallow: true do
         resources :addresses, shallow: true
       end
