@@ -80,7 +80,7 @@ class InquiriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
-      params.require(:inquiry).permit(:token, :business_id, user_attributes: [:id, :salutation, :fname, :lname, :email, :mobile, address_attributes: [:id, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude]])
+      params.require(:inquiry).permit(:token, :business_id, user_attributes: [:id, :salutation, :fname, :lname, :email, :mobile, address_attributes: [:id, :line1, :line2, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude]])
     end
     
     def set_business

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616041536) do
+ActiveRecord::Schema.define(version: 20160616100644) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20160616041536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.text     "line1"
+    t.text     "line2"
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
