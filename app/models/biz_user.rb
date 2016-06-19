@@ -14,6 +14,10 @@ class BizUser < ActiveRecord::Base
   validates_presence_of :password_confirmation, :on => :create
   
   def name
-    self.fname+" "+self.lname
+     self.fname.capitalize+" "+self.lname
   end
+  
+  def full_name
+     self.salutation+". "+self.fname+" "+self.lname
+  end  
 end

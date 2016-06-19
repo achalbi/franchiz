@@ -1,56 +1,44 @@
+<p id="notice"><%= notice %></p>
 <div class="mt20">
 <p class="mb10 mt10">
   <strong>Inquiry no:</strong>
   <%= @inquiry.token %>
 </p>
-<p>
-  <strong>Name:</strong>
-  <%= @inquiry.user.salutation %>
-  <%= @inquiry.user.name %>
+<% unless @inquiry.location.present? %>
+  <p>
+  <strong>Status:</strong>  <span class="text-danger"><%= @inquiry.current_state %></span>
 </p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @inquiry.user.email %>
-</p>
-
-<p>
-  <strong>Mobile:</strong>
-  <%= @inquiry.user.mobile %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @inquiry.user.address.city.capitalize %>
-</p>
-
-<p>
-  <strong>Interested location for setup:</strong>
-  <%= @inquiry.location.address %>
-</p>
+<% end %>
 </div>
-
-
-
 <div class="mt20">
   
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" href="#inquiry_tab" role="tab" data-toggle="tab">Basic</a>
+    <a class="nav-link active" href="#info_tab" role="tab" data-toggle="tab">Info</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#inquiry_tab" role="tab" data-toggle="tab">Inquiry</a>
+  </li>
+  <% if logged_in? %>
   <li class="nav-item">
     <a class="nav-link" href="#survey_tab" role="tab" data-toggle="tab">Survey</a>
   </li>
+  <% end %>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content mt20">
-  <div role="tabpanel" class="tab-pane fade in active" id="inquiry_tab">
+  <div role="tabpanel" class="tab-pane fade in active" id="info_tab">
+      <%= render 'info'%>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="inquiry_tab">
       <%= render 'inquiries'%>
   </div>
+  <% if logged_in? %>
   <div role="tabpanel" class="tab-pane fade" id="survey_tab">
       <%= render 'surveys'%>
   </div>
+  <% end %>
 </div>
 
 

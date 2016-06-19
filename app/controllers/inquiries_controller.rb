@@ -1,14 +1,30 @@
 class InquiriesController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :show], raise: false
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
-  before_action :set_business, only: [:new]
+  before_action :set_business, only: [:new, :index]
   
-  layout 'application_ns'
+  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
 
   # GET /inquiries
   # GET /inquiries.json
   def index
-    @inquiries = Inquiry.all
+    if params[:inquiry_filter].nil?
+        if session[:inquiry_filter].blank?
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+        else
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
+        end
+    else
+      if params[:inquiry_filter] == ""
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+      elsif params[:inquiry_filter] == "new"
+        session[:inquiry_filter] = "new"
+        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: nil).order(id: :desc).page params[:page]
+      else
+        session[:inquiry_filter] = params[:inquiry_filter]
+        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
+      end
+    end
   end
 
   # GET /inquiries/1
@@ -76,6 +92,9 @@ class InquiriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_inquiry
       @inquiry = Inquiry.find(params[:id])
+      #  unless @inquiry.business.id == session[:business_id]
+      #    redirect_to '/businesses/'+session[:business_id].to_s
+      #  end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -84,6 +103,9 @@ class InquiriesController < ApplicationController
     end
     
     def set_business
+      #  unless params[:business_id] == session[:business_id].to_s
+      #    redirect_to '/businesses/'+session[:business_id].to_s
+      #  end
       if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
         @business = Business.find(params[:business_id])
       else

@@ -1,31 +1,53 @@
-<p id="notice"><%= notice %></p>
+<% if @business.inquiries.present? %>
+<div class="form-inline">
+  <p>Filter by status: <%= select_tag "status", options_for_select(@business.inquiries.select("distinct workflow_state").collect{|x| [x.current_state,x.current_state]}, selected: session[:inquiry_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
+</div>
 
-<h1>Listing Inquiries</h1>
+<div id="inquiry_table">
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-default">
     <tr>
-      <th>Token</th>
-      <th>Business</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Date</th>
+      <!--<th>#</th>-->
+      <th>Inquiry no.</th>
+      <th>Inquirer name</th>
+      <th>Status</th>
+      <th>action</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @inquiries.each do |inquiry| %>
+    
+      <% @inquiries.each_with_index do |a, i| %>
+      
       <tr>
-        <td><%= inquiry.token %></td>
-        <td><%= inquiry.business %></td>
-        <td><%= inquiry.user %></td>
-        <td><%= link_to 'Show', inquiry %></td>
-        <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
-        <td><%= link_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td scope="row"><%= i+1 %>. </td>-->
+        <td><%= a.created_at.strftime("%d %b %Y") %></td>
+        <td><%= link_to a.token, a %>        </td>
+        <td><%= a.user.name unless a.user.blank? %></td>
+        <td class="text-success"><%= a.current_state %></td>
+        <td><%= link_to 'view', a %>        </td>
       </tr>
-    <% end %>
+
+      <% end %>
+
   </tbody>
 </table>
+<div class="text-center">
+<%= paginate @inquiries %>
+</div>
+</div>
+<% else %>
+<h4 class="mt20"> No Inquiry present.</h4>
+<% end %>
 
-<br>
-
-<%= link_to 'New Inquiry', new_inquiry_path %>
+<script>
+  $("#inquiries_menu").addClass('active');
+  
+  $("#status_filter").change(function(){
+    $.get("<%= business_inquiries_path(@business) %>", {inquiry_filter: $("#status_filter").val()}).done(function(data){
+      
+          $("#inquiry_table").html($(data).find("#inquiry_table").html());
+    });
+  });
+</script>

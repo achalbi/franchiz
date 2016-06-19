@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<p>inquiry no. <%= link_to @survey.inquiry.token, @survey.inquiry  %></p>
 <table class="table table-hover">
   <thead class="thead-default">
     <tr>
@@ -22,10 +23,15 @@
       </tr>
           <% end %>
           <% end %>
-      
-
-
   </tbody>
 </table>
 
+<% if logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user) %>
+  <% if @survey.inquiry.current_state == 'awaiting_biz_input' || @survey.inquiry.current_state == 'awaiting_biz_review' || @survey.inquiry.current_state == 'accepted' %>
+    <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-primary" %>
+  <% end %>
+    <% if @survey.inquiry.current_state == 'awaiting_biz_review' %>
+      <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-success" %>
+    <% end %> 
+<% end %>
 

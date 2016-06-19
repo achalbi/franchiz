@@ -1,12 +1,12 @@
 class SurveyQuestionsController < ApplicationController
   before_action :set_survey_question, only: [:show, :edit, :update, :destroy]
-  before_action :set_business, only: [:new, :create]
+  before_action :set_business, only: [:new, :create, :index]
 
 
   # GET /survey_questions
   # GET /survey_questions.json
   def index
-    @survey_questions = SurveyQuestion.all
+    @survey_questions = @business.survey_questions.global
   end
 
   # GET /survey_questions/1

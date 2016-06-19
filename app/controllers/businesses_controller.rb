@@ -14,6 +14,8 @@ class BusinessesController < ApplicationController
   def show
 #    @business.host_site = session['host_site']
  #   render layout: false
+    @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id)
+    @inquiry_questions = @business.inquiry_questions
   end
 
   # GET /businesses/new
@@ -68,8 +70,10 @@ class BusinessesController < ApplicationController
   end
   
   def biz_init
-  #  session['host'] = request.referrer.split("/")[2]
-    session['host'] = 'testground-achalbi.c9users.io'
+  session['host'] = request.referrer.split("/")[2]
+  #  session['host'] = 'testground-achalbi.c9users.io'
+    log_out
+  #  session['host'] = 'http://www.eardrums.co.in'
     @business = Business.find_by(website: session['host'])
     redirect_to new_business_inquiry_path(@business)
   end
@@ -77,6 +81,9 @@ class BusinessesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_business
+        unless params[:id] == session[:business_id].to_s
+          redirect_to '/businesses/'+session[:business_id].to_s
+        end
       if params[:id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
         @business = Business.find(params[:id])
       else

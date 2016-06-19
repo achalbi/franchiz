@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   before_action :set_inquiry, only: [:new, :create, :edit, :update]
 
 
-  layout 'application_ns'
+  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
 
   # GET /locations
   # GET /locations.json
@@ -19,6 +19,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
+    @inquiry.init!
     @location = @inquiry.build_location
   end
 
@@ -33,6 +34,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
+         @inquiry.complete!
         format.html { redirect_to new_business_inquiry_inquiry_qn_a_path(@inquiry.business, @inquiry), notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else

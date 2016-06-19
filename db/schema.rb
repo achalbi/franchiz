@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616100644) do
+ActiveRecord::Schema.define(version: 20160619052429) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 20160616100644) do
     t.string   "token"
     t.integer  "business_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "status"
+    t.string   "workflow_state"
   end
 
   add_index "inquiries", ["business_id"], name: "index_inquiries_on_business_id"

@@ -16,7 +16,7 @@
     </div>
   <% end %>
       <%= f.hidden_field :inquiry_id %>
-<div class="col-sm-4">
+<div class="col-sm-4 hidden-xl-down">
       <%= f.hidden_field :address %>
       <%= f.hidden_field :place_id %>
       <%= f.hidden_field :id_loc %> 
@@ -74,13 +74,13 @@
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude, class: "form-control", placeholder: "Longitude", readonly: true %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary " %>
-  </div>
 </div>
-<div class="col-sm-8">
+<div class="col-sm-12">
       <div class="form-group googlemap mb0">
         <%= render partial: "googlemap" %>
       </div>
 </div>
+  <div class="actions mt10">
+    <%= f.submit class: "btn btn-primary pull-xs-right" %>
+  </div>
 <% end %>

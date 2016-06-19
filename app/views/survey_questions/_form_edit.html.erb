@@ -19,4 +19,13 @@
     <%= f.hidden_field :business_id %>
     <%= f.submit class: "btn btn-primary" %>
     <%= link_to "Delete", @survey_question,  method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+    <button type="button" id="cancel_sq" class="btn btn-secondary active">Cancel</button>
+
 <% end %>
+
+<script>
+  $("#cancel_sq").click(function(){
+      $("#survey_question").html('');
+  });
+
+</script>

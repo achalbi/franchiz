@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fname:</strong>
-  <%= @biz_user.fname %>
-</p>
 
 <p>
-  <strong>Lname:</strong>
-  <%= @biz_user.lname %>
+  <strong>Name:</strong>
+  <%= @biz_user.salutation %>.
+  <%= @biz_user.name %>
 </p>
 
 <p>
@@ -21,19 +18,8 @@
 </p>
 
 <p>
-  <strong>Salutation:</strong>
-  <%= @biz_user.salutation %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @biz_user.password %>
-</p>
-
-<p>
   <strong>Business:</strong>
   <%= @biz_user.business %>
 </p>
 
-<%= link_to 'Edit', edit_biz_user_path(@biz_user) %> |
-<%= link_to 'Back', business_biz_users_path(@business) %>
+<%= link_to 'Edit User details', edit_business_biz_user_path(@business, @biz_user) %>

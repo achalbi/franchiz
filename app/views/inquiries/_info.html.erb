@@ -1,0 +1,31 @@
+<p>
+  <strong>Name:</strong>
+  <%= @inquiry.user.salutation %>
+  <%= @inquiry.user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @inquiry.user.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @inquiry.user.mobile %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @inquiry.user.address %>
+</p>
+
+<% if @inquiry.location.present? %>
+<p>
+  <strong>Interested location for setup:</strong>
+  <%= @inquiry.location.address %>
+</p>
+
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @inquiry.location.address %>&zoom=14&size=700x400&markers=<%= @inquiry.location.latitude %>,<%= @inquiry.location.longitude %>&format=png&visual_refresh=true" alt="map" />
+
+
+<% end %>

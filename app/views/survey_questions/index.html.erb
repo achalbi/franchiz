@@ -1,29 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Survey Questions</h1>
-
-<table>
-  <thead>
+<div id="survey_question" class="mb20" ></div>
+<div>
+<%= link_to 'Add Survey Questions', "#survey_question", id: "add_survey_question", class: "pull-xs-right" %>
+<% if @survey_questions.present? %>
+  <p class="lead" >Survey Questions</p>
+  
+<table class="table table-hover">
+  <thead class="thead-default">
     <tr>
+      <th>#</th>
       <th>Title</th>
-      <th>Business</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @survey_questions.each do |survey_question| %>
+      <% @survey_questions.each_with_index do |q, i| %>
+    
+      
       <tr>
-        <td><%= survey_question.title %></td>
-        <td><%= survey_question.business %></td>
-        <td><%= link_to 'Show', survey_question %></td>
-        <td><%= link_to 'Edit', edit_survey_question_path(survey_question) %></td>
-        <td><%= link_to 'Destroy', survey_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="row"><%= i+1 %>. </th>
+        <td><%= q.title %></td>
+        <td><%= link_to "Edit", "#survey_question",id: "edit_survey_question_#{i+1}", class: "text-md-right" %></td>
       </tr>
-    <% end %>
+      
+      <script>
+          $("#edit_survey_question_<%= i+1 %>").click(function(){
+            $.get("<%= edit_survey_question_path(q) %>", function(data){
+              $("#survey_question").html(data);
+            });
+          });
+      </script>
+
+      <% end %>
   </tbody>
 </table>
 
-<br>
+<% else %>
+  <h4>No survey questions present.</h4>
+<% end %>
+</div>
+<script>
+  $("#add_survey_question").click(function(){
+    $.get("<%= new_business_survey_question_path(@business) %>"+"?global=true", function(data){
+      $("#survey_question").html(data);
+    });
+  });
 
-<%= link_to 'New Survey question', new_survey_question_path %>
+  $("#sq_menu").addClass('active');
+</script>

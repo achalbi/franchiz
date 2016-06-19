@@ -1,8 +1,13 @@
 class SurveysController < ApplicationController
+  skip_before_action :require_login, only: [:edit, :update], raise: false
+
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :set_inquiry, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_business, only: [:new, :create, :show, :edit]
   before_action :edit_if_survey_exist, only: [:new]
+  
+  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+
   
   # GET /surveys
   # GET /surveys.json
@@ -23,6 +28,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
+    
     @business.survey_questions.each do |q|
     si = @survey.survey_items.where(survey_question_id: q.id)
       if si.blank?
@@ -37,9 +43,9 @@ class SurveysController < ApplicationController
   # POST /surveys.json
   def create
     @survey = Survey.new(survey_params)
-
     respond_to do |format|
       if @survey.save
+         @inquiry.survey_init!
         format.html { redirect_to business_inquiry_survey_path(@business, @inquiry, @survey), notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
       else
@@ -54,7 +60,11 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        unless logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user)
+          format.html { redirect_to biz_review_inquiry_survey_workflows_path }
+        else
+          format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        end
         format.json { render :show, status: :ok, location: @survey }
       else
         format.html { render :edit }
@@ -77,6 +87,9 @@ class SurveysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
       @survey = Survey.find(params[:id])
+      #  unless @survey.inquiry.business.id == session[:business_id]
+      #    redirect_to '/businesses/'+session[:business_id].to_s
+      #  end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

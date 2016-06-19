@@ -30,8 +30,13 @@ gem 'bcrypt'
 gem 'nested_form_fields'
 gem 'quiet_assets', group: :development
 
-gem 'roadie'
-gem 'roadie-rails', '~> 1.0'
+gem 'kaminari'
+
+#gem 'roadie'
+#gem 'roadie-rails', '~> 1.0'
+
+gem 'premailer-rails'
+gem 'workflow'
 
 gem 'figaro'
 

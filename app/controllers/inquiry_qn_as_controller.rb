@@ -5,7 +5,7 @@ class InquiryQnAsController < ApplicationController
   before_action :set_inquiry, only: [:new, :create, :edit, :update]
   before_action :edit_if_ans_exist, only: [:new]
 
-    layout 'application_ns'
+    layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
 
   # GET /inquiry_qnas
   # GET /inquiry_qnas.json
@@ -20,8 +20,13 @@ class InquiryQnAsController < ApplicationController
 
   # GET /inquiry_qnas/new
   def new
-    @inquiry_qna = InquiryQna.new
+    @inquiry.incomplete!
     @questions = @business.inquiry_questions
+    if @questions.blank?
+      @inquiry.complete!
+      redirect_to thanks_welcome_path
+    end
+    @inquiry_qna = InquiryQna.new
   end
 
   # GET /inquiry_qnas/1/edit
@@ -34,6 +39,7 @@ class InquiryQnAsController < ApplicationController
     @inquiry_qna = InquiryQna.new(inquiry_qna_params)
     respond_to do |format|
       if @business.update(@inquiry_qna.business)
+        @inquiry.complete!
         UserMailer.welcome_email(@business, @inquiry).deliver_later
         format.html { redirect_to @inquiry, notice: 'Inquiry request created. we would get back to you, Thank you. ' }
         format.json { render :show, status: :created, location: @inquiry_qna }

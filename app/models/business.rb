@@ -19,5 +19,9 @@ class Business < ActiveRecord::Base
 
     
      # validates :name, length: { maximum: 50 }
+     
+     def to_s
+        self.name
+     end
 
 end

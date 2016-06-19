@@ -19,5 +19,12 @@
     <%= f.hidden_field :business_id %>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
+    <button type="button" id="cancel_sq" class="btn btn-secondary active">Cancel</button>
   </div>
 <% end %>
+<script>
+  $("#cancel_sq").click(function(){
+      $("#question").html('');
+  });
+
+</script>

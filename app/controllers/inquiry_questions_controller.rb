@@ -1,11 +1,11 @@
 class InquiryQuestionsController < ApplicationController
   before_action :set_inquiry_question, only: [:show, :edit, :update, :destroy]
-  before_action :set_business, only: [:new, :create]
+  before_action :set_business, only: [:new, :create, :index]
 
   # GET /inquiry_questions
   # GET /inquiry_questions.json
   def index
-    @inquiry_questions = InquiryQuestion.all
+    @inquiry_questions = @business.inquiry_questions
   end
 
   # GET /inquiry_questions/1

@@ -1,3 +1,4 @@
+<% if @business.survey_questions.present? %>
 <%= form_for(@survey, url: business_inquiry_surveys_path(@business, @inquiry) ) do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
@@ -22,31 +23,35 @@
   </thead>
 
   <tbody>
-<% @business.survey_questions.each_with_index do |q, i| %>
-      <tr>
-          <%= f.fields_for :survey_items, @survey.survey_items.build do |si| %>
-        <td scope="row"><%= i+1 %>. </td>
-        <td><%= q.title %><br>
+
+    <% @business.survey_questions.each_with_index do |q, i| %>
+          <tr>
+              <%= f.fields_for :survey_items, @survey.survey_items.build do |si| %>
+            <td scope="row"><%= i+1 %>. </td>
+            <td><%= q.title %><br>
+                <%= si.hidden_field :survey_question_id, value: q.id %>
+    
+                  <%= si.fields_for :survey_biz_user_answer, si.object.build_survey_biz_user_answer do |sa| %>
+                      <div class="form-group">
+                        <%= sa.label :answer, "Business Answer:" %>
+                        <%= sa.text_area :answer, class: "form-control", placeholder: "Business Answer" %>
+                      </div>
+                  <% end %>
+     
+                <div class="hidden-xl-down">
+                  <%= si.fields_for :survey_user_answer, si.object.build_survey_user_answer do |sa| %>
+                      <div class="form-group">
+                        <%= sa.label :answer, "Franchisee Answer:" %>
+                        <%= sa.text_area :answer, class: "form-control", placeholder: "Franchisee Answer" %>
+                      </div>
+                  <% end %>
+                </div>
+            </td>
+            <td><%= si.check_box :visible, {checked: true} %></td>
+              <% end %>
+          </tr>
           
-          <%= si.hidden_field :survey_question_id, value: q.id %>
-              <%= si.fields_for :survey_biz_user_answer, si.object.build_survey_biz_user_answer do |sa| %>
-                  <div class="form-group">
-                    <%= sa.label :answer, "Business Answer:" %>
-                    <%= sa.text_area :answer, class: "form-control", placeholder: "Business Answer" %>
-                  </div>
-              <% end %>
-              <%= si.fields_for :survey_user_answer, si.object.build_survey_user_answer do |sa| %>
-                  <div class="form-group">
-                    <%= sa.label :answer, "User Answer:" %>
-                    <%= sa.text_area :answer, class: "form-control", placeholder: "User Answer" %>
-                  </div>
-              <% end %>
-        </td>
-        <td><%= si.check_box :visible, {checked: true} %></td>
-          <% end %>
-      </tr>
-      
-<% end %>
+    <% end %>
 
 
   </tbody>
@@ -56,9 +61,14 @@
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Cancel', @inquiry, class: "btn btn-secondary active", role: "button"  %>
+
   </div>
 <% end %>
 
+<% else %>
+  <h3 class="mt10">No survey questions are present</h3>
+<% end %>
 <script>
   //  $('#survey_survey_items_visible').bootstrapToggle();
 </script>

@@ -1,4 +1,6 @@
 class SurveyItem < ActiveRecord::Base
+#  include Workflow
+
   belongs_to :survey_question
   belongs_to :survey_user_answer
   belongs_to :survey_biz_user_answer

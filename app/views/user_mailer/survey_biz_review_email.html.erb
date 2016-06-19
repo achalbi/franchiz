@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="col-md-12" style="margin-top: 20px;">
+      
+        <p>Hi,</p>
+        <p> Please review the Franchisee input, click <%= link_to 'here', @url %> to take action on this item.</p>
+            <%= render 'inquiries/surveys_email' %>
+
+        <p>Thank you,</p>
+        <%= @business.name %>
+    </div>
+  </body>
+</html>

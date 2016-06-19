@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   
   
   
-    resources :inquiry_basics, controller: 'business_inquiry/inquiry_basics'
+  resources :inquiry_basics, controller: 'business_inquiry/inquiry_basics'
 
   resources :inquiry_answers
 #  resource :business
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     end
   end
   resources :businesses do
+    resources :biz_users
     resources :inquiries do
       resources :inquiry_qn_as
       resources :surveys
@@ -51,6 +52,20 @@ Rails.application.routes.draw do
   end
   resources :inquiries
   resources :users
+  
+  resource :welcome, :controller => 'welcome' do
+    collection do
+      get 'thanks'
+    end
+  end
+  
+  resources :inquiries do
+    resources :survey_workflows do
+      collection do
+        get 'user_input', 'biz_review', 'complete'
+      end
+    end
+  end
 
     
     

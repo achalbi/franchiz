@@ -1,7 +1,8 @@
-<div id="survey_question" class="mb20">
-<%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right plr10" %>
-<%= link_to 'Add Survey Question to Inquiry', "#survey_question", id: "add_survey_question", class: "pull-xs-right plr10" %>
-</div>
+ <% if logged_in? && (@inquiry.business.biz_users.to_a.include? current_user) %>
+    <div id="survey_question" class="mb20"></div>
+    <%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right plr10" %>
+    <%= link_to 'Add Survey Question to Inquiry', "#survey_question", id: "add_survey_question", class: "pull-xs-right plr10" %>
+<% end %>
 <% if @inquiry.survey.present? %>
 <table class="table table-hover">
   <thead class="thead-default">
@@ -27,6 +28,12 @@
           <% end %>
   </tbody>
 </table>
+  <% if @inquiry.current_state == 'awaiting_biz_input' || @inquiry.current_state == 'awaiting_biz_review'|| @inquiry.current_state == 'accepted' %>
+    <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-primary" %>
+  <% end %>  
+  <% if @inquiry.current_state == 'awaiting_biz_review' %>
+    <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-success" %>
+  <% end %>  
 <% else %>
 <h4> No survey details present.</h4>
 <% end %>

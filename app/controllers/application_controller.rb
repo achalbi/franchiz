@@ -12,7 +12,13 @@ class ApplicationController < ActionController::Base
       flash[:error] = "You must be logged in to access this section"
       redirect_to new_session_url # halts request cycle
     end
+    if params[:business_id].present?
+      unless params[:business_id] == session[:business_id].to_s
+        redirect_to '/businesses/'+session[:business_id].to_s
+      end
+    end
   end
+  
 end
 
 =begin
