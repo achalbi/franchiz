@@ -1,21 +1,21 @@
 class Inquiry < ActiveRecord::Base
   include Workflow
-  
+
   belongs_to :business
   belongs_to :user
   has_many :inquiry_answers
   has_one :survey
   has_one :location
-  
+
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :inquiry_answers
-  
-      
+
+
     validates_presence_of :user
     validates_associated :user
 
   paginates_per 8
-  
+
   workflow do
     state :new do
       event :init, :transitions_to => :in_progress
@@ -50,6 +50,52 @@ class Inquiry < ActiveRecord::Base
       event :complete, :transitions_to => :inquiry_complete
     end
     state :rejected
+  end
+
+  def self.status_filter(param_status, session_status, biz_id, param_page)
+    if param_status.blank? && session_status.blank?
+      session_status = ''
+    elsif param_status.blank? && param_page.blank?
+      session_status = ''
+    elsif param_status.present?
+      session_status = param_status
+    end
+    inquiries = []
+    if param_status.nil?
+        if session_status.blank?
+            inquiries = Inquiry.includes(:user, :business)
+              .where(business_id: biz_id)
+              .order(id: :desc).page param_page
+        else
+          if session_status == 'new'
+            inquiries = Inquiry.includes(:user, :business)
+              .where(business_id: biz_id, workflow_state: nil)
+              .order(id: :desc).page param_page
+          else
+            inquiries = Inquiry.includes(:user, :business)
+              .where(business_id: biz_id, workflow_state: session_status)
+              .order(id: :desc).page param_page
+          end
+        end
+    else
+      if param_status == ''
+            session_status = ''
+            inquiries = Inquiry.includes(:user, :business)
+              .where(business_id: biz_id)
+              .order(id: :desc).page param_page
+      elsif param_status == 'new'
+        session_status = 'new'
+        inquiries = Inquiry.includes(:user, :business)
+          .where(business_id: biz_id, workflow_state: nil)
+          .order(id: :desc).page param_page
+      else
+        session_status = param_status
+        inquiries = Inquiry.includes(:user, :business)
+          .where(business_id: biz_id, workflow_state: session_status)
+          .order(id: :desc).page param_page
+      end
+    end
+    return inquiries, session_status
   end
 
 end

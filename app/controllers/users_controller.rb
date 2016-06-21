@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_business, only: [:create]
   
-  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+  layout proc {logged_in? ? 'application' : 'application_ns' }
   
   # GET /users
   # GET /users.json

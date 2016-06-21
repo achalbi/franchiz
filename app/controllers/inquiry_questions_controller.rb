@@ -15,7 +15,7 @@ class InquiryQuestionsController < ApplicationController
 
   # GET /inquiry_questions/new
   def new
-    
+
     @inquiry_question = @business.inquiry_questions.build
     render layout: false
   end
@@ -67,15 +67,15 @@ class InquiryQuestionsController < ApplicationController
   end
 
   private
-  
+
     def set_business
-      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
         @business = Business.find(params[:business_id])
       else
         @business = Business.find_by(website: params[:business_id])
       end
     end
-    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_inquiry_question
       @inquiry_question = InquiryQuestion.find(params[:id])
@@ -85,7 +85,7 @@ class InquiryQuestionsController < ApplicationController
     def inquiry_question_params
       params.require(:inquiry_question).permit(:title, :business_id)
     end
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_inquiry_question_params
       params.require(:inquiry_question).permit(:title, :business_id)

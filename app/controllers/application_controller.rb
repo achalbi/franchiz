@@ -4,21 +4,22 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsHelper
- 
+
   private
- 
+
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"
       redirect_to new_session_url # halts request cycle
-    end
-    if params[:business_id].present?
-      unless params[:business_id] == session[:business_id].to_s
-        redirect_to '/businesses/'+session[:business_id].to_s
+    else
+      if params[:business_id].present?
+        unless params[:business_id] == session[:business_id].to_s
+          redirect_to '/businesses/'+session[:business_id].to_s
+        end
       end
     end
   end
-  
+
 end
 
 =begin
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
  # protect_from_forgery with: :exception
-  
+
     skip_before_filter :verify_authenticity_token
 
   before_filter :cors_preflight_check

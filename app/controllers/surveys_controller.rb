@@ -6,7 +6,7 @@ class SurveysController < ApplicationController
   before_action :set_business, only: [:new, :create, :show, :edit]
   before_action :edit_if_survey_exist, only: [:new]
   
-  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+  layout proc {logged_in? ? 'application' : 'application_ns' }
 
   
   # GET /surveys

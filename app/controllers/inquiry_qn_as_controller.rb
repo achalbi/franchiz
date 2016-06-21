@@ -5,7 +5,7 @@ class InquiryQnAsController < ApplicationController
   before_action :set_inquiry, only: [:new, :create, :edit, :update]
   before_action :edit_if_ans_exist, only: [:new]
 
-    layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+    layout proc {logged_in? ? 'application' : 'application_ns' }
 
   # GET /inquiry_qnas
   # GET /inquiry_qnas.json

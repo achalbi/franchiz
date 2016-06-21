@@ -2,39 +2,25 @@ class InquiriesController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :show], raise: false
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
   before_action :set_business, only: [:new, :index]
-  
-  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+
+  layout proc {logged_in? ? 'application' : 'application_ns' }
 
   # GET /inquiries
   # GET /inquiries.json
   def index
-    if params[:inquiry_filter].nil?
-        if session[:inquiry_filter].blank?
-            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
-        else
-            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
-        end
-    else
-      if params[:inquiry_filter] == ""
-            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
-      elsif params[:inquiry_filter] == "new"
-        session[:inquiry_filter] = "new"
-        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: nil).order(id: :desc).page params[:page]
-      else
-        session[:inquiry_filter] = params[:inquiry_filter]
-        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
-      end
-    end
+    @inquiries, session[:status_filter]  = Inquiry
+      .status_filter(params[:status_filter], session[:status_filter],
+      @business.id, params[:page])
   end
 
   # GET /inquiries/1
   # GET /inquiries/1.json
   def show
     @business = @inquiry.business
-#    @business.inquiry_questions.each do |q|
-#      q.inquiry_answer
-#    end
-    
+    # @business.inquiry_questions.each do |q|
+    #  q.inquiry_answers
+    # end
+
   end
 
   # GET /inquiries/new
@@ -56,10 +42,10 @@ class InquiriesController < ApplicationController
     respond_to do |format|
       if @inquiry.save
         format.html { redirect_to new_inquiry_location_path(@inquiry), notice: 'Contact details submitted.' }
-        format.json { render :show, status: :created, location: @inquiry }
+      #  format.json { render :show, status: :created, location: @inquiry }
       else
         format.html { render :new }
-        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+      #  format.json { render json: @inquiry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,10 +56,10 @@ class InquiriesController < ApplicationController
     respond_to do |format|
       if @inquiry.update(inquiry_params)
         format.html { redirect_to @inquiry, notice: 'Inquiry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @inquiry }
+      #  format.json { render :show, status: :ok, location: @inquiry }
       else
         format.html { render :edit }
-        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+      #  format.json { render json: @inquiry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,7 +70,7 @@ class InquiriesController < ApplicationController
     @inquiry.destroy
     respond_to do |format|
       format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
-      format.json { head :no_content }
+    #  format.json { head :no_content }
     end
   end
 
@@ -101,12 +87,12 @@ class InquiriesController < ApplicationController
     def inquiry_params
       params.require(:inquiry).permit(:token, :business_id, user_attributes: [:id, :salutation, :fname, :lname, :email, :mobile, address_attributes: [:id, :line1, :line2, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude]])
     end
-    
+
     def set_business
       #  unless params[:business_id] == session[:business_id].to_s
       #    redirect_to '/businesses/'+session[:business_id].to_s
       #  end
-      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
         @business = Business.find(params[:business_id])
       else
         @business = Business.find_by(website: params[:business_id])

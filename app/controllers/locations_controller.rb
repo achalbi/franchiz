@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   before_action :set_inquiry, only: [:new, :create, :edit, :update]
 
 
-  layout Proc.new { |controller| logged_in? ? 'application' : 'application_ns' }
+  layout proc {logged_in? ? 'application' : 'application_ns' }
 
   # GET /locations
   # GET /locations.json

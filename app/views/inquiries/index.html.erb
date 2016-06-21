@@ -1,6 +1,7 @@
 <% if @business.inquiries.present? %>
 <div class="form-inline">
-  <p>Filter by status: <%= select_tag "status", options_for_select(@business.inquiries.select("distinct workflow_state").collect{|x| [x.current_state,x.current_state]}, selected: session[:inquiry_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
+  <p>Filter by status: <%= select_tag "status", options_for_select(@business.inquiries.select("distinct workflow_state").collect{|x| [x.current_state,x.current_state]}, selected: session[:status_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
+  <p>Filter by Date: From <%= text_field :date,'' ,id: 'from_date', class: 'form-control'  %> To <%= text_field :date,'', id: 'to_date', class: 'form-control'  %></p>
 </div>
 
 <div id="inquiry_table">
@@ -17,9 +18,9 @@
     </tr>
   </thead>
   <tbody>
-    
+
       <% @inquiries.each_with_index do |a, i| %>
-      
+
       <tr>
         <!--<td scope="row"><%= i+1 %>. </td>-->
         <td><%= a.created_at.strftime("%d %b %Y") %></td>
@@ -43,11 +44,15 @@
 
 <script>
   $("#inquiries_menu").addClass('active');
-  
+
   $("#status_filter").change(function(){
-    $.get("<%= business_inquiries_path(@business) %>", {inquiry_filter: $("#status_filter").val()}).done(function(data){
-      
-          $("#inquiry_table").html($(data).find("#inquiry_table").html());
+    $.get("<%= business_inquiries_path(@business) %>", {status_filter: $("#status_filter").val()}).done(function(data){
+      $("#inquiry_table").html($(data).find("#inquiry_table").html());
     });
+  });
+
+  $(function () {
+    $('#from_date').datetimepicker();
+    $('#to_date').datetimepicker();
   });
 </script>

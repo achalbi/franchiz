@@ -1,0 +1,1677 @@
+Inspecting 84 files
+CCCCCCCCCCCCCCCCCCCC...C..CC.C.......C.CCCCC.CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+Offenses:
+
+app/models/survey_question.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyQuestion < ActiveRecord::Base
+^^^^^
+app/models/survey_question.rb:2:1: C: Trailing whitespace detected.
+app/models/survey_question.rb:3:44: C: Trailing whitespace detected.
+  scope :global, -> { where(global: true) } 
+                                           ^
+app/models/survey_question.rb:7:1: C: Trailing whitespace detected.
+app/models/survey_question.rb:9:1: C: Trailing whitespace detected.
+app/models/survey_question.rb:12:1: C: Trailing whitespace detected.
+app/models/survey_question.rb:16:5: C: Inconsistent indentation detected.
+    def to_s ...
+    ^^^^^^^^
+app/models/survey_question.rb:17:5: C: Use 2 (not 4) spaces for indentation.
+        self.id.to_s+" : "+self.title
+    ^^^^
+app/models/survey_question.rb:17:9: C: Redundant self detected.
+        self.id.to_s+" : "+self.title
+        ^^^^^^^
+app/models/survey_question.rb:17:21: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.title
+                    ^
+app/models/survey_question.rb:17:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.id.to_s+" : "+self.title
+                     ^^^^^
+app/models/survey_question.rb:17:27: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.title
+                          ^
+app/models/survey_question.rb:17:28: C: Redundant self detected.
+        self.id.to_s+" : "+self.title
+                           ^^^^^^^^^^
+app/models/business_inquiry.rb:1:1: C: Missing top-level module documentation comment.
+module BusinessInquiry
+^^^^^^
+app/models/business_inquiry.rb:6:1: C: 1 trailing blank lines detected.
+app/models/location.rb:1:1: C: Missing top-level class documentation comment.
+class Location < ActiveRecord::Base
+^^^^^
+app/models/location.rb:2:1: C: Use 2 (not 1) spaces for indentation.
+	belongs_to :inquiry
+^
+app/models/location.rb:2:1: C: Tab detected.
+	belongs_to :inquiry
+^
+app/models/inquiry.rb:1:1: C: Missing top-level class documentation comment.
+class Inquiry < ActiveRecord::Base
+^^^^^
+app/models/inquiry.rb:3:1: C: Trailing whitespace detected.
+app/models/inquiry.rb:9:1: C: Trailing whitespace detected.
+app/models/inquiry.rb:12:1: C: Trailing whitespace detected.
+app/models/inquiry.rb:13:1: C: Trailing whitespace detected.
+app/models/inquiry.rb:14:5: C: Inconsistent indentation detected.
+    validates_presence_of :user
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:15:5: C: Inconsistent indentation detected.
+    validates_associated :user
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:18:1: C: Trailing whitespace detected.
+app/models/inquiry.rb:21:20: C: Use the new Ruby 1.9 hash syntax.
+      event :init, :transitions_to => :in_progress
+                   ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:24:26: C: Use the new Ruby 1.9 hash syntax.
+      event :incomplete, :transitions_to => :inquiry_incomplete
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:25:24: C: Use the new Ruby 1.9 hash syntax.
+      event :complete, :transitions_to => :inquiry_complete
+                       ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:28:26: C: Use the new Ruby 1.9 hash syntax.
+      event :incomplete, :transitions_to => :inquiry_incomplete
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:29:27: C: Use the new Ruby 1.9 hash syntax.
+      event :survey_init, :transitions_to => :awaiting_biz_input
+                          ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:30:22: C: Use the new Ruby 1.9 hash syntax.
+      event :reject, :transitions_to => :rejected
+                     ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:33:26: C: Use the new Ruby 1.9 hash syntax.
+      event :user_input, :transitions_to => :awaiting_user_input
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:36:26: C: Use the new Ruby 1.9 hash syntax.
+      event :biz_review, :transitions_to => :awaiting_biz_review
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:37:26: C: Use the new Ruby 1.9 hash syntax.
+      event :user_input, :transitions_to => :awaiting_user_input
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:40:26: C: Use the new Ruby 1.9 hash syntax.
+      event :user_input, :transitions_to => :awaiting_user_input
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:41:22: C: Use the new Ruby 1.9 hash syntax.
+      event :accept, :transitions_to => :accepted
+                     ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:42:22: C: Use the new Ruby 1.9 hash syntax.
+      event :reject, :transitions_to => :rejected
+                     ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:43:24: C: Use the new Ruby 1.9 hash syntax.
+      event :complete, :transitions_to => :inquiry_complete
+                       ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:46:24: C: Use the new Ruby 1.9 hash syntax.
+      event :complete, :transitions_to => :inquiry_complete
+                       ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:49:26: C: Use the new Ruby 1.9 hash syntax.
+      event :user_input, :transitions_to => :awaiting_user_input
+                         ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:50:24: C: Use the new Ruby 1.9 hash syntax.
+      event :complete, :transitions_to => :inquiry_complete
+                       ^^^^^^^^^^^^^^^^^^
+app/models/inquiry.rb:54:1: C: Extra empty line detected at class body end.
+app/models/business.rb:1:1: C: Missing top-level class documentation comment.
+class Business < ActiveRecord::Base
+^^^^^
+app/models/business.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    has_many :biz_users, dependent: :destroy
+^^^^
+app/models/business.rb:4:1: C: Trailing whitespace detected.
+app/models/business.rb:9:1: C: Trailing whitespace detected.
+app/models/business.rb:11:1: C: Trailing whitespace detected.
+app/models/business.rb:14:1: C: Trailing whitespace detected.
+app/models/business.rb:17:1: C: Trailing whitespace detected.
+app/models/business.rb:20:1: C: Trailing whitespace detected.
+app/models/business.rb:22:1: C: Trailing whitespace detected.
+app/models/business.rb:23:6: C: Inconsistent indentation detected.
+     def to_s ...
+     ^^^^^^^^
+app/models/business.rb:24:6: C: Use 2 (not 3) spaces for indentation.
+        self.name
+     ^^^
+app/models/business.rb:24:9: C: Redundant self detected.
+        self.name
+        ^^^^^^^^^
+app/models/business.rb:26:1: C: Extra empty line detected at class body end.
+app/models/business.rb:27:4: C: Final newline missing.
+end
+   
+app/models/biz_user.rb:1:1: C: Missing top-level class documentation comment.
+class BizUser < ActiveRecord::Base
+^^^^^
+app/models/biz_user.rb:5:33: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :fname, :on => :create
+                                ^^^^^^
+app/models/biz_user.rb:6:33: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :lname, :on => :create
+                                ^^^^^^
+app/models/biz_user.rb:7:43: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :password_digest, :on => :create
+                                          ^^^^^^
+app/models/biz_user.rb:9:1: C: Extra blank line detected.
+app/models/biz_user.rb:13:81: C: Line is too long. [97/80]
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true, :on => :create
+                                                                                ^^^^^^^^^^^^^^^^^
+app/models/biz_user.rb:13:84: C: Use the new Ruby 1.9 hash syntax.
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true, :on => :create
+                                                                                   ^^^^^^
+app/models/biz_user.rb:14:49: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :password_confirmation, :on => :create
+                                                ^^^^^^
+app/models/biz_user.rb:17:3: C: Use 2 (not 3) spaces for indentation.
+     fname.capitalize + ' ' + lname
+  ^^^
+app/models/biz_user.rb:21:3: C: Use 2 (not 3) spaces for indentation.
+     salutation + '. ' + fname + ' ' + lname
+  ^^^
+app/models/survey.rb:1:1: C: Missing top-level class documentation comment.
+class Survey < ActiveRecord::Base
+^^^^^
+app/models/survey.rb:3:1: C: Trailing whitespace detected.
+app/models/survey.rb:5:1: C: Trailing whitespace detected.
+app/models/survey.rb:7:1: C: Trailing whitespace detected.
+app/models/session.rb:1:1: C: Missing top-level class documentation comment.
+class Session
+^^^^^
+app/models/session.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    include ActiveModel::Model
+^^^^
+app/models/session.rb:4:1: C: Trailing whitespace detected.
+app/models/session.rb:6:1: C: Trailing whitespace detected.
+app/models/session.rb:7:7: C: Inconsistent indentation detected.
+      def initialize(attributes = {}) ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/session.rb:12:4: C: Final newline missing.
+end
+   
+app/models/biz.rb:1:1: C: Missing top-level module documentation comment.
+module Biz
+^^^^^^
+app/models/survey_user_answer.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyUserAnswer < ActiveRecord::Base
+^^^^^
+app/models/survey_user_answer.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    belongs_to :survey_question
+^^^^
+app/models/survey_user_answer.rb:6:5: C: Use 2 (not 4) spaces for indentation.
+        self.id.to_s+" : "+self.answer
+    ^^^^
+app/models/survey_user_answer.rb:6:9: C: Redundant self detected.
+        self.id.to_s+" : "+self.answer
+        ^^^^^^^
+app/models/survey_user_answer.rb:6:21: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.answer
+                    ^
+app/models/survey_user_answer.rb:6:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.id.to_s+" : "+self.answer
+                     ^^^^^
+app/models/survey_user_answer.rb:6:27: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.answer
+                          ^
+app/models/survey_user_answer.rb:6:28: C: Redundant self detected.
+        self.id.to_s+" : "+self.answer
+                           ^^^^^^^^^^^
+app/models/inquiry_answer.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryAnswer < ActiveRecord::Base
+^^^^^
+app/models/business_inquiry/inquiry_basic.rb:1:7: C: Use nested module/class definitions instead of compact style.
+class BusinessInquiry::InquiryBasic < ActiveRecord::Base
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/inquiry_question.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryQuestion < ActiveRecord::Base
+^^^^^
+app/models/inquiry_question.rb:4:1: C: Trailing whitespace detected.
+app/models/inquiry_question.rb:6:1: C: Trailing whitespace detected.
+app/models/survey_biz_user_answer.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyBizUserAnswer < ActiveRecord::Base
+^^^^^
+app/models/survey_biz_user_answer.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    belongs_to :survey_question
+^^^^
+app/models/survey_biz_user_answer.rb:4:1: C: Trailing whitespace detected.
+app/models/survey_biz_user_answer.rb:6:5: C: Use 2 (not 4) spaces for indentation.
+        self.id.to_s+" : "+self.answer
+    ^^^^
+app/models/survey_biz_user_answer.rb:6:9: C: Redundant self detected.
+        self.id.to_s+" : "+self.answer
+        ^^^^^^^
+app/models/survey_biz_user_answer.rb:6:21: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.answer
+                    ^
+app/models/survey_biz_user_answer.rb:6:22: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.id.to_s+" : "+self.answer
+                     ^^^^^
+app/models/survey_biz_user_answer.rb:6:27: C: Surrounding space missing for operator +.
+        self.id.to_s+" : "+self.answer
+                          ^
+app/models/survey_biz_user_answer.rb:6:28: C: Redundant self detected.
+        self.id.to_s+" : "+self.answer
+                           ^^^^^^^^^^^
+app/models/survey_item.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyItem < ActiveRecord::Base
+^^^^^
+app/models/survey_item.rb:2:1: C: Incorrect indentation detected (column 0 instead of 2).
+#  include Workflow
+^^^^^^^^^^^^^^^^^^^
+app/models/survey_item.rb:9:1: C: Trailing whitespace detected.
+app/models/survey_item.rb:12:1: C: Trailing whitespace detected.
+app/models/address.rb:1:1: C: Missing top-level class documentation comment.
+class Address < ActiveRecord::Base
+^^^^^
+app/models/address.rb:2:1: C: Trailing whitespace detected.
+app/models/address.rb:3:1: C: Use 2 (not 4) spaces for indentation.
+    belongs_to :user
+^^^^
+app/models/address.rb:4:1: C: Trailing whitespace detected.
+app/models/address.rb:6:1: C: Trailing whitespace detected.
+app/models/address.rb:7:5: C: Assignment Branch Condition size for to_s is too high. [16/15]
+    def to_s
+    ^^^
+app/models/address.rb:8:5: C: Use 2 (not 4) spaces for indentation.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+    ^^^^
+app/models/address.rb:8:9: C: Redundant self detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+        ^^^^^^^^^^
+app/models/address.rb:8:19: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                  ^
+app/models/address.rb:8:24: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                       ^
+app/models/address.rb:8:25: C: Redundant self detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                        ^^^^^^^^^^
+app/models/address.rb:8:35: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                  ^
+app/models/address.rb:8:40: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                       ^
+app/models/address.rb:8:41: C: Redundant self detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                        ^^^^^^^^^
+app/models/address.rb:8:50: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                 ^
+app/models/address.rb:8:51: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                  ^^^^
+app/models/address.rb:8:55: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                      ^
+app/models/address.rb:8:56: C: Redundant self detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                       ^^^^^^^^^^
+app/models/address.rb:8:66: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                 ^
+app/models/address.rb:8:67: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                  ^^^^
+app/models/address.rb:8:71: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                      ^
+app/models/address.rb:8:72: C: Redundant self detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                       ^^^^^^^^^^^^
+app/models/address.rb:8:81: C: Line is too long. [100/80]
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                                ^^^^^^^^^^^^^^^^^^^^
+app/models/address.rb:8:84: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                                   ^
+app/models/address.rb:8:85: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                                    ^^^^
+app/models/address.rb:8:89: C: Surrounding space missing for operator +.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                                        ^
+app/models/address.rb:8:97: C: Trailing whitespace detected.
+        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+                                                                                                ^^^^
+app/models/inquiry_qna.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryQna
+^^^^^
+app/models/inquiry_qna.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    include ActiveModel::Model
+^^^^
+app/models/inquiry_qna.rb:4:1: C: Trailing whitespace detected.
+app/models/inquiry_qna.rb:5:4: C: Final newline missing.
+end
+   
+app/models/user.rb:1:1: C: Missing top-level class documentation comment.
+class User < ActiveRecord::Base
+^^^^^
+app/models/user.rb:5:1: C: Extra blank line detected.
+app/models/user.rb:9:33: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :fname, :on => :create
+                                ^^^^^^
+app/models/user.rb:10:33: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :lname, :on => :create
+                                ^^^^^^
+app/models/user.rb:11:34: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :mobile, :on => :create
+                                 ^^^^^^
+app/models/user.rb:13:35: C: Use the new Ruby 1.9 hash syntax.
+  validates_presence_of :address, :on => :create
+                                  ^^^^^^
+app/models/user.rb:16:1: C: Extra blank line detected.
+app/models/user.rb:17:1: C: Extra blank line detected.
+app/models/user.rb:19:73: C: Missing space after #.
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX } #,uniqueness: { case_sensitive: false }
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:19:81: C: Line is too long. [111/80]
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX } #,uniqueness: { case_sensitive: false }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:25:1: C: 1 trailing blank lines detected.
+app/mailers/application_mailer.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationMailer < ActionMailer::Base
+^^^^^
+app/mailers/application_mailer.rb:2:17: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  default from: "from@example.com"
+                ^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:1:1: C: Missing top-level class documentation comment.
+class UserMailer < ApplicationMailer
+^^^^^
+app/mailers/user_mailer.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    default from: 'achal.indiresh@strata.co.in'
+^^^^
+app/mailers/user_mailer.rb:3:1: C: Trailing whitespace detected.
+app/mailers/user_mailer.rb:5:5: C: Use 2 (not 4) spaces for indentation.
+        @user = inquiry.user
+    ^^^^
+app/mailers/user_mailer.rb:8:17: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/inquiries/"+inquiry.id.to_s
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:8:65: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/inquiries/"+inquiry.id.to_s
+                                                                ^
+app/mailers/user_mailer.rb:9:6: C: Incorrect indentation detected (column 5 instead of 8).
+     #   email_with_name = %("#{@user.name}" <#{@user.email}>)
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:11:23: C: Space missing after comma.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                      ^
+app/mailers/user_mailer.rb:11:51: C: Space missing to the left of {.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                  ^
+app/mailers/user_mailer.rb:11:51: C: Space between { and | missing.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                  ^^
+app/mailers/user_mailer.rb:11:51: C: Pass &:email as an argument to map instead of a block.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                  ^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:11:63: C: Space missing inside }.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                              ^
+app/mailers/user_mailer.rb:11:67: C: Space found before comma.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                                  ^
+app/mailers/user_mailer.rb:11:68: C: Space missing after comma.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                                   ^
+app/mailers/user_mailer.rb:11:81: C: Line is too long. [157/80]
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:11:143: C: Surrounding space missing for operator +.
+        mail(to: email,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "Thanks for your interest at #{@business.name} your inquiry no: "+inquiry.token)
+                                                                                                                                              ^
+app/mailers/user_mailer.rb:13:1: C: Trailing whitespace detected.
+app/mailers/user_mailer.rb:14:5: C: Assignment Branch Condition size for survey_user_input_email is too high. [27.46/15]
+    def survey_user_input_email(inquiry)
+    ^^^
+app/mailers/user_mailer.rb:15:5: C: Use 2 (not 4) spaces for indentation.
+        @user = inquiry.user
+    ^^^^
+app/mailers/user_mailer.rb:18:17: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:18:66: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                 ^
+app/mailers/user_mailer.rb:18:81: C: Line is too long. [156/80]
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:18:84: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                   ^
+app/mailers/user_mailer.rb:18:85: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                    ^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:18:98: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                 ^
+app/mailers/user_mailer.rb:18:114: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                                 ^
+app/mailers/user_mailer.rb:18:115: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                                  ^^^^^^^^^^^
+app/mailers/user_mailer.rb:18:126: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                                             ^
+app/mailers/user_mailer.rb:18:149: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                                                                    ^
+app/mailers/user_mailer.rb:18:150: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/edit"
+                                                                                                                                                     ^^^^^^^
+app/mailers/user_mailer.rb:19:6: C: Incorrect indentation detected (column 5 instead of 8).
+     #   email_with_name = %("#{@user.name}" <#{@user.email}>)
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:21:23: C: Space found before comma.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                      ^
+app/mailers/user_mailer.rb:21:24: C: Space missing after comma.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                       ^
+app/mailers/user_mailer.rb:21:52: C: Space missing to the left of {.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                   ^
+app/mailers/user_mailer.rb:21:52: C: Space between { and | missing.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                   ^^
+app/mailers/user_mailer.rb:21:52: C: Pass &:email as an argument to map instead of a block.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                   ^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:21:64: C: Space missing inside }.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                               ^
+app/mailers/user_mailer.rb:21:68: C: Space found before comma.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                   ^
+app/mailers/user_mailer.rb:21:69: C: Space missing after comma.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                    ^
+app/mailers/user_mailer.rb:21:79: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                              ^^^^^^^^^^
+app/mailers/user_mailer.rb:21:81: C: Line is too long. [169/80]
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:21:89: C: Surrounding space missing for operator +.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                        ^
+app/mailers/user_mailer.rb:21:103: C: Surrounding space missing for operator +.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                                      ^
+app/mailers/user_mailer.rb:21:104: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                                       ^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:21:118: C: Surrounding space missing for operator +.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                                                     ^
+app/mailers/user_mailer.rb:21:147: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        mail(to: email ,cc: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" updated on "+inquiry.updated_at.strftime("%m/%d/%Y at %I:%M%p"))
+                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:23:1: C: Trailing whitespace detected.
+app/mailers/user_mailer.rb:24:5: C: Assignment Branch Condition size for survey_biz_review_email is too high. [22.2/15]
+    def survey_biz_review_email(inquiry)
+    ^^^
+app/mailers/user_mailer.rb:25:5: C: Use 2 (not 4) spaces for indentation.
+        @business = inquiry.business
+    ^^^^
+app/mailers/user_mailer.rb:27:13: C: Unnecessary spacing detected.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+            ^
+app/mailers/user_mailer.rb:27:15: C: Operator = should be surrounded by a single space.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+              ^
+app/mailers/user_mailer.rb:27:17: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:27:66: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                 ^
+app/mailers/user_mailer.rb:27:81: C: Line is too long. [152/80]
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:27:84: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                   ^
+app/mailers/user_mailer.rb:27:85: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                    ^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:27:98: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                 ^
+app/mailers/user_mailer.rb:27:114: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                                 ^
+app/mailers/user_mailer.rb:27:115: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                                  ^^^^^^^^^^^
+app/mailers/user_mailer.rb:27:126: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                                             ^
+app/mailers/user_mailer.rb:27:149: C: Surrounding space missing for operator +.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                                                                    ^
+app/mailers/user_mailer.rb:27:150: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @url  = "https://franchiz-achalbi.c9users.io/businesses/"+@business.id.to_s+"/inquiries/"+inquiry.id.to_s+"/surveys/"+inquiry.survey.id.to_s+"/"
+                                                                                                                                                     ^^^
+app/mailers/user_mailer.rb:28:41: C: Space missing to the left of {.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                        ^
+app/mailers/user_mailer.rb:28:41: C: Space between { and | missing.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                        ^^
+app/mailers/user_mailer.rb:28:41: C: Pass &:email as an argument to map instead of a block.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                        ^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:28:53: C: Space missing inside }.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                    ^
+app/mailers/user_mailer.rb:28:57: C: Space found before comma.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                        ^
+app/mailers/user_mailer.rb:28:58: C: Space missing after comma.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                         ^
+app/mailers/user_mailer.rb:28:68: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                                   ^^^^^^^^^^
+app/mailers/user_mailer.rb:28:78: C: Surrounding space missing for operator +.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                                             ^
+app/mailers/user_mailer.rb:28:81: C: Line is too long. [113/80]
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/mailers/user_mailer.rb:28:92: C: Surrounding space missing for operator +.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                                                           ^
+app/mailers/user_mailer.rb:28:93: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        mail(to: @business.biz_users.map{|u| u.email}[0] ,subject: "inquiry:"+inquiry.token+" ready for review ")
+                                                                                            ^^^^^^^^^^^^^^^^^^^^
+app/views/inquiry_answers/show.json.jbuilder:1:81: C: Line is too long. [104/80]
+json.extract! @inquiry_answer, :id, :answer, :inquiry_question_id, :inquiry_id, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/addresses/index.json.jbuilder:2:81: C: Line is too long. [114/80]
+  json.extract! address, :id, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude, :user_id
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/addresses/show.json.jbuilder:1:81: C: Line is too long. [139/80]
+json.extract! @address, :id, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude, :user_id, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/survey_questions/show.json.jbuilder:1:81: C: Line is too long. [83/80]
+json.extract! @survey_question, :id, :title, :business_id, :created_at, :updated_at
+                                                                                ^^^
+app/views/inquiries/show.json.jbuilder:1:81: C: Line is too long. [85/80]
+json.extract! @inquiry, :id, :token, :business_id, :user_id, :created_at, :updated_at
+                                                                                ^^^^^
+app/views/users/show.json.jbuilder:1:81: C: Line is too long. [96/80]
+json.extract! @user, :id, :salutation, :fname, :lname, :email, :mobile, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^
+app/views/biz_users/index.json.jbuilder:2:81: C: Line is too long. [100/80]
+  json.extract! biz_user, :id, :fname, :lname, :email, :mobile, :salutation, :password, :business_id
+                                                                                ^^^^^^^^^^^^^^^^^^^^
+app/views/biz_users/show.json.jbuilder:1:81: C: Line is too long. [125/80]
+json.extract! @biz_user, :id, :fname, :lname, :email, :mobile, :salutation, :password, :business_id, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/locations/index.json.jbuilder:2:81: C: Line is too long. [116/80]
+  json.extract! location, :id, :address, :name, :place_id, :city, :country, :id_loc, :pincode, :latitude, :longitude
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/locations/show.json.jbuilder:1:81: C: Line is too long. [141/80]
+json.extract! @location, :id, :address, :name, :place_id, :city, :country, :id_loc, :pincode, :latitude, :longitude, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/inquiry_questions/show.json.jbuilder:1:81: C: Line is too long. [84/80]
+json.extract! @inquiry_question, :id, :title, :business_id, :created_at, :updated_at
+                                                                                ^^^^
+app/views/survey_items/index.json.jbuilder:2:81: C: Line is too long. [128/80]
+  json.extract! survey_item, :id, :survey_question_id, :survey_user_answer_id, :survey_biz_user_answer_id, :inquiry_id, :visible
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/survey_items/show.json.jbuilder:1:81: C: Line is too long. [153/80]
+json.extract! @survey_item, :id, :survey_question_id, :survey_user_answer_id, :survey_biz_user_answer_id, :inquiry_id, :visible, :created_at, :updated_at
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyQuestionsController < ApplicationController
+^^^^^
+app/controllers/survey_questions_controller.rb:5:1: C: Extra blank line detected.
+app/controllers/survey_questions_controller.rb:19:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  @survey_question = SurveyQuestion.new
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:21:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if params[:global]
+    ^^
+app/controllers/survey_questions_controller.rb:34:3: C: Assignment Branch Condition size for create is too high. [15.07/15]
+  def create
+  ^^^
+app/controllers/survey_questions_controller.rb:34:3: C: Method has too many lines. [11/10]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:39:28: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.js { render "location.reload();" }
+                           ^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:40:81: C: Line is too long. [94/80]
+        format.html { redirect_to :back, notice: 'Survey question was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:41:81: C: Line is too long. [82/80]
+        format.json { render :show, status: :created, location: @survey_question }
+                                                                                ^^
+app/controllers/survey_questions_controller.rb:44:81: C: Line is too long. [91/80]
+        format.json { render json: @survey_question.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:54:81: C: Line is too long. [114/80]
+        format.html { redirect_to @survey_question.business, notice: 'Survey question was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:58:81: C: Line is too long. [91/80]
+        format.json { render json: @survey_question.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:69:81: C: Line is too long. [110/80]
+      format.html { redirect_to business_path(biz_id), notice: 'Survey question was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:74:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/survey_questions_controller.rb:76:5: C: Inconsistent indentation detected.
+    def set_survey_question ...
+    ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:80:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/survey_questions_controller.rb:81:5: C: Inconsistent indentation detected.
+    def survey_question_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:84:1: C: Trailing whitespace detected.
+app/controllers/survey_questions_controller.rb:85:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:86:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_questions_controller.rb:86:60: C: Trailing whitespace detected.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                           ^
+app/controllers/inquiries_controller.rb:1:1: C: Missing top-level class documentation comment.
+class InquiriesController < ApplicationController
+^^^^^
+app/controllers/inquiries_controller.rb:5:1: C: Trailing whitespace detected.
+app/controllers/inquiries_controller.rb:6:16: C: Space missing inside {.
+  layout proc {logged_in? ? 'application' : 'application_ns' }
+               ^
+app/controllers/inquiries_controller.rb:10:3: C: Assignment Branch Condition size for index is too high. [65.68/15]
+  def index
+  ^^^
+app/controllers/inquiries_controller.rb:10:3: C: Method has too many lines. [21/10]
+  def index ...
+  ^^^^^^^^^
+app/controllers/inquiries_controller.rb:10:3: C: Perceived complexity for index is too high. [10/7]
+  def index
+  ^^^
+app/controllers/inquiries_controller.rb:12:5: C: Use 2 (not 4) spaces for indentation.
+        if session[:inquiry_filter].blank?
+    ^^^^
+app/controllers/inquiries_controller.rb:13:9: C: Use 2 (not 4) spaces for indentation.
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+        ^^^^
+app/controllers/inquiries_controller.rb:13:81: C: Line is too long. [128/80]
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:15:11: C: Convert if nested inside else to elsif.
+          if session[:inquiry_filter] == "new"
+          ^^
+app/controllers/inquiries_controller.rb:15:42: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+          if session[:inquiry_filter] == "new"
+                                         ^^^^^
+app/controllers/inquiries_controller.rb:16:81: C: Line is too long. [149/80]
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: nil).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:18:81: C: Line is too long. [170/80]
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:22:7: C: Convert if nested inside else to elsif.
+      if params[:inquiry_filter] == ""
+      ^^
+app/controllers/inquiries_controller.rb:22:37: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      if params[:inquiry_filter] == ""
+                                    ^^
+app/controllers/inquiries_controller.rb:23:7: C: Use 2 (not 6) spaces for indentation.
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+      ^^^^^^
+app/controllers/inquiries_controller.rb:23:81: C: Line is too long. [128/80]
+            @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:24:40: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      elsif params[:inquiry_filter] == "new"
+                                       ^^^^^
+app/controllers/inquiries_controller.rb:25:36: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        session[:inquiry_filter] = "new"
+                                   ^^^^^
+app/controllers/inquiries_controller.rb:26:81: C: Line is too long. [145/80]
+        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: nil).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:29:81: C: Line is too long. [166/80]
+        @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id, workflow_state: session[:inquiry_filter]).order(id: :desc).page params[:page]
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:40:1: C: Incorrect indentation detected (column 0 instead of 4).
+#    end
+^^^^^^^^
+app/controllers/inquiries_controller.rb:41:1: C: Trailing whitespace detected.
+app/controllers/inquiries_controller.rb:45:3: C: Assignment Branch Condition size for new is too high. [15.13/15]
+  def new
+  ^^^
+app/controllers/inquiries_controller.rb:46:81: C: Line is too long. [142/80]
+    @inquiry = @business.inquiries.build(token:  @business.name.first(3) + '-' + @business.id.to_s + '-inq-' + @business.inquiries.count.to_s)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:62:81: C: Line is too long. [109/80]
+        format.html { redirect_to new_inquiry_location_path(@inquiry), notice: 'Contact details submitted.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:66:81: C: Line is too long. [83/80]
+        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/inquiries_controller.rb:76:81: C: Line is too long. [89/80]
+        format.html { redirect_to @inquiry, notice: 'Inquiry was successfully updated.' }
+                                                                                ^^^^^^^^^
+app/controllers/inquiries_controller.rb:80:81: C: Line is too long. [83/80]
+        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/inquiries_controller.rb:90:81: C: Line is too long. [94/80]
+      format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:95:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/inquiries_controller.rb:97:5: C: Inconsistent indentation detected.
+    def set_inquiry ...
+    ^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:104:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/inquiries_controller.rb:105:5: C: Inconsistent indentation detected.
+    def inquiry_params ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:106:81: C: Line is too long. [248/80]
+      params.require(:inquiry).permit(:token, :business_id, user_attributes: [:id, :salutation, :fname, :lname, :email, :mobile, address_attributes: [:id, :line1, :line2, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude]])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:108:1: C: Trailing whitespace detected.
+app/controllers/inquiries_controller.rb:109:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:113:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiries_controller.rb:113:60: C: Trailing whitespace detected.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                           ^
+app/controllers/inquiry_questions_controller.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryQuestionsController < ApplicationController
+^^^^^
+app/controllers/inquiry_questions_controller.rb:18:1: C: Extra empty line detected at method body beginning.
+app/controllers/inquiry_questions_controller.rb:35:81: C: Line is too long. [99/80]
+        format.html { redirect_to @business, notice: 'Inquiry question was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:36:81: C: Line is too long. [83/80]
+        format.json { render :show, status: :created, location: @inquiry_question }
+                                                                                ^^^
+app/controllers/inquiry_questions_controller.rb:39:81: C: Line is too long. [92/80]
+        format.json { render json: @inquiry_question.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:49:81: C: Line is too long. [116/80]
+        format.html { redirect_to @inquiry_question.business, notice: 'Inquiry question was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:50:81: C: Line is too long. [87/80]
+        format.json { render :show, status: :ok, location: @inquiry_question.business }
+                                                                                ^^^^^^^
+app/controllers/inquiry_questions_controller.rb:53:81: C: Line is too long. [92/80]
+        format.json { render json: @inquiry_question.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:64:81: C: Line is too long. [111/80]
+      format.html { redirect_to business_path(biz_id), notice: 'Inquiry question was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:71:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:72:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:80:5: C: Inconsistent indentation detected.
+    def set_inquiry_question ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:84:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:85:5: C: Inconsistent indentation detected.
+    def inquiry_question_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:89:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/inquiry_questions_controller.rb:90:5: C: Inconsistent indentation detected.
+    def business_inquiry_question_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_controller.rb:1:1: C: Missing top-level class documentation comment.
+class BusinessController < ApplicationController
+^^^^^
+app/controllers/business_controller.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    def show
+^^^^
+app/controllers/business_controller.rb:3:1: C: Trailing whitespace detected.
+app/controllers/survey_items_controller.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyItemsController < ApplicationController
+^^^^^
+app/controllers/survey_items_controller.rb:31:81: C: Line is too long. [97/80]
+        format.html { redirect_to @survey_item, notice: 'Survey item was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^
+app/controllers/survey_items_controller.rb:35:81: C: Line is too long. [87/80]
+        format.json { render json: @survey_item.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^
+app/controllers/survey_items_controller.rb:45:81: C: Line is too long. [97/80]
+        format.html { redirect_to @survey_item, notice: 'Survey item was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^
+app/controllers/survey_items_controller.rb:49:81: C: Line is too long. [87/80]
+        format.json { render json: @survey_item.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^
+app/controllers/survey_items_controller.rb:59:81: C: Line is too long. [101/80]
+      format.html { redirect_to survey_items_url, notice: 'Survey item was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_items_controller.rb:64:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/survey_items_controller.rb:66:5: C: Inconsistent indentation detected.
+    def set_survey_item ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_items_controller.rb:70:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/survey_items_controller.rb:71:5: C: Inconsistent indentation detected.
+    def survey_item_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_items_controller.rb:72:81: C: Line is too long. [137/80]
+      params.require(:survey_item).permit(:survey_question_id, :survey_user_answer_id, :survey_biz_user_answer_id, :inquiry_id, :visible)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryAnswersController < ApplicationController
+^^^^^
+app/controllers/inquiry_answers_controller.rb:31:81: C: Line is too long. [103/80]
+        format.html { redirect_to @inquiry_answer, notice: 'Inquiry answer was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:32:81: C: Line is too long. [81/80]
+        format.json { render :show, status: :created, location: @inquiry_answer }
+                                                                                ^
+app/controllers/inquiry_answers_controller.rb:35:81: C: Line is too long. [90/80]
+        format.json { render json: @inquiry_answer.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:45:81: C: Line is too long. [103/80]
+        format.html { redirect_to @inquiry_answer, notice: 'Inquiry answer was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:49:81: C: Line is too long. [90/80]
+        format.json { render json: @inquiry_answer.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:59:81: C: Line is too long. [107/80]
+      format.html { redirect_to inquiry_answers_url, notice: 'Inquiry answer was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:64:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/inquiry_answers_controller.rb:66:5: C: Inconsistent indentation detected.
+    def set_inquiry_answer ...
+    ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:70:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:71:5: C: Inconsistent indentation detected.
+    def inquiry_answer_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_answers_controller.rb:72:81: C: Line is too long. [88/80]
+      params.require(:inquiry_answer).permit(:answer, :inquiry_question_id, :inquiry_id)
+                                                                                ^^^^^^^^
+app/controllers/application_controller.rb:1:1: C: Missing top-level class documentation comment.
+class ApplicationController < ActionController::Base
+^^^^^
+app/controllers/application_controller.rb:7:1: C: Trailing whitespace detected.
+app/controllers/application_controller.rb:9:1: C: Trailing whitespace detected.
+app/controllers/application_controller.rb:10:3: C: Assignment Branch Condition size for require_login is too high. [18.28/15]
+  def require_login
+  ^^^
+app/controllers/application_controller.rb:12:23: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      flash[:error] = "You must be logged in to access this section"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:17:35: C: Surrounding space missing for operator +.
+        redirect_to '/businesses/'+session[:business_id].to_s
+                                  ^
+app/controllers/application_controller.rb:21:1: C: Trailing whitespace detected.
+app/controllers/application_controller.rb:24:1: C: Do not use block comments.
+=begin ...
+^^^^^^
+app/controllers/application_controller.rb:29:1: C: Trailing whitespace detected.
+app/controllers/application_controller.rb:38:81: C: Line is too long. [98/80]
+    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+                                                                                ^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:45:81: C: Line is too long. [81/80]
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+                                                                                ^
+app/controllers/application_controller.rb:46:81: C: Line is too long. [94/80]
+      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:53:5: C: Final newline missing.
+=end
+    
+app/controllers/addresses_controller.rb:1:1: C: Missing top-level class documentation comment.
+class AddressesController < ApplicationController
+^^^^^
+app/controllers/addresses_controller.rb:31:81: C: Line is too long. [89/80]
+        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+                                                                                ^^^^^^^^^
+app/controllers/addresses_controller.rb:35:81: C: Line is too long. [83/80]
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/addresses_controller.rb:45:81: C: Line is too long. [89/80]
+        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+                                                                                ^^^^^^^^^
+app/controllers/addresses_controller.rb:49:81: C: Line is too long. [83/80]
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/addresses_controller.rb:59:81: C: Line is too long. [94/80]
+      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/addresses_controller.rb:64:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/addresses_controller.rb:66:5: C: Inconsistent indentation detected.
+    def set_address ...
+    ^^^^^^^^^^^^^^^
+app/controllers/addresses_controller.rb:70:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/addresses_controller.rb:71:5: C: Inconsistent indentation detected.
+    def address_params ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/addresses_controller.rb:72:81: C: Line is too long. [123/80]
+      params.require(:address).permit(:doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude, :user_id)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/survey_workflows_controller.rb:1:1: C: Missing top-level class documentation comment.
+class SurveyWorkflowsController < ApplicationController
+^^^^^
+app/controllers/survey_workflows_controller.rb:2:1: C: Use 2 (not 4) spaces for indentation.
+    skip_before_action :require_login, only: [:biz_review], raise: false
+^^^^
+app/controllers/survey_workflows_controller.rb:5:1: C: Trailing whitespace detected.
+app/controllers/survey_workflows_controller.rb:7:5: C: Use 2 (not 4) spaces for indentation.
+        @inquiry.user_input!
+    ^^^^
+app/controllers/survey_workflows_controller.rb:10:9: C: Use 2 (not 4) spaces for indentation.
+            format.html { redirect_to :back, notice: 'Request sent successfully' }
+        ^^^^
+app/controllers/survey_workflows_controller.rb:10:81: C: Line is too long. [82/80]
+            format.html { redirect_to :back, notice: 'Request sent successfully' }
+                                                                                ^^
+app/controllers/survey_workflows_controller.rb:13:1: C: Trailing whitespace detected.
+app/controllers/survey_workflows_controller.rb:15:5: C: Use 2 (not 4) spaces for indentation.
+        @inquiry.biz_review!
+    ^^^^
+app/controllers/survey_workflows_controller.rb:18:9: C: Use 2 (not 4) spaces for indentation.
+            format.html { redirect_to thanks_welcome_path, notice: 'Request sent successfully' }
+        ^^^^
+app/controllers/survey_workflows_controller.rb:18:81: C: Line is too long. [96/80]
+            format.html { redirect_to thanks_welcome_path, notice: 'Request sent successfully' }
+                                                                                ^^^^^^^^^^^^^^^^
+app/controllers/survey_workflows_controller.rb:21:1: C: Trailing whitespace detected.
+app/controllers/survey_workflows_controller.rb:23:5: C: Use 2 (not 4) spaces for indentation.
+        @inquiry.accept!
+    ^^^^
+app/controllers/survey_workflows_controller.rb:25:9: C: Use 2 (not 4) spaces for indentation.
+            format.html { redirect_to :back, notice: 'Survey complete' }
+        ^^^^
+app/controllers/survey_workflows_controller.rb:28:1: C: Trailing whitespace detected.
+app/controllers/survey_workflows_controller.rb:29:5: C: Indent access modifiers like private.
+    private
+    ^^^^^^^
+app/controllers/survey_workflows_controller.rb:30:1: C: Trailing whitespace detected.
+app/controllers/survey_workflows_controller.rb:32:5: C: Use 2 (not 4) spaces for indentation.
+        @inquiry = Inquiry.find(params[:inquiry_id])
+    ^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:1:1: C: Missing top-level class documentation comment.
+class BusinessInquiry::InquiryBasicsController < ApplicationController
+^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:1:7: C: Use nested module/class definitions instead of compact style.
+class BusinessInquiry::InquiryBasicsController < ApplicationController
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:2:81: C: Line is too long. [84/80]
+  before_action :set_business_inquiry_basic, only: [:show, :edit, :update, :destroy]
+                                                                                ^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:26:3: C: Assignment Branch Condition size for create is too high. [15.07/15]
+  def create
+  ^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:27:81: C: Line is too long. [94/80]
+    @business_inquiry_basic = BusinessInquiry::InquiryBasic.new(business_inquiry_basic_params)
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:31:81: C: Line is too long. [130/80]
+        format.html { redirect_to inquiry_basic_path(@business_inquiry_basic), notice: 'Inquiry basic was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:32:81: C: Line is too long. [109/80]
+        format.json { render :show, status: :created, location: inquiry_basic_path(@business_inquiry_basic) }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:35:81: C: Line is too long. [98/80]
+        format.json { render json: @business_inquiry_basic.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:45:81: C: Line is too long. [130/80]
+        format.html { redirect_to inquiry_basic_path(@business_inquiry_basic), notice: 'Inquiry basic was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:46:81: C: Line is too long. [104/80]
+        format.json { render :show, status: :ok, location: inquiry_basic_path(@business_inquiry_basic) }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:49:81: C: Line is too long. [98/80]
+        format.json { render json: @business_inquiry_basic.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:59:81: C: Line is too long. [114/80]
+      format.html { redirect_to business_inquiry_basics_url, notice: 'Inquiry basic was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:64:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:66:5: C: Inconsistent indentation detected.
+    def set_business_inquiry_basic ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:70:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/business_inquiry/inquiry_basics_controller.rb:71:5: C: Inconsistent indentation detected.
+    def business_inquiry_basic_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:1:1: C: Missing top-level class documentation comment.
+class SessionsController < ApplicationController
+^^^^^
+app/controllers/sessions_controller.rb:19:9: C: Trailing whitespace detected.
+    else    
+        ^^^^
+app/controllers/sessions_controller.rb:30:3: C: Assignment Branch Condition size for create is too high. [20.32/15]
+  def create
+  ^^^
+app/controllers/sessions_controller.rb:30:3: C: Method has too many lines. [15/10]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/sessions_controller.rb:32:1: C: Trailing whitespace detected.
+app/controllers/sessions_controller.rb:33:5: C: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if @session.valid?
+    ^^
+app/controllers/sessions_controller.rb:36:1: C: Trailing whitespace detected.
+app/controllers/sessions_controller.rb:40:67: C: Surrounding space missing for operator +.
+        format.html { redirect_to user.business, notice: user.name+' successfully logged in.' }
+                                                                  ^
+app/controllers/sessions_controller.rb:40:81: C: Line is too long. [95/80]
+        format.html { redirect_to user.business, notice: user.name+' successfully logged in.' }
+                                                                                ^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:45:81: C: Line is too long. [83/80]
+        format.json { render json: @session.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/sessions_controller.rb:55:81: C: Line is too long. [89/80]
+        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
+                                                                                ^^^^^^^^^
+app/controllers/sessions_controller.rb:59:81: C: Line is too long. [83/80]
+        format.json { render json: @session.errors, status: :unprocessable_entity }
+                                                                                ^^^
+app/controllers/sessions_controller.rb:69:42: C: Space found before comma.
+      format.html { redirect_to root_path , notice: 'Session was successfully destroyed.' }
+                                         ^
+app/controllers/sessions_controller.rb:69:81: C: Line is too long. [91/80]
+      format.html { redirect_to root_path , notice: 'Session was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/sessions_controller.rb:74:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/sessions_controller.rb:75:5: C: Inconsistent indentation detected.
+    def authenticate_session ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:76:5: C: Use 2 (not 1) spaces for indentation.
+     user =  BizUser.find_by(email: params[:session][:email].downcase)
+    ^
+app/controllers/sessions_controller.rb:76:11: C: Operator = should be surrounded by a single space.
+     user =  BizUser.find_by(email: params[:session][:email].downcase)
+          ^
+app/controllers/sessions_controller.rb:76:12: C: Unnecessary spacing detected.
+     user =  BizUser.find_by(email: params[:session][:email].downcase)
+           ^
+app/controllers/sessions_controller.rb:78:7: C: Inconsistent indentation detected.
+      if user && password == params[:session][:password] ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:80:7: C: Redundant else-clause.
+      else
+      ^^^^
+app/controllers/sessions_controller.rb:84:1: C: Trailing whitespace detected.
+app/controllers/sessions_controller.rb:87:5: C: Inconsistent indentation detected.
+    def set_session ...
+    ^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:91:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/sessions_controller.rb:92:5: C: Inconsistent indentation detected.
+    def session_params ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:1:1: C: Missing top-level class documentation comment.
+class BizUsersController < ApplicationController
+^^^^^
+app/controllers/biz_users_controller.rb:27:3: C: Assignment Branch Condition size for create is too high. [15.07/15]
+  def create
+  ^^^
+app/controllers/biz_users_controller.rb:28:1: C: Trailing whitespace detected.
+app/controllers/biz_users_controller.rb:33:81: C: Line is too long. [115/80]
+        format.html { redirect_to business_biz_users_url(@business), notice: 'Biz user was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:37:81: C: Line is too long. [84/80]
+        format.json { render json: @biz_user.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/biz_users_controller.rb:47:81: C: Line is too long. [91/80]
+        format.html { redirect_to @biz_user, notice: 'Biz user was successfully updated.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:51:81: C: Line is too long. [84/80]
+        format.json { render json: @biz_user.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/biz_users_controller.rb:61:81: C: Line is too long. [95/80]
+      format.html { redirect_to biz_users_url, notice: 'Biz user was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:66:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/biz_users_controller.rb:68:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:69:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id].present? ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:76:5: C: Use empty lines between method definitions.
+    def set_biz_user
+    ^^^
+app/controllers/biz_users_controller.rb:76:5: C: Inconsistent indentation detected.
+    def set_biz_user ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:80:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/biz_users_controller.rb:81:5: C: Inconsistent indentation detected.
+    def biz_user_params ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/biz_users_controller.rb:82:81: C: Line is too long. [109/80]
+      params.require(:biz_user).permit(:fname, :lname, :email, :mobile, :salutation, :password, :business_id)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/welcome_controller.rb:1:1: C: Missing top-level class documentation comment.
+class WelcomeController < ApplicationController
+^^^^^
+app/controllers/welcome_controller.rb:4:16: C: Space missing inside {.
+  layout proc {logged_in? ? 'application' : 'application_ns' }
+               ^
+app/controllers/welcome_controller.rb:5:1: C: Trailing whitespace detected.
+app/controllers/welcome_controller.rb:8:3: C: Use empty lines between method definitions.
+  def thanks
+  ^^^
+app/controllers/locations_controller.rb:1:1: C: Missing top-level class documentation comment.
+class LocationsController < ApplicationController
+^^^^^
+app/controllers/locations_controller.rb:6:1: C: Extra blank line detected.
+app/controllers/locations_controller.rb:7:16: C: Space missing inside {.
+  layout proc {logged_in? ? 'application' : 'application_ns' }
+               ^
+app/controllers/locations_controller.rb:32:3: C: Assignment Branch Condition size for create is too high. [16.06/15]
+  def create
+  ^^^
+app/controllers/locations_controller.rb:32:3: C: Method has too many lines. [11/10]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/locations_controller.rb:37:7: C: Use 2 (not 3) spaces for indentation.
+         @inquiry.complete!
+      ^^^
+app/controllers/locations_controller.rb:38:9: C: Inconsistent indentation detected.
+        format.html { redirect_to new_business_inquiry_inquiry_qn_a_path(@inquiry.business, @inquiry), notice: 'Location was successfully created.' }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:38:81: C: Line is too long. [149/80]
+        format.html { redirect_to new_business_inquiry_inquiry_qn_a_path(@inquiry.business, @inquiry), notice: 'Location was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:39:9: C: Inconsistent indentation detected.
+        format.json { render :show, status: :created, location: @location }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:42:81: C: Line is too long. [84/80]
+        format.json { render json: @location.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/locations_controller.rb:52:81: C: Line is too long. [91/80]
+        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/locations_controller.rb:56:81: C: Line is too long. [84/80]
+        format.json { render json: @location.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/locations_controller.rb:66:81: C: Line is too long. [95/80]
+      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:71:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/locations_controller.rb:73:5: C: Inconsistent indentation detected.
+    def set_location ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:77:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/locations_controller.rb:78:5: C: Inconsistent indentation detected.
+    def location_params ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:79:81: C: Line is too long. [151/80]
+      params.require(:location).permit(:address, :name, :place_id, :city, :state, :country, :id_loc, :pincode, :latitude, :longitude, :id, :inquiry_id)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:82:5: C: Inconsistent indentation detected.
+    def set_inquiry ...
+    ^^^^^^^^^^^^^^^
+app/controllers/locations_controller.rb:85:1: C: Extra empty line detected at class body end.
+app/controllers/locations_controller.rb:87:1: C: 1 trailing blank lines detected.
+app/controllers/inquiry_qn_as_controller.rb:1:1: C: Missing top-level class documentation comment.
+class InquiryQnAsController < ApplicationController
+^^^^^
+app/controllers/inquiry_qn_as_controller.rb:8:5: C: Inconsistent indentation detected.
+    layout proc {logged_in? ? 'application' : 'application_ns' }
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:8:18: C: Space missing inside {.
+    layout proc {logged_in? ? 'application' : 'application_ns' }
+                 ^
+app/controllers/inquiry_qn_as_controller.rb:13:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  @inquiry_qnas = InquiryQna.all
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:38:3: C: Assignment Branch Condition size for create is too high. [17.06/15]
+  def create
+  ^^^
+app/controllers/inquiry_qn_as_controller.rb:38:3: C: Method has too many lines. [12/10]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:44:81: C: Line is too long. [118/80]
+        format.html { redirect_to @inquiry, notice: 'Inquiry request created. we would get back to you, Thank you. ' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:48:81: C: Line is too long. [87/80]
+        format.json { render json: @inquiry_qna.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:58:81: C: Line is too long. [94/80]
+        format.html { redirect_to @inquiry, notice: 'Inquiry form was successfully updated.' }
+                                                                                ^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:62:81: C: Line is too long. [87/80]
+        format.json { render json: @inquiry_qna.errors, status: :unprocessable_entity }
+                                                                                ^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:72:81: C: Line is too long. [101/80]
+      format.html { redirect_to inquiry_qnas_url, notice: 'Inquiry qna was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:77:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:79:5: C: Inconsistent indentation detected.
+    def set_inquiry_qna ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:83:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:84:5: C: Inconsistent indentation detected.
+    def inquiry_qna_params ...
+    ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:85:81: C: Line is too long. [152/80]
+      params.require(:inquiry_qna).permit(business: [:id, inquiry_questions_attributes: [:id, inquiry_answers_attributes: [:id, :answer, :inquiry_id]]])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:87:1: C: Trailing whitespace detected.
+app/controllers/inquiry_qn_as_controller.rb:88:5: C: Inconsistent indentation detected.
+    def inquiry_params ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:89:39: C: Space inside parentheses detected.
+      params.require(:inquiry).permit( inquiry_answers_attributes: [:id, :answer, inquiry_question_attributes: [:id]])
+                                      ^
+app/controllers/inquiry_qn_as_controller.rb:89:81: C: Line is too long. [118/80]
+      params.require(:inquiry).permit( inquiry_answers_attributes: [:id, :answer, inquiry_question_attributes: [:id]])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:91:1: C: Trailing whitespace detected.
+app/controllers/inquiry_qn_as_controller.rb:92:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:93:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:93:60: C: Trailing whitespace detected.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                           ^
+app/controllers/inquiry_qn_as_controller.rb:99:1: C: Trailing whitespace detected.
+app/controllers/inquiry_qn_as_controller.rb:100:5: C: Inconsistent indentation detected.
+    def set_inquiry ...
+    ^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:103:1: C: Trailing whitespace detected.
+app/controllers/inquiry_qn_as_controller.rb:104:5: C: Inconsistent indentation detected.
+    def edit_if_ans_exist ...
+    ^^^^^^^^^^^^^^^^^^^^^
+app/controllers/inquiry_qn_as_controller.rb:106:70: C: Space missing after comma.
+        redirect_to edit_business_inquiry_inquiry_qn_a_path(@business,@inquiry,0)
+                                                                     ^
+app/controllers/inquiry_qn_as_controller.rb:106:79: C: Space missing after comma.
+        redirect_to edit_business_inquiry_inquiry_qn_a_path(@business,@inquiry,0)
+                                                                              ^
+app/controllers/inquiry_qn_as_controller.rb:106:81: C: Line is too long. [81/80]
+        redirect_to edit_business_inquiry_inquiry_qn_a_path(@business,@inquiry,0)
+                                                                                ^
+app/controllers/businesses_controller.rb:1:1: C: Missing top-level class documentation comment.
+class BusinessesController < ApplicationController
+^^^^^
+app/controllers/businesses_controller.rb:3:81: C: Line is too long. [83/80]
+  skip_before_action :require_login, only: [:new, :create, :biz_init], raise: false
+                                                                                ^^^
+app/controllers/businesses_controller.rb:5:1: C: Extra blank line detected.
+app/controllers/businesses_controller.rb:15:1: C: Incorrect indentation detected (column 0 instead of 1).
+#    @business.host_site = session['host_site']
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:16:2: C: Incorrect indentation detected (column 1 instead of 4).
+ #   render layout: false
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:17:81: C: Line is too long. [84/80]
+    @inquiries = Inquiry.includes(:user, :business).where(business_id: @business.id)
+                                                                                ^^^^
+app/controllers/businesses_controller.rb:24:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  @business.website = session['host']
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:26:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  render layout: false
+  ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:39:81: C: Line is too long. [91/80]
+        format.html { redirect_to root_path, notice: 'Business was successfully created.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/businesses_controller.rb:43:81: C: Line is too long. [84/80]
+        format.json { render json: @business.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/businesses_controller.rb:53:81: C: Line is too long. [91/80]
+        format.html { redirect_to @business, notice: 'Business was successfully updated.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/businesses_controller.rb:57:81: C: Line is too long. [84/80]
+        format.json { render json: @business.errors, status: :unprocessable_entity }
+                                                                                ^^^^
+app/controllers/businesses_controller.rb:67:81: C: Line is too long. [96/80]
+      format.html { redirect_to businesses_url, notice: 'Business was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:71:1: C: Trailing whitespace detected.
+app/controllers/businesses_controller.rb:73:3: C: Use 2 (not 0) spaces for indentation.
+  session['host'] = request.referrer.split("/")[2]
+  
+app/controllers/businesses_controller.rb:73:44: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  session['host'] = request.referrer.split("/")[2]
+                                           ^^^
+app/controllers/businesses_controller.rb:74:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  session['host'] = 'testground-achalbi.c9users.io'
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:75:5: C: Inconsistent indentation detected.
+    log_out
+    ^^^^^^^
+app/controllers/businesses_controller.rb:76:3: C: Incorrect indentation detected (column 2 instead of 4).
+  #  session['host'] = 'http://www.eardrums.co.in'
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:77:5: C: Inconsistent indentation detected.
+    @business = Business.find_by(website: session['host'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:78:5: C: Inconsistent indentation detected.
+    redirect_to new_business_inquiry_path(@business)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:81:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/businesses_controller.rb:83:5: C: Assignment Branch Condition size for set_business is too high. [20.2/15]
+    def set_business
+    ^^^
+app/controllers/businesses_controller.rb:83:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:84:5: C: Use 2 (not 4) spaces for indentation.
+        unless params[:id] == session[:business_id].to_s
+    ^^^^
+app/controllers/businesses_controller.rb:85:37: C: Surrounding space missing for operator +.
+          redirect_to '/businesses/'+session[:business_id].to_s
+                                    ^
+app/controllers/businesses_controller.rb:87:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:87:7: C: Inconsistent indentation detected.
+      if params[:id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:87:51: C: Trailing whitespace detected.
+      if params[:id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                  ^
+app/controllers/businesses_controller.rb:93:1: C: Trailing whitespace detected.
+app/controllers/businesses_controller.rb:94:5: C: Inconsistent indentation detected.
+    def user_params ...
+    ^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:98:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/businesses_controller.rb:99:5: C: Inconsistent indentation detected.
+    def business_params ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:101:7: C: Align the parameters of a method call if they span more than one line.
+      biz_users_attributes: [:id, :fname, :lname, :email, :mobile, :salutation, :password, :password_confirmation ], ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:101:81: C: Line is too long. [116/80]
+      biz_users_attributes: [:id, :fname, :lname, :email, :mobile, :salutation, :password, :password_confirmation ],
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/businesses_controller.rb:101:114: C: Space inside square brackets detected.
+      biz_users_attributes: [:id, :fname, :lname, :email, :mobile, :salutation, :password, :password_confirmation ],
+                                                                                                                 ^
+app/controllers/users_controller.rb:1:1: C: Missing top-level class documentation comment.
+class UsersController < ApplicationController
+^^^^^
+app/controllers/users_controller.rb:5:1: C: Trailing whitespace detected.
+app/controllers/users_controller.rb:6:16: C: Space missing inside {.
+  layout proc {logged_in? ? 'application' : 'application_ns' }
+               ^
+app/controllers/users_controller.rb:7:1: C: Trailing whitespace detected.
+app/controllers/users_controller.rb:36:81: C: Line is too long. [114/80]
+        format.html { redirect_to new_business_inquiry_path(@business), notice: 'User was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:50:81: C: Line is too long. [83/80]
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+                                                                                ^^^
+app/controllers/users_controller.rb:64:81: C: Line is too long. [87/80]
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+                                                                                ^^^^^^^
+app/controllers/users_controller.rb:69:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/users_controller.rb:71:5: C: Inconsistent indentation detected.
+    def set_user ...
+    ^^^^^^^^^^^^
+app/controllers/users_controller.rb:75:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/users_controller.rb:76:5: C: Inconsistent indentation detected.
+    def user_params ...
+    ^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:77:81: C: Line is too long. [199/80]
+      params.require(:user).permit(:salutation, :fname, :lname, :email, :mobile, address_attributes: [:id, :line1, :line2, :doorno, :street, :city, :state, :country, :pincode, :latitude, :longitude])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:80:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:81:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:81:60: C: Trailing whitespace detected.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                           ^
+app/controllers/users_controller.rb:88:5: C: Inconsistent indentation detected.
+    def biz_init ...
+    ^^^^^^^^^^^^
+app/controllers/users_controller.rb:89:48: C: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      session['host'] = request.referrer.split("/")[2]
+                                               ^^^
+app/controllers/users_controller.rb:93:1: C: Extra blank line detected.
+app/controllers/users_controller.rb:93:1: C: Extra empty line detected at class body end.
+app/controllers/surveys_controller.rb:1:1: C: Missing top-level class documentation comment.
+class SurveysController < ApplicationController
+^^^^^
+app/controllers/surveys_controller.rb:8:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:9:16: C: Space missing inside {.
+  layout proc {logged_in? ? 'application' : 'application_ns' }
+               ^
+app/controllers/surveys_controller.rb:11:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:26:1: C: Extra empty line detected at method body end.
+app/controllers/surveys_controller.rb:31:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:33:5: C: Use 2 (not 0) spaces for indentation.
+    si = @survey.survey_items.where(survey_question_id: q.id)
+    
+app/controllers/surveys_controller.rb:34:7: C: Inconsistent indentation detected.
+      if si.blank? ...
+      ^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:34:7: C: Use next to skip iteration.
+      if si.blank?
+      ^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:35:81: C: Line is too long. [84/80]
+        si = @survey.survey_items.build(survey_question_id: q.id, question: q.title)
+                                                                                ^^^^
+app/controllers/surveys_controller.rb:44:3: C: Assignment Branch Condition size for create is too high. [15.07/15]
+  def create
+  ^^^
+app/controllers/surveys_controller.rb:44:3: C: Method has too many lines. [11/10]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/surveys_controller.rb:48:7: C: Use 2 (not 3) spaces for indentation.
+         @inquiry.survey_init!
+      ^^^
+app/controllers/surveys_controller.rb:49:9: C: Inconsistent indentation detected.
+        format.html { redirect_to business_inquiry_survey_path(@business, @inquiry, @survey), notice: 'Survey was successfully created.' }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:49:81: C: Line is too long. [138/80]
+        format.html { redirect_to business_inquiry_survey_path(@business, @inquiry, @survey), notice: 'Survey was successfully created.' }
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:50:9: C: Inconsistent indentation detected.
+        format.json { render :show, status: :created, location: @survey }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:53:81: C: Line is too long. [82/80]
+        format.json { render json: @survey.errors, status: :unprocessable_entity }
+                                                                                ^^
+app/controllers/surveys_controller.rb:60:3: C: Assignment Branch Condition size for update is too high. [22.2/15]
+  def update
+  ^^^
+app/controllers/surveys_controller.rb:60:3: C: Method has too many lines. [13/10]
+  def update ...
+  ^^^^^^^^^^
+app/controllers/surveys_controller.rb:63:9: C: Do not use unless with else. Rewrite these with the positive case first.
+        unless logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user) ...
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:63:81: C: Line is too long. [92/80]
+        unless logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user)
+                                                                                ^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:66:81: C: Line is too long. [89/80]
+          format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+                                                                                ^^^^^^^^^
+app/controllers/surveys_controller.rb:71:81: C: Line is too long. [82/80]
+        format.json { render json: @survey.errors, status: :unprocessable_entity }
+                                                                                ^^
+app/controllers/surveys_controller.rb:81:81: C: Line is too long. [91/80]
+      format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
+                                                                                ^^^^^^^^^^^
+app/controllers/surveys_controller.rb:86:3: C: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/surveys_controller.rb:88:5: C: Inconsistent indentation detected.
+    def set_survey ...
+    ^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:95:81: C: Line is too long. [88/80]
+    # Never trust parameters from the scary internet, only allow the white list through.
+                                                                                ^^^^^^^^
+app/controllers/surveys_controller.rb:96:5: C: Inconsistent indentation detected.
+    def survey_params ...
+    ^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:97:56: C: Unnecessary spacing detected.
+      params.require(:survey).permit(:id, :business_id,  :inquiry_id, survey_items_attributes: [:id, :survey_question_id, :visible, survey_biz_user_answer_attributes: [:id, :answer], survey_user_answer_attributes: [:id, :answer] ])
+                                                       ^
+app/controllers/surveys_controller.rb:97:81: C: Line is too long. [231/80]
+      params.require(:survey).permit(:id, :business_id,  :inquiry_id, survey_items_attributes: [:id, :survey_question_id, :visible, survey_biz_user_answer_attributes: [:id, :answer], survey_user_answer_attributes: [:id, :answer] ])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:97:229: C: Space inside square brackets detected.
+      params.require(:survey).permit(:id, :business_id,  :inquiry_id, survey_items_attributes: [:id, :survey_question_id, :visible, survey_biz_user_answer_attributes: [:id, :answer], survey_user_answer_attributes: [:id, :answer] ])
+                                                                                                                                                                                                                                    ^
+app/controllers/surveys_controller.rb:98:1: C: Extra empty line detected at method body end.
+app/controllers/surveys_controller.rb:100:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:101:5: C: Inconsistent indentation detected.
+    def set_business ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:102:7: C: Use the return of the conditional for variable assignment and comparison.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/  ...
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:102:60: C: Trailing whitespace detected.
+      if params[:business_id] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/ 
+                                                           ^
+app/controllers/surveys_controller.rb:108:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:109:5: C: Inconsistent indentation detected.
+    def set_inquiry ...
+    ^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:112:1: C: Trailing whitespace detected.
+app/controllers/surveys_controller.rb:113:5: C: Inconsistent indentation detected.
+    def edit_if_survey_exist ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/surveys_controller.rb:115:64: C: Space missing after comma.
+        redirect_to edit_business_inquiry_survey_path(@business,@inquiry,@inquiry.survey)
+                                                               ^
+app/controllers/surveys_controller.rb:115:73: C: Space missing after comma.
+        redirect_to edit_business_inquiry_survey_path(@business,@inquiry,@inquiry.survey)
+                                                                        ^
+app/controllers/surveys_controller.rb:115:81: C: Line is too long. [89/80]
+        redirect_to edit_business_inquiry_survey_path(@business,@inquiry,@inquiry.survey)
+                                                                                ^^^^^^^^^
+app/controllers/surveys_controller.rb:118:1: C: Extra empty line detected at class body end.
+app/helpers/biz_users_helper.rb:1:1: C: Missing top-level module documentation comment.
+module BizUsersHelper
+^^^^^^
+app/helpers/inquiry_qn_as_helper.rb:1:1: C: Missing top-level module documentation comment.
+module InquiryQnAsHelper
+^^^^^^
+app/helpers/survey_workflows_helper.rb:1:1: C: Missing top-level module documentation comment.
+module SurveyWorkflowsHelper
+^^^^^^
+app/helpers/sessions_helper.rb:1:1: C: Missing top-level module documentation comment.
+module SessionsHelper
+^^^^^^
+app/helpers/sessions_helper.rb:2:1: C: Extra empty line detected at module body beginning.
+app/helpers/sessions_helper.rb:18:1: C: Trailing whitespace detected.
+app/helpers/sessions_helper.rb:26:1: C: Trailing whitespace detected.
+app/helpers/sessions_helper.rb:28:3: C: Use 2 (not 1) spaces for indentation.
+   @business = user.business
+  ^
+app/helpers/sessions_helper.rb:30:4: C: Final newline missing.
+end
+   
+app/helpers/inquiries_helper.rb:1:1: C: Missing top-level module documentation comment.
+module InquiriesHelper
+^^^^^^
+app/helpers/users_helper.rb:1:1: C: Missing top-level module documentation comment.
+module UsersHelper
+^^^^^^
+app/helpers/locations_helper.rb:1:1: C: Missing top-level module documentation comment.
+module LocationsHelper
+^^^^^^
+app/helpers/application_helper.rb:1:1: C: Missing top-level module documentation comment.
+module ApplicationHelper
+^^^^^^
+app/helpers/application_helper.rb:2:1: C: Extra empty line detected at module body beginning.
+app/helpers/application_helper.rb:3:1: C: Extra blank line detected.
+app/helpers/application_helper.rb:4:1: C: Extra blank line detected.
+app/helpers/application_helper.rb:4:1: C: Extra empty line detected at module body end.
+app/helpers/application_helper.rb:5:4: C: Final newline missing.
+end
+   
+app/helpers/business_helper.rb:1:1: C: Missing top-level module documentation comment.
+module BusinessHelper
+^^^^^^
+app/helpers/welcome_helper.rb:1:1: C: Missing top-level module documentation comment.
+module WelcomeHelper
+^^^^^^
+app/helpers/businesses_helper.rb:1:1: C: Missing top-level module documentation comment.
+module BusinessesHelper
+^^^^^^
+app/helpers/addresses_helper.rb:1:1: C: Missing top-level module documentation comment.
+module AddressesHelper
+^^^^^^
+app/helpers/survey_items_helper.rb:1:1: C: Missing top-level module documentation comment.
+module SurveyItemsHelper
+^^^^^^
+app/helpers/inquiry_answers_helper.rb:1:1: C: Missing top-level module documentation comment.
+module InquiryAnswersHelper
+^^^^^^
+app/helpers/inquiry_questions_helper.rb:1:1: C: Missing top-level module documentation comment.
+module InquiryQuestionsHelper
+^^^^^^
+app/helpers/surveys_helper.rb:1:1: C: Missing top-level module documentation comment.
+module SurveysHelper
+^^^^^^
+app/helpers/survey_questions_helper.rb:1:1: C: Missing top-level module documentation comment.
+module SurveyQuestionsHelper
+^^^^^^
+app/helpers/business/inquiry_basics_helper.rb:1:1: C: Missing top-level module documentation comment.
+module Business::InquiryBasicsHelper
+^^^^^^
+app/helpers/business/inquiry_basics_helper.rb:1:8: C: Use nested module/class definitions instead of compact style.
+module Business::InquiryBasicsHelper
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+84 files inspected, 618 offenses detected
