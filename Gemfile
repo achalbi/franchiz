@@ -32,6 +32,7 @@ gem 'nested_form_fields'
 gem 'quiet_assets', group: :development
 
 gem 'kaminari'
+gem 'annotate'
 
 #gem 'roadie'
 #gem 'roadie-rails', '~> 1.0'

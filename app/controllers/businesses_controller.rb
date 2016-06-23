@@ -70,8 +70,8 @@ class BusinessesController < ApplicationController
   end
   
   def biz_init
-  session['host'] = request.referrer.split("/")[2]
-  #  session['host'] = 'testground-achalbi.c9users.io'
+  # session['host'] = request.referrer.split("/")[2]
+    session['host'] = 'testground-achalbi.c9users.io'
     log_out
   #  session['host'] = 'http://www.eardrums.co.in'
     @business = Business.find_by(website: session['host'])

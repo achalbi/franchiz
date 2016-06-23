@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  commentable_id: 
+  commentable_type: Commentable
+  survey_item_id: 
+
+two:
+  content: MyText
+  commentable_id: 
+  commentable_type: Commentable
+  survey_item_id: 

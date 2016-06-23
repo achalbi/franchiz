@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619052429) do
+ActiveRecord::Schema.define(version: 20160621162831) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20160619052429) do
   end
 
   add_index "businesses", ["website"], name: "index_businesses_on_website"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "survey_item_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["survey_item_id"], name: "index_comments_on_survey_item_id"
 
   create_table "inquiries", force: :cascade do |t|
     t.string   "token"
@@ -145,6 +157,7 @@ ActiveRecord::Schema.define(version: 20160619052429) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "survey_id"
+    t.string   "status"
   end
 
   add_index "survey_items", ["inquiry_id"], name: "index_survey_items_on_inquiry_id"
@@ -185,9 +198,14 @@ ActiveRecord::Schema.define(version: 20160619052429) do
     t.string   "lname"
     t.string   "email"
     t.string   "mobile"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "salutation"
+    t.string   "password"
+    t.text     "password_digest"
+    t.integer  "business_id"
   end
+
+  add_index "users", ["business_id"], name: "index_users_on_business_id"
 
 end

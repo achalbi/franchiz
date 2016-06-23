@@ -19,6 +19,7 @@
       <th>Title</th>
       <% if logged_in?  && (@business.biz_users.to_a.include? current_user)%>
       <th>Visible</th>
+      <th>Status</th>
       <% end %>
     </tr>
   </thead>
@@ -54,6 +55,7 @@
         </td>
        <% if logged_in?  && (@business.biz_users.to_a.include? current_user)%>
         <td><%= si.check_box :visible %></td>
+        <td><%= si.select "status", options_for_select([['Business pending', 'biz_pending'], ['User pending', 'user_pending'], ['Mismatch', 'mismatch'], ['Reject', 'reject'], ['Accept', 'accept']]),{}, class: "form-control" %></td>
       <% end %>
       </tr>
           <% end %>

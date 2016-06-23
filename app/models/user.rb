@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  fname           :string
+#  lname           :string
+#  email           :string
+#  mobile          :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  salutation      :string
+#  password        :string
+#  business        :refeences
+#  password_digest :text
+#
+
 class User < ActiveRecord::Base
   has_one :address
   has_one :inquiry

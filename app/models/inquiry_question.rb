@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: inquiry_questions
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  business_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class InquiryQuestion < ActiveRecord::Base
   belongs_to :business
   has_many :inquiry_answers

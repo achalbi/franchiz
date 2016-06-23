@@ -8,6 +8,8 @@ class InquiriesController < ApplicationController
   # GET /inquiries
   # GET /inquiries.json
   def index
+    @locations = Inquiry.where(business_id: @business.id).includes(:location).collect{|x| x.location.city unless x.location.nil?}.uniq
+    @locations = Inquiry.where(business_id: @business.id).includes(:location).collect{|x| x.location.city unless x.location.nil?}.uniq
     @inquiries, session[:status_filter]  = Inquiry
       .status_filter(params[:status_filter], session[:status_filter],
       @business.id, params[:page])
@@ -72,6 +74,11 @@ class InquiriesController < ApplicationController
       format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
     #  format.json { head :no_content }
     end
+  end
+
+  # Get locality based on city
+  def get_locality
+    Location.where(city: params[city_filter]).select('distinct address')
   end
 
   private

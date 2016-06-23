@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id         :integer          not null, primary key
+#  doorno     :string
+#  street     :string
+#  city       :string
+#  state      :string
+#  country    :string
+#  pincode    :string
+#  latitude   :float
+#  longitude  :float
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  line1      :text
+#  line2      :text
+#
+
 class Address < ActiveRecord::Base
     
     belongs_to :user
@@ -5,6 +25,6 @@ class Address < ActiveRecord::Base
     validates_presence_of :city
     
     def to_s
-        self.line1+"\n"+self.line2+"\n"+self.city+", "+self.state+", "+self.country+", "+pincode    
+       #"+self.line2+", "+self.city+", "+self.state+", "+self.country+", "+  pincode    
     end
 end

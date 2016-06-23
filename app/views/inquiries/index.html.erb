@@ -1,7 +1,9 @@
 <% if @business.inquiries.present? %>
 <div class="form-inline">
-  <p>Filter by status: <%= select_tag "status", options_for_select(@business.inquiries.select("distinct workflow_state").collect{|x| [x.current_state,x.current_state]}, selected: session[:status_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
-  <p>Filter by Date: From <%= text_field :date,'' ,id: 'from_date', class: 'form-control'  %> To <%= text_field :date,'', id: 'to_date', class: 'form-control'  %></p>
+  <h4>Filter </h4>
+  <p> status  <%= select_tag "status", options_for_select(@business.inquiries.select("distinct workflow_state").collect{|x| [x.current_state,x.current_state]}, selected: session[:status_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
+  <p>From date <%= text_field :date,'' ,id: 'from_date', class: 'form-control'  %> To date <%= text_field :date,'', id: 'to_date', class: 'form-control'  %></p>
+  <p>City <%= select_tag "status", options_for_select(@locations, selected: session[:city_filter]), include_blank: "All", class: 'form-control', id: 'status_filter' %> </p>
 </div>
 
 <div id="inquiry_table">
