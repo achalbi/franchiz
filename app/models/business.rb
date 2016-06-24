@@ -13,6 +13,8 @@
 class Business < ActiveRecord::Base
     has_many :biz_users, dependent: :destroy
     accepts_nested_attributes_for :biz_users
+    has_many :survey_templates, as: :surveyable   
+    has_many :survey_item_categories, as: :categorisable 
     
     has_many :inquiry_questions
     has_many :survey_questions

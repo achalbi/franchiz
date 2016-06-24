@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Question_title: MyString
+  description: MyText
+  SurveyTemplate_id: 
+  SurveyItemCategory_id: 
+  survey_item_templatable_id: 
+  survey_item_templatable_type: Survey item templatable
+
+two:
+  Question_title: MyString
+  description: MyText
+  SurveyTemplate_id: 
+  SurveyItemCategory_id: 
+  survey_item_templatable_id: 
+  survey_item_templatable_type: Survey item templatable

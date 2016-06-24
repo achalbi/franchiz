@@ -229,6 +229,11 @@
 Rails.application.routes.draw do
   
   
+  resources :survey_item_templates
+  resources :survey_data_types
+  resources :survey_item_categories
+  resources :survey_templates
+  resources :systems
   resources :comments
   resources :locations
   resources :surveys

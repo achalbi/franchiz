@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question title:</strong>
+  <%= @survey_item_template.Question_title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @survey_item_template.description %>
+</p>
+
+<p>
+  <strong>Surveytemplate:</strong>
+  <%= @survey_item_template.SurveyTemplate %>
+</p>
+
+<p>
+  <strong>Surveyitemcategory:</strong>
+  <%= @survey_item_template.SurveyItemCategory %>
+</p>
+
+<p>
+  <strong>Survey item templatable:</strong>
+  <%= @survey_item_template.survey_item_templatable %>
+</p>
+
+<%= link_to 'Edit', edit_survey_item_template_path(@survey_item_template) %> |
+<%= link_to 'Back', survey_item_templates_path %>

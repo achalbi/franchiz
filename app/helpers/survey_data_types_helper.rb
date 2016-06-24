@@ -1,0 +1,2 @@
+module SurveyDataTypesHelper
+end

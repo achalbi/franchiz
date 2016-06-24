@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621162831) do
+ActiveRecord::Schema.define(version: 20160624023751) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -148,6 +148,51 @@ ActiveRecord::Schema.define(version: 20160621162831) do
 
   add_index "survey_biz_user_answers", ["survey_question_id"], name: "index_survey_biz_user_answers_on_survey_question_id"
 
+  create_table "survey_data_types", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "survey_data_types_item_templates", id: false, force: :cascade do |t|
+    t.integer "survey_data_type_id"
+    t.integer "survey_item_template_id"
+  end
+
+  add_index "survey_data_types_item_templates", ["survey_data_type_id", "survey_item_template_id"], name: "survey_data_types_item_templates_index", unique: true
+
+  create_table "survey_item_categories", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "categorisable_id"
+    t.string   "categorisable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "survey_item_categories", ["categorisable_type", "categorisable_id"], name: "survey_item_categories_categorisable_id_index"
+
+  create_table "survey_item_categories_templates", id: false, force: :cascade do |t|
+    t.integer "survey_item_category_id"
+    t.integer "survey_item_template_id"
+  end
+
+  add_index "survey_item_categories_templates", ["survey_item_category_id", "survey_item_template_id"], name: "survey_item_categories_templates_index", unique: true
+
+  create_table "survey_item_templates", force: :cascade do |t|
+    t.string   "Question_title"
+    t.text     "description"
+    t.integer  "SurveyTemplate_id"
+    t.integer  "SurveyItemCategory_id"
+    t.integer  "survey_item_templatable_id"
+    t.string   "survey_item_templatable_type"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "survey_item_templates", ["SurveyItemCategory_id"], name: "index_survey_item_templates_on_SurveyItemCategory_id"
+  add_index "survey_item_templates", ["SurveyTemplate_id"], name: "index_survey_item_templates_on_SurveyTemplate_id"
+  add_index "survey_item_templates", ["survey_item_templatable_type", "survey_item_templatable_id"], name: "survey_item_templatable_index"
+
   create_table "survey_items", force: :cascade do |t|
     t.integer  "survey_question_id"
     t.integer  "survey_user_answer_id"
@@ -176,6 +221,17 @@ ActiveRecord::Schema.define(version: 20160621162831) do
 
   add_index "survey_questions", ["business_id"], name: "index_survey_questions_on_business_id"
 
+  create_table "survey_templates", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "surveyable_id"
+    t.string   "surveyable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "survey_templates", ["surveyable_type", "surveyable_id"], name: "index_survey_templates_on_surveyable_type_and_surveyable_id"
+
   create_table "survey_user_answers", force: :cascade do |t|
     t.text     "answer"
     t.integer  "survey_question_id"
@@ -192,6 +248,13 @@ ActiveRecord::Schema.define(version: 20160621162831) do
   end
 
   add_index "surveys", ["inquiry_id"], name: "index_surveys_on_inquiry_id"
+
+  create_table "systems", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "fname"

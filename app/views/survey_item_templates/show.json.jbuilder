@@ -1,0 +1,1 @@
+json.extract! @survey_item_template, :id, :Question_title, :description, :SurveyTemplate_id, :SurveyItemCategory_id, :survey_item_templatable_id, :survey_item_templatable_type, :created_at, :updated_at

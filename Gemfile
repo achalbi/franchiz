@@ -30,6 +30,7 @@ gem 'monban'
 gem 'bcrypt'
 gem 'nested_form_fields'
 gem 'quiet_assets', group: :development
+gem 'habtm_generator', :group => :development
 
 gem 'kaminari'
 gem 'annotate'
