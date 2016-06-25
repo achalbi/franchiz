@@ -1,5 +1,6 @@
 class SurveyItemCategoriesController < ApplicationController
   before_action :set_survey_item_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey_template, only: [:index, :new]
 
   # GET /survey_item_categories
   # GET /survey_item_categories.json
@@ -14,7 +15,7 @@ class SurveyItemCategoriesController < ApplicationController
 
   # GET /survey_item_categories/new
   def new
-    @survey_item_category = SurveyItemCategory.new
+    @survey_item_category = @survey_template.survey_item_categories.build
   end
 
   # GET /survey_item_categories/1/edit
@@ -28,11 +29,11 @@ class SurveyItemCategoriesController < ApplicationController
 
     respond_to do |format|
       if @survey_item_category.save
-        format.html { redirect_to @survey_item_category, notice: 'Survey item category was successfully created.' }
-        format.json { render :show, status: :created, location: @survey_item_category }
+        format.html { redirect_to @survey_item_category.survey_template, notice: 'Survey item category was successfully created.' }
+      #  format.json { render :show, status: :created, location: @survey_item_category }
       else
         format.html { render :new }
-        format.json { render json: @survey_item_category.errors, status: :unprocessable_entity }
+      #  format.json { render json: @survey_item_category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,8 +68,12 @@ class SurveyItemCategoriesController < ApplicationController
       @survey_item_category = SurveyItemCategory.find(params[:id])
     end
 
+    def set_survey_template
+      @survey_template = SurveyTemplate.find(params[:survey_template_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_item_category_params
-      params.require(:survey_item_category).permit(:title, :categorisable_id, :categorisable_type)
+      params.require(:survey_item_category).permit(:title, :survey_template_id)
     end
 end

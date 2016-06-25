@@ -5,11 +5,21 @@ rails g scaffold System title:string description:text
 
 rails g scaffold SurveyTemplate title:string description:text surveyable:references{polymorphic} - system, Business
 
-rails g scaffold SurveyItemCategory title:string categorisable:references{polymorphic} - system, Business
+rails g scaffold SurveyItemCategory title:string survey_template:references survey:references
 
-rails g scaffold SurveyItemTemplate Question_title:string description:text SurveyTemplate:references SurveyItemCategory:references survey_item_templatable:references{polymorphic}
+rails g scaffold SurveyItemCategoryTemplate title:string survey_template:references
+
+rails d scaffold SurveyItemCategory title:string categorisable:references{polymorphic} - system, Business
+
+rails d scaffold SurveyItemTemplate Question_title:string description:text SurveyTemplate:references SurveyItemCategory:references survey_item_templatable:references{polymorphic}
+
+rails g migration DropSurveyItemTemplatesTable
+
+rails g scaffold SurveyItemTemplate question_title:string description:text survey_template:references survey_item_category_template:references
 
 rails g scaffold SurveyDataType title:string 
+
+rails g migration 
 
 rails g migration CreateSICategoriesSITemplates
     create_join_table :survey_item_templates, :survey_item_categories do |t|

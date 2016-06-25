@@ -7,12 +7,12 @@
 #  lname           :string
 #  email           :string
 #  mobile          :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
 #  salutation      :string
 #  password        :string
-#  business        :refeences
 #  password_digest :text
+#  business_id     :integer
 #
 
 class User < ActiveRecord::Base

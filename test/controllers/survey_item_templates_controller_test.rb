@@ -18,7 +18,7 @@ class SurveyItemTemplatesControllerTest < ActionController::TestCase
 
   test "should create survey_item_template" do
     assert_difference('SurveyItemTemplate.count') do
-      post :create, survey_item_template: { Question_title: @survey_item_template.Question_title, SurveyItemCategory_id: @survey_item_template.SurveyItemCategory_id, SurveyTemplate_id: @survey_item_template.SurveyTemplate_id, description: @survey_item_template.description, survey_item_templatable_id: @survey_item_template.survey_item_templatable_id, survey_item_templatable_type: @survey_item_template.survey_item_templatable_type }
+      post :create, survey_item_template: { description: @survey_item_template.description, question_title: @survey_item_template.question_title, survey_item_category_id: @survey_item_template.survey_item_category_id, survey_template_id: @survey_item_template.survey_template_id }
     end
 
     assert_redirected_to survey_item_template_path(assigns(:survey_item_template))
@@ -35,7 +35,7 @@ class SurveyItemTemplatesControllerTest < ActionController::TestCase
   end
 
   test "should update survey_item_template" do
-    patch :update, id: @survey_item_template, survey_item_template: { Question_title: @survey_item_template.Question_title, SurveyItemCategory_id: @survey_item_template.SurveyItemCategory_id, SurveyTemplate_id: @survey_item_template.SurveyTemplate_id, description: @survey_item_template.description, survey_item_templatable_id: @survey_item_template.survey_item_templatable_id, survey_item_templatable_type: @survey_item_template.survey_item_templatable_type }
+    patch :update, id: @survey_item_template, survey_item_template: { description: @survey_item_template.description, question_title: @survey_item_template.question_title, survey_item_category_id: @survey_item_template.survey_item_category_id, survey_template_id: @survey_item_template.survey_template_id }
     assert_redirected_to survey_item_template_path(assigns(:survey_item_template))
   end
 

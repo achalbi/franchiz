@@ -34,6 +34,7 @@ gem 'habtm_generator', :group => :development
 
 gem 'kaminari'
 gem 'annotate'
+gem 'amoeba'
 
 #gem 'roadie'
 #gem 'roadie-rails', '~> 1.0'

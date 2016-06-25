@@ -2,7 +2,7 @@
 
 <p>
   <strong>Question title:</strong>
-  <%= @survey_item_template.Question_title %>
+  <%= @survey_item_template.question_title %>
 </p>
 
 <p>
@@ -11,18 +11,20 @@
 </p>
 
 <p>
-  <strong>Surveytemplate:</strong>
-  <%= @survey_item_template.SurveyTemplate %>
+  <strong>Survey template:</strong>
+  <%= @survey_item_template.survey_template %>
 </p>
 
 <p>
-  <strong>Surveyitemcategory:</strong>
-  <%= @survey_item_template.SurveyItemCategory %>
+  <strong>Survey item category:</strong>
+  <%= @survey_item_template.survey_item_category %>
 </p>
 
+  <strong>Survey data types:</strong>
 <p>
-  <strong>Survey item templatable:</strong>
-  <%= @survey_item_template.survey_item_templatable %>
+  <% @survey_item_template.survey_data_types.each do |dt| %>
+  	<%= dt.title %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_survey_item_template_path(@survey_item_template) %> |

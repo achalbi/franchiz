@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: inquiries
+#
+#  id             :integer          not null, primary key
+#  token          :string
+#  business_id    :integer
+#  user_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  status         :string
+#  workflow_state :string
+#
+
 require 'test_helper'
 
 class InquiryTest < ActiveSupport::TestCase

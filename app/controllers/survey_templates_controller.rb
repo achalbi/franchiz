@@ -1,5 +1,6 @@
 class SurveyTemplatesController < ApplicationController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_polymorphic_ref, only: [:index, :new, :create]
 
   # GET /survey_templates
   # GET /survey_templates.json
@@ -14,7 +15,7 @@ class SurveyTemplatesController < ApplicationController
 
   # GET /survey_templates/new
   def new
-    @survey_template = SurveyTemplate.new
+    @survey_template = @poly_ref.survey_templates.build
   end
 
   # GET /survey_templates/1/edit
@@ -28,7 +29,7 @@ class SurveyTemplatesController < ApplicationController
 
     respond_to do |format|
       if @survey_template.save
-        format.html { redirect_to @survey_template, notice: 'Survey template was successfully created.' }
+        format.html { redirect_to polymorphic_path([@poly_ref, @survey_template]), notice: 'Survey template was successfully created.' }
         format.json { render :show, status: :created, location: @survey_template }
       else
         format.html { render :new }
@@ -65,6 +66,14 @@ class SurveyTemplatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_survey_template
       @survey_template = SurveyTemplate.find(params[:id])
+    end
+
+    def set_polymorphic_ref
+      if params[:system_id]
+        @poly_ref = @system = System.find(params[:system_id])
+      elsif params[:business_id]
+        @poly_ref = @business = Business.find(params[:business_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

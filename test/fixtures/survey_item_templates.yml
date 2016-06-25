@@ -1,17 +1,26 @@
+# == Schema Information
+#
+# Table name: survey_item_templates
+#
+#  id                      :integer          not null, primary key
+#  question_title          :string
+#  description             :text
+#  survey_template_id      :integer
+#  survey_item_category_id :integer
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Question_title: MyString
+  question_title: MyString
   description: MyText
-  SurveyTemplate_id: 
-  SurveyItemCategory_id: 
-  survey_item_templatable_id: 
-  survey_item_templatable_type: Survey item templatable
+  survey_template_id: 
+  survey_item_category_id: 
 
 two:
-  Question_title: MyString
+  question_title: MyString
   description: MyText
-  SurveyTemplate_id: 
-  SurveyItemCategory_id: 
-  survey_item_templatable_id: 
-  survey_item_templatable_type: Survey item templatable
+  survey_template_id: 
+  survey_item_category_id: 

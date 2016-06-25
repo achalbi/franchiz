@@ -1,0 +1,59 @@
+<p>
+  <strong>Title:</strong>
+  <%= @survey_template.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @survey_template.description %>
+</p>
+
+<p>
+  <strong>Surveyable:</strong>
+  <%= @survey_template.surveyable.class %>
+</p>
+
+<table>
+  <tbody>
+    <% @survey_template.survey_item_categories.each do |survey_item_category| %>
+      <tr>
+        <td>Section: <%= survey_item_category.title %></td>
+      </tr>
+      <tr><td>
+			<% if survey_item_category.survey_item_templates.exists? %>
+			<table class="ml50 mt10">
+			  <thead>
+				<!-- <tr><th colspan="4">Listing Survey Item Templates</th></tr> -->
+				<tr><th colspan="4"><hr></th></tr>
+			    <tr>
+			      <th class="mr10"># </th>
+			      <th>Survey Items</th>
+			    </tr>
+			  </thead>
+			<% survey_item_category.survey_item_templates.each_with_index do |survey_item_template, i| %>
+			  <tbody>
+			      <tr>
+			        <td><%= i+1 %>. </td>
+			        <td><%= survey_item_template.question_title %></td>      
+			      </tr>
+			      <tr>
+			      		<td colspan="5" >
+							<% if survey_item_template.survey_data_types.exists? %>
+			      			  <strong class="ml50">Survey data types:</strong>
+								<p class="ml50">
+								  <% survey_item_template.survey_data_types.each do |dt| %>
+								  	<%= dt.title %><br>
+								  <% end %>
+								</p>
+							<% end %>
+			      		</td>
+			      </tr>
+			  </tbody>
+			<% end %>
+			</table>
+			<% end %>
+      </td></tr>
+      <tr><td colspan="4" ><hr></td></tr>
+    <% end %>
+  </tbody>
+</table>

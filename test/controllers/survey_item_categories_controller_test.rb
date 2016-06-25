@@ -18,7 +18,7 @@ class SurveyItemCategoriesControllerTest < ActionController::TestCase
 
   test "should create survey_item_category" do
     assert_difference('SurveyItemCategory.count') do
-      post :create, survey_item_category: { categorisable_id: @survey_item_category.categorisable_id, categorisable_type: @survey_item_category.categorisable_type, title: @survey_item_category.title }
+      post :create, survey_item_category: { survey_template_id: @survey_item_category.survey_template_id, title: @survey_item_category.title }
     end
 
     assert_redirected_to survey_item_category_path(assigns(:survey_item_category))
@@ -35,7 +35,7 @@ class SurveyItemCategoriesControllerTest < ActionController::TestCase
   end
 
   test "should update survey_item_category" do
-    patch :update, id: @survey_item_category, survey_item_category: { categorisable_id: @survey_item_category.categorisable_id, categorisable_type: @survey_item_category.categorisable_type, title: @survey_item_category.title }
+    patch :update, id: @survey_item_category, survey_item_category: { survey_template_id: @survey_item_category.survey_template_id, title: @survey_item_category.title }
     assert_redirected_to survey_item_category_path(assigns(:survey_item_category))
   end
 

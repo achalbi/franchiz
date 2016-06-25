@@ -1,1 +1,1 @@
-json.extract! @survey_item_category, :id, :title, :categorisable_id, :categorisable_type, :created_at, :updated_at
+json.extract! @survey_item_category, :id, :title, :survey_template_id, :created_at, :updated_at

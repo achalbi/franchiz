@@ -12,8 +12,84 @@
 
 <p>
   <strong>Surveyable:</strong>
-  <%= @survey_template.surveyable %>
+  <%= @survey_template.surveyable.class %>
 </p>
 
+
+<!-- <h5><b>Listing Survey Item Categories</b></h5> -->
+
+<table>
+  <!-- <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+ -->
+  <tbody>
+    <% @survey_template.survey_item_category_templates.each do |survey_item_category_template| %>
+      <tr>
+        <td>Section: <%= survey_item_category_template.title %></td>
+        <!-- <td><%= link_to 'Show', survey_item_category_template %>  </td> -->
+        <td><%= link_to 'Edit', edit_survey_item_category_template_path(survey_item_category_template) %> </td>
+		<td> | </td>
+        <td><%= link_to 'Destroy', survey_item_category_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <tr><td>
+			<% if survey_item_category_template.survey_item_templates.exists? %>
+			<table class="ml50 mt10">
+			  <thead>
+				<!-- <tr><th colspan="4">Listing Survey Item Templates</th></tr> -->
+				<tr><th colspan="4"><hr></th></tr>
+			    <tr>
+			      <th class="mr10"># </th>
+			      <th>Survey Items</th>
+			      <!-- 
+			      <th>Description</th>
+			      <th>Survey template</th>
+			      <th>Survey item category</th> -->
+			      <th colspan="3">Action</th>
+			    </tr>
+			  </thead>
+			<% survey_item_category_template.survey_item_templates.each_with_index do |survey_item_template, i| %>
+			  <tbody>
+			      <tr>
+			        <td><%= i+1 %>. </td>
+			        <td><%= survey_item_template.question_title %></td>
+			        <!-- <td><%= survey_item_template.description %></td>
+			        <td><%= survey_item_template.survey_template.id %></td>
+			        <td><%= survey_item_template.survey_item_category_template.id %></td>
+			        <td><%= link_to 'Show', survey_item_template %> </td>
+			         -->
+			        <td><%= link_to 'Edit', edit_survey_item_template_path(survey_item_template) %></td>
+			        <td> | </td>
+			        <td><%= link_to 'Destroy', survey_item_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			      </tr>
+			      <tr>
+			      		<td colspan="5" >
+							<% if survey_item_template.survey_data_types.exists? %>
+			      			  <strong class="ml50">Survey data types:</strong>
+								<p class="ml50">
+								  <% survey_item_template.survey_data_types.each do |dt| %>
+								  	<%= dt.title %><br>
+								  <% end %>
+								</p>
+							<% end %>
+			      		</td>
+			      </tr>
+			  </tbody>
+			<% end %>
+			</table>
+			<% end %>
+      </td></tr>
+      <tr><td colspan="4" ><hr></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'create survey item category templates', new_polymorphic_path([@survey_template, SurveyItemCategoryTemplate.new]) %> |
+<%= link_to 'create survey item templates', new_polymorphic_path([@survey_template, SurveyItemTemplate.new]) %> |
 <%= link_to 'Edit', edit_survey_template_path(@survey_template) %> |
 <%= link_to 'Back', survey_templates_path %>
