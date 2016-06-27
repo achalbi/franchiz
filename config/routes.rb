@@ -349,9 +349,12 @@ Rails.application.routes.draw do
  	resources :survey_templates
   end
 
+  resources :survey_item_category_templates do
+	resources :survey_item_templates
+  end
+
   resources :survey_templates do
 	resources :survey_item_category_templates
-	resources :survey_item_templates
   end
 
   resource :session

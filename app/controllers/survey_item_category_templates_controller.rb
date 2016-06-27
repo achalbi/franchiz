@@ -29,11 +29,11 @@ class SurveyItemCategoryTemplatesController < ApplicationController
 
     respond_to do |format|
       if @survey_item_category_template.save
-        format.html { redirect_to @survey_item_category_template, notice: 'Survey item category template was successfully created.' }
-        format.json { render :show, status: :created, location: @survey_item_category_template }
+        format.html { redirect_to @survey_item_category_template.survey_template, notice: 'Survey item category template was successfully created.' }
+      #  format.json { render :show, status: :created, location: @survey_item_category_template }
       else
         format.html { render :new }
-        format.json { render json: @survey_item_category_template.errors, status: :unprocessable_entity }
+      #  format.json { render json: @survey_item_category_template.errors, status: :unprocessable_entity }
       end
     end
   end

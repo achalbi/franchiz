@@ -15,12 +15,12 @@
 
 <table>
   <tbody>
-    <% @survey_template.survey_item_categories.each do |survey_item_category| %>
+    <% @survey_template.survey_item_category_templates.each do |survey_item_category_template| %>
       <tr>
-        <td>Section: <%= survey_item_category.title %></td>
+        <td>Section: <%= survey_item_category_template.title %></td>
       </tr>
       <tr><td>
-			<% if survey_item_category.survey_item_templates.exists? %>
+			<% if survey_item_category_template.survey_item_templates.exists? %>
 			<table class="ml50 mt10">
 			  <thead>
 				<!-- <tr><th colspan="4">Listing Survey Item Templates</th></tr> -->
@@ -30,7 +30,7 @@
 			      <th>Survey Items</th>
 			    </tr>
 			  </thead>
-			<% survey_item_category.survey_item_templates.each_with_index do |survey_item_template, i| %>
+			<% survey_item_category_template.survey_item_templates.each_with_index do |survey_item_template, i| %>
 			  <tbody>
 			      <tr>
 			        <td><%= i+1 %>. </td>

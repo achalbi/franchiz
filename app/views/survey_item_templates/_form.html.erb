@@ -20,14 +20,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :survey_template_id %><br>
-    <%= f.text_field :survey_template_id %>
-  </div>
-  <div class="field">
-    <%= f.label :survey_item_category_id %><br>
-    <%= f.select(:survey_item_category_template_id, @survey_template.survey_item_category_templates.collect {|c| [c.title,c.id]}, {:include_blank => "Select"}, {:class => "form_class"} ) %>
-  </div>
-  <div class="field">
+    <%= f.hidden_field :survey_item_category_template_id  %>
     <%= f.label :survey_data_types %><br>
     <%= f.collection_select :survey_data_type_ids, SurveyDataType.all, :id, :title, {}, 
     {:multiple => true} %>

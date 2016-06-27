@@ -5,7 +5,7 @@ class SurveyTemplatesController < ApplicationController
   # GET /survey_templates
   # GET /survey_templates.json
   def index
-    @survey_templates = SurveyTemplate.all
+    @survey_templates = @poly_ref.survey_templates
   end
 
   # GET /survey_templates/1

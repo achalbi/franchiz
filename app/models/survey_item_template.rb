@@ -13,7 +13,7 @@
 
 class SurveyItemTemplate < ActiveRecord::Base
   has_and_belongs_to_many :survey_data_types
-  belongs_to :survey_template
+#  belongs_to :survey_template
   belongs_to :survey_item_category_template
 
   amoeba do

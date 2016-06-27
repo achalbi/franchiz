@@ -1,6 +1,6 @@
 class SurveyItemTemplatesController < ApplicationController
   before_action :set_survey_item_template, only: [:show, :edit, :update, :destroy]
-  before_action :set_survey_template, only: [:new]
+  before_action :set_survey_item_category_template, only: [:new]
 
   # GET /survey_item_templates
   # GET /survey_item_templates.json
@@ -15,12 +15,12 @@ class SurveyItemTemplatesController < ApplicationController
 
   # GET /survey_item_templates/new
   def new
-    @survey_item_template = @survey_template.survey_item_templates.build
+    @survey_item_template = @survey_item_category_template.survey_item_templates.build
   end
 
   # GET /survey_item_templates/1/edit
   def edit
-    @survey_template = @survey_item_template.survey_template
+    @survey_template = @survey_item_template.survey_item_category_template.survey_template
   end
 
   # POST /survey_item_templates
@@ -30,7 +30,7 @@ class SurveyItemTemplatesController < ApplicationController
 
     respond_to do |format|
       if @survey_item_template.save
-        format.html { redirect_to @survey_item_template.survey_template, notice: 'Survey item template was successfully created.' }
+        format.html { redirect_to @survey_item_template.survey_item_category_template.survey_template, notice: 'Survey item template was successfully created.' }
         format.json { render :show, status: :created, location: @survey_item_template }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class SurveyItemTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @survey_item_template.update(survey_item_template_params)
-        format.html { redirect_to @survey_item_template.survey_template, notice: 'Survey item template was successfully updated.' }
+        format.html { redirect_to @survey_item_template.survey_item_category_template.survey_template, notice: 'Survey item template was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey_item_template }
       else
         format.html { render :edit }
@@ -69,8 +69,8 @@ class SurveyItemTemplatesController < ApplicationController
       @survey_item_template = SurveyItemTemplate.find(params[:id])
     end
 
-    def set_survey_template
-      @survey_template = SurveyTemplate.find(params[:survey_template_id])
+    def set_survey_item_category_template
+      @survey_item_category_template = SurveyItemCategoryTemplate.find(params[:survey_item_category_template_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
