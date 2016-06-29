@@ -10,10 +10,8 @@
 #
 
 class SurveyItemCategory < ActiveRecord::Base
-  belongs_to :survey_template
-  has_many :survey_item_templates
-
-  amoeba do
-    enable
-  end
+  belongs_to :survey
+  has_many :survey_items
+ 
+  accepts_nested_attributes_for :survey_items
 end

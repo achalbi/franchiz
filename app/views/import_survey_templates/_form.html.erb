@@ -1,7 +1,10 @@
+<div class="form-inline">
 <%= form_tag("/businesses/#{@business.id}/import_survey_templates", method: :post) do  %>
-  <%= select_tag "survey_template", options_for_select(@import_survey_templates.map{|i| [i.title ,i.id]}), prompt: "select", id: "survey_template_select" %>
-  <%= submit_tag  "import"%>
+  <%= select_tag "survey_template", options_for_select(@import_survey_templates.map{|i| [i.title ,i.id]}), prompt: "select", id: "survey_template_select", class: "form-control" %>
+  <%= submit_tag  "import" , class: "btn btn-primary" %>
 <% end %>
+</div>
+
 <div id="survey_template"></div>
 <script>
   $("#survey_template_select").change(function(){

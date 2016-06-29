@@ -58,7 +58,7 @@ class SurveyItemTemplatesController < ApplicationController
   def destroy
     @survey_item_template.destroy
     respond_to do |format|
-      format.html { redirect_to survey_item_templates_url, notice: 'Survey item template was successfully destroyed.' }
+      format.html { redirect_to @survey_item_template.survey_item_category_template.survey_template, notice: 'Survey item template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

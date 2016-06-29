@@ -341,9 +341,16 @@ Rails.application.routes.draw do
   resources :systems
   resources :comments
   resources :locations
-  resources :surveys
   resources :survey_items
   resources :survey_questions
+  resources :survey_user_answers
+  resources :survey_biz_user_answers
+  
+  resources :surveys do
+  	resources :survey_user_answers
+  	resources :survey_biz_user_answers
+  end
+
 
   resources :systems do
  	resources :survey_templates
@@ -351,6 +358,10 @@ Rails.application.routes.draw do
 
   resources :survey_item_category_templates do
 	resources :survey_item_templates
+  end
+
+  resources :survey_item_categories do
+	resources :survey_items
   end
 
   resources :survey_templates do
@@ -367,6 +378,7 @@ Rails.application.routes.draw do
   resources :inquiry_basics, controller: 'business_inquiry/inquiry_basics'
 
   resources :inquiry_answers
+  resources :import_surveys
 #  resource :business
   resources :businesses do
   	resources :import_survey_templates
@@ -393,7 +405,9 @@ Rails.application.routes.draw do
       resources :surveys
     end
   end
-  resources :inquiries
+  resources :inquiries do
+      resources :surveys
+  end
   resources :users
   
   resource :welcome, :controller => 'welcome' do
@@ -403,6 +417,7 @@ Rails.application.routes.draw do
   end
   
   resources :inquiries do
+  	resources :import_surveys
     resources :survey_workflows do
       collection do
         get 'user_input', 'biz_review', 'complete'

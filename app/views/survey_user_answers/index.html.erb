@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+
+<p>inquiry no. <%= link_to @survey.inquiry.token, @survey.inquiry  %></p>
+ <% @survey.survey_item_categories.each do |survey_item_category| %>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-info">
+          <th>Section: <%= survey_item_category.title %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>
+            <table class="mt10 width-100pt">
+            <thead>
+              <tr>
+                <th class="wd10"># </th>
+                <th>Survey Items</th>
+              </tr>
+            </thead>
+          <% survey_item_category.survey_items.each_with_index do |survey_item, i| %>
+            <tbody>
+                <tr>
+                  <th class="row"><%= i+1 %>. </th>
+                  <td><%= survey_item.title %><br>
+<!--                   <% if survey_item.survey_data_types.exists? %>
+                    <strong>Survey data types:</strong>
+                      <% survey_item.survey_data_types.each do |dt| %>
+                        <kbd> <kbd><%= dt.title %></kbd></kbd>
+                      <% end %>
+                  <% end %> -->
+                    <% unless survey_item.survey_biz_user_answer.answer.blank? %>
+                    <p>
+                    <strong>Business Answer:</strong><br>
+                      <%= survey_item.survey_biz_user_answer.answer %><br>
+                    </p>
+                  <% end %>
+                  <div id="sua_dis_<%= survey_item.survey_user_answer.id %>" >
+                  <% unless survey_item.survey_user_answer.answer.blank? %>
+                      <strong>Franchisee Answer:</strong>
+                      <a href="#sua_dis_<%= survey_item.survey_user_answer.id %>" id="sua_a_<%= survey_item.survey_user_answer.id %>" class="pull-xs-right" >Edit</a>
+                      <p><%= survey_item.survey_user_answer.answer %><br></p>
+                  <% end %>
+                  </div>
+                  <div id="sua_upt_<%= survey_item.survey_user_answer.id %>" >
+                    <%= form_for(survey_item.survey_user_answer, remote: true) do |sa| %>
+                      <div class="form-group">
+                        <%= sa.label :answer, "Franchishee Answer:" %>
+                        <%= sa.text_area :answer, class: "form-control", placeholder: "Franchishee Answer" %>
+                      </div>
+                      <div class="form-group">
+                        <%= sa.submit %>
+                      </div>
+                  <% end %>
+                  </div>
+                  </td>
+                </tr>
+            </tbody>
+          <% end %>
+          </table>
+          </td>
+          </tr>
+      </tbody>
+    </table>
+    <% end %>
+
+<% if logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user) %>
+  <% if @survey.inquiry.current_state == 'awaiting_biz_input' || @survey.inquiry.current_state == 'awaiting_biz_review' || @survey.inquiry.current_state == 'accepted' %>
+    <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-primary" %>
+  <% end %>
+    <% if @survey.inquiry.current_state == 'awaiting_biz_review' %>
+      <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-success" %>
+    <% end %> 
+<% end %>
+
+<script type="text/javascript">
+  $("a[id*=sua_a_]").parent().next().hide();
+  $("a[id*=sua_a_]").click(function(){
+    $(this).parent().next().show();
+    $(this).parent().hide();
+  });
+</script>

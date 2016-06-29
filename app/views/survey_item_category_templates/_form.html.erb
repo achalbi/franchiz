@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
   </div>
-  <div class="field">
-    <%= f.label :survey_template_id %><br>
-    <%= f.text_field :survey_template_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.hidden_field :survey_template_id %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Cancel', @survey_item_category_template.survey_template, class: "btn btn-secondary active", role: "button"  %>
   </div>
 <% end %>

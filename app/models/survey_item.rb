@@ -15,12 +15,13 @@
 #
 
 class SurveyItem < ActiveRecord::Base
+  has_and_belongs_to_many :survey_data_types
 
   belongs_to :survey_question
   belongs_to :survey_user_answer
   belongs_to :survey_biz_user_answer
   belongs_to :inquiry
-  belongs_to :survey
+  belongs_to :survey_item_category
   
   accepts_nested_attributes_for :survey_biz_user_answer
   accepts_nested_attributes_for :survey_user_answer

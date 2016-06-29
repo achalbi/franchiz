@@ -37,6 +37,8 @@ rails g scaffold SurveyData title:string data:text
 
 rails generate habtm survey_item_template survey_item_category
 
+rails generate habtm survey_item survey_data_type
+
 
 
 rails g scaffold BusinessSurveyTemplate title:string description:text business:references

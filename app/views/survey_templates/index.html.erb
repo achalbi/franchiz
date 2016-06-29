@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Survey Templates</h1>
 
-<table>
+
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Surveyable</th>
-      <th colspan="3"></th>
+      <th>Survey Templates
+        <div class="pull-xs-right">
+        <%= link_to 'New', new_polymorphic_path([@poly_ref, SurveyTemplate.new]) %> | 
+        <%= link_to 'Import', new_business_import_survey_template_path(@poly_ref) %>
+        </div>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @survey_templates.each do |survey_template| %>
       <tr>
-        <td><%= survey_template.title %></td>
-        <td><%= survey_template.description %></td>
-        <td><%= survey_template.surveyable %></td>
-        <td><%= link_to 'Show', survey_template %></td>
-        <td><%= link_to 'Edit', edit_survey_template_path(survey_template) %></td>
-        <td><%= link_to 'Destroy', survey_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <%= link_to survey_template.title, survey_template %><br>
+        <small><%= survey_template.description %></small>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Survey template', new_polymorphic_path([@poly_ref, SurveyTemplate.new]) %>
+<script type="text/javascript">
+    $("#st_menu").addClass('active');
+</script>

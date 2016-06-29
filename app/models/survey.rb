@@ -11,8 +11,6 @@
 class Survey < ActiveRecord::Base
   belongs_to :inquiry
   
-  has_many :survey_items
-  
-  accepts_nested_attributes_for :survey_items
-  
+  has_many :survey_item_categories  
+  accepts_nested_attributes_for :survey_item_categories
 end

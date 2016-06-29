@@ -1,0 +1,48 @@
+ <% if logged_in? && (@inquiry.business.biz_users.to_a.include? current_user) %>
+    <div id="survey_question" class="mb20"></div>
+    <%= link_to 'Add Survey details', new_business_inquiry_survey_path(@business, @inquiry) , id: "add_survey", class: "pull-xs-right plr10" %>
+    <%= link_to 'Add Survey Question to Inquiry', "#survey_question", id: "add_survey_question", class: "pull-xs-right plr10" %>
+    <%= link_to 'Import Survey from templates', new_inquiry_import_survey_path(@inquiry), id: "import_survey", class: "pull-xs-right plr10" %>
+<% end %>
+<% if @inquiry.survey.present? %>
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+          <% @inquiry.survey.survey_items.each_with_index do |si, i| %>
+          <% if si.visible %>
+      <tr>
+        <td scope="row"><%= i+1 %>. </td>
+        <td><%= si.survey_question.title %><br>
+            <p>Business Answer:</p>
+              <p class="text-success"><%=  si.survey_biz_user_answer.answer.blank? ? "-N/A-" : si.survey_biz_user_answer.answer %></p>
+            <p>User Answer:</p>
+              <p class="text-success"><%=  si.survey_user_answer.answer.blank? ? "-N/A-" : si.survey_user_answer.answer %></p>
+        </td>
+      </tr>
+          <% end %>
+          <% end %>
+  </tbody>
+</table>
+  <% if @inquiry.current_state == 'awaiting_biz_input' || @inquiry.current_state == 'awaiting_biz_review'|| @inquiry.current_state == 'accepted' %>
+    <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-primary" %>
+  <% end %>  
+  <% if @inquiry.current_state == 'awaiting_biz_review' %>
+    <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-success" %>
+  <% end %>  
+<% else %>
+<h4> No survey details present.</h4>
+<% end %>
+<script>
+  $("#add_survey_question").click(function(){
+    $.get("<%= new_business_survey_question_path(@business) %>", function(data){
+      $("#survey_question").html(data);
+    });
+  });
+
+</script>

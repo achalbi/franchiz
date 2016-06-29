@@ -9,5 +9,6 @@
 #
 
 class SurveyDataType < ActiveRecord::Base
+  has_and_belongs_to_many :survey_items
   has_and_belongs_to_many :survey_item_templates
 end

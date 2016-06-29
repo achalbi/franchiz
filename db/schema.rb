@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625163323) do
+ActiveRecord::Schema.define(version: 20160628054114) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -161,13 +161,22 @@ ActiveRecord::Schema.define(version: 20160625163323) do
 
   add_index "survey_data_types_item_templates", ["survey_data_type_id", "survey_item_template_id"], name: "survey_data_types_item_templates_index", unique: true
 
+  create_table "survey_data_types_items", id: false, force: :cascade do |t|
+    t.integer "survey_data_type_id"
+    t.integer "survey_item_id"
+  end
+
+  add_index "survey_data_types_items", ["survey_data_type_id", "survey_item_id"], name: "survey_data_types_items_index", unique: true
+
   create_table "survey_item_categories", force: :cascade do |t|
     t.string   "title"
     t.integer  "survey_template_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "survey_id"
   end
 
+  add_index "survey_item_categories", ["survey_id"], name: "index_survey_item_categories_on_survey_id"
   add_index "survey_item_categories", ["survey_template_id"], name: "index_survey_item_categories_on_survey_template_id"
 
   create_table "survey_item_categories_templates", id: false, force: :cascade do |t|
@@ -206,11 +215,14 @@ ActiveRecord::Schema.define(version: 20160625163323) do
     t.datetime "updated_at",                null: false
     t.integer  "survey_id"
     t.string   "status"
+    t.integer  "survey_item_category_id"
+    t.string   "title"
   end
 
   add_index "survey_items", ["inquiry_id"], name: "index_survey_items_on_inquiry_id"
   add_index "survey_items", ["survey_biz_user_answer_id"], name: "index_survey_items_on_survey_biz_user_answer_id"
   add_index "survey_items", ["survey_id"], name: "index_survey_items_on_survey_id"
+  add_index "survey_items", ["survey_item_category_id"], name: "index_survey_items_on_survey_item_category_id"
   add_index "survey_items", ["survey_question_id"], name: "index_survey_items_on_survey_question_id"
   add_index "survey_items", ["survey_user_answer_id"], name: "index_survey_items_on_survey_user_answer_id"
 

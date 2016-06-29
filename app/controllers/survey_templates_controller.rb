@@ -55,9 +55,10 @@ class SurveyTemplatesController < ApplicationController
   # DELETE /survey_templates/1
   # DELETE /survey_templates/1.json
   def destroy
+    @ref =  @survey_template.surveyable
     @survey_template.destroy
     respond_to do |format|
-      format.html { redirect_to survey_templates_url, notice: 'Survey template was successfully destroyed.' }
+      format.html { redirect_to @ref, notice: 'Survey template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
