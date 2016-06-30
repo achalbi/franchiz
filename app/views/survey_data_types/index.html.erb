@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Survey Data Types</h1>
-
+<h4>Survey Data Types</h4>
+<%= link_to 'New Survey data type', new_survey_data_type_path, class: "pull-xs-right" %>
+<% if @survey_data_types.exists? %>
 <table>
   <thead>
     <tr>
@@ -23,5 +24,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Survey data type', new_survey_data_type_path %>
+<% else %>
+  <h6 class="text-danger">No survey data types present. Please add.</h6>
+<% end %>

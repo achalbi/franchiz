@@ -23,6 +23,6 @@
     <%= f.hidden_field :surveyable_type %>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
-     <%= link_to 'Cancel', @survey_template, class: "btn btn-secondary active", role: "button"  %>
+     <%= link_to 'Cancel', polymorphic_path([@poly_ref, SurveyTemplate]), class: "btn btn-secondary active", role: "button"  %>
   </div>
 <% end %>

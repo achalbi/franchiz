@@ -44,7 +44,7 @@ gem 'premailer-rails'
 gem 'workflow'
 
 gem 'rubocop', '~> 0.40.0', require: false
-
+gem 'sass'
 gem 'figaro'
 
 gem 'momentjs-rails', '>= 2.9.0'

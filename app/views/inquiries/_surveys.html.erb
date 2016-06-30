@@ -14,7 +14,10 @@
   });
 </script>
 <% else %>
-    <%= link_to 'Edit Survey', edit_inquiry_survey_path(@inquiry, @inquiry.survey),class: 'pull-xs-right'  %>
+    <div class="pull-xs-right">
+    <%= link_to 'Edit Survey', edit_inquiry_survey_path(@inquiry, @inquiry.survey) %> |
+    <%= link_to 'Delete Survey', @inquiry.survey, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </div>
      <% @inquiry.survey.survey_item_categories.each do |survey_item_category| %>
       <table class="table table-bordered">
         <thead>
@@ -84,10 +87,10 @@
 
   <% if @inquiry.current_state == 'awaiting_biz_input' || @inquiry.current_state == 'awaiting_biz_review'|| @inquiry.current_state == 'accepted' %>
     <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-primary" %>
-  <% end %>  
+  <% end %>
   <% if @inquiry.current_state == 'awaiting_biz_review' %>
     <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@inquiry) , class: "btn btn-success" %>
-  <% end %>  
+  <% end %>
 
 <% end %>
 

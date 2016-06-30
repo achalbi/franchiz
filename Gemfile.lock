@@ -221,6 +221,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.5)
   rubocop (~> 0.40.0)
+  sass
   sass-rails (~> 5.0)
   schema_to_scaffold
   sdoc (~> 0.4.0)

@@ -44,11 +44,11 @@
                   <div id="sua_upt_<%= survey_item.survey_user_answer.id %>" >
                     <%= form_for(survey_item.survey_user_answer, remote: true) do |sa| %>
                       <div class="form-group">
-                        <%= sa.label :answer, "Franchishee Answer:" %>
+                        <strong><%= sa.label :answer, "Franchishee Answer:" %></strong>
                         <%= sa.text_area :answer, class: "form-control", placeholder: "Franchishee Answer" %>
                       </div>
                       <div class="form-group">
-                        <%= sa.submit %>
+                        <%= sa.submit class: "btn btn-primary" %>
                       </div>
                   <% end %>
                   </div>
@@ -63,14 +63,9 @@
     </table>
     <% end %>
 
-<% if logged_in? && (@survey.inquiry.business.biz_users.to_a.include? current_user) %>
-  <% if @survey.inquiry.current_state == 'awaiting_biz_input' || @survey.inquiry.current_state == 'awaiting_biz_review' || @survey.inquiry.current_state == 'accepted' %>
-    <%= link_to "Request for Franchisee input", user_input_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-primary" %>
-  <% end %>
-    <% if @survey.inquiry.current_state == 'awaiting_biz_review' %>
-      <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-success" %>
-    <% end %> 
-<% end %>
+    <% if @survey.inquiry.current_state == 'awaiting_user_input' %>
+      <%= link_to "Submit for Review", biz_review_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-success" %>
+    <% end %>
 
 <script type="text/javascript">
   $("a[id*=sua_a_]").parent().next().hide();

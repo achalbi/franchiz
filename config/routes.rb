@@ -331,8 +331,8 @@
 #require "monban/constraints/signed_out"
 
 Rails.application.routes.draw do
-  
-  
+
+
   resources :survey_item_category_templates
   resources :survey_item_categories
   resources :survey_item_templates
@@ -345,10 +345,13 @@ Rails.application.routes.draw do
   resources :survey_questions
   resources :survey_user_answers
   resources :survey_biz_user_answers
-  
+
   resources :surveys do
   	resources :survey_user_answers
   	resources :survey_biz_user_answers
+  	member do
+  	  get 'franchiz_input'
+  	end
   end
 
 
@@ -371,10 +374,10 @@ Rails.application.routes.draw do
   resource :session
   resources :biz_users
   root 'sessions#new'
-  
-  
+
+
   resources :import_survey_templates, only: [:show]
-  
+
   resources :inquiry_basics, controller: 'business_inquiry/inquiry_basics'
 
   resources :inquiry_answers
@@ -393,7 +396,7 @@ Rails.application.routes.draw do
         resources :addresses, shallow: true
       end
     end
-    
+
     collection do
       get 'biz_init'
     end
@@ -409,13 +412,13 @@ Rails.application.routes.draw do
       resources :surveys
   end
   resources :users
-  
+
   resource :welcome, :controller => 'welcome' do
     collection do
       get 'thanks'
     end
   end
-  
+
   resources :inquiries do
   	resources :import_surveys
     resources :survey_workflows do
@@ -425,8 +428,8 @@ Rails.application.routes.draw do
     end
   end
 
-    
-    
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

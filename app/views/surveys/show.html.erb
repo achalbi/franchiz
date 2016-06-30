@@ -27,7 +27,7 @@
                       <% survey_item.survey_data_types.each do |dt| %>
                         <kbd> <kbd><%= dt.title %></kbd></kbd>
                       <% end %>
-                  <% end %>
+                  <% end %><br>
                     <% unless survey_item.survey_biz_user_answer.answer.blank? %>
                     <p>
                     <strong>Business Answer:</strong><br>
@@ -35,7 +35,7 @@
                     </p>
                   <% end %>
                   <% unless survey_item.survey_user_answer.answer.blank? %>
-                    <strong>Franchisee Answer:</strong>
+                    <strong>Franchisee Answer:</strong><br>
                     <p>
                       <%= survey_item.survey_user_answer.answer %><br>
                     </p>
@@ -57,6 +57,6 @@
   <% end %>
     <% if @survey.inquiry.current_state == 'awaiting_biz_review' %>
       <%= link_to "Survey complete", complete_inquiry_survey_workflows_path(@survey.inquiry) , class: "btn btn-success" %>
-    <% end %> 
+    <% end %>
 <% end %>
 

@@ -45,10 +45,12 @@ class Inquiry < ActiveRecord::Base
     end
     state :awaiting_biz_input do
       event :user_input, :transitions_to => :awaiting_user_input
+      event :complete, :transitions_to => :inquiry_complete
     end
     state :awaiting_user_input do
       event :biz_review, :transitions_to => :awaiting_biz_review
       event :user_input, :transitions_to => :awaiting_user_input
+      event :complete, :transitions_to => :inquiry_complete
     end
     state :awaiting_biz_review do
       event :user_input, :transitions_to => :awaiting_user_input

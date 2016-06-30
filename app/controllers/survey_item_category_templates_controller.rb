@@ -55,9 +55,10 @@ class SurveyItemCategoryTemplatesController < ApplicationController
   # DELETE /survey_item_category_templates/1
   # DELETE /survey_item_category_templates/1.json
   def destroy
+    survey_template = @survey_item_category_template.survey_template
     @survey_item_category_template.destroy
     respond_to do |format|
-      format.html { redirect_to survey_item_category_templates_url, notice: 'Survey item category template was successfully destroyed.' }
+      format.html { redirect_to polymorphic_path([survey_template.surveyable, survey_template]), notice: 'Survey item category template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -2,6 +2,7 @@ class SurveyItemTemplatesController < ApplicationController
   before_action :set_survey_item_template, only: [:show, :edit, :update, :destroy]
   before_action :set_survey_item_category_template, only: [:new]
 
+
   # GET /survey_item_templates
   # GET /survey_item_templates.json
   def index
@@ -56,9 +57,10 @@ class SurveyItemTemplatesController < ApplicationController
   # DELETE /survey_item_templates/1
   # DELETE /survey_item_templates/1.json
   def destroy
+    survey_template = @survey_item_template.survey_item_category_template.survey_template
     @survey_item_template.destroy
     respond_to do |format|
-      format.html { redirect_to @survey_item_template.survey_item_category_template.survey_template, notice: 'Survey item template was successfully destroyed.' }
+      format.html { redirect_to polymorphic_path([survey_template.surveyable, survey_template]), notice: 'Survey item template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,6 +70,7 @@ class SurveyItemTemplatesController < ApplicationController
     def set_survey_item_template
       @survey_item_template = SurveyItemTemplate.find(params[:id])
     end
+
 
     def set_survey_item_category_template
       @survey_item_category_template = SurveyItemCategoryTemplate.find(params[:survey_item_category_template_id])

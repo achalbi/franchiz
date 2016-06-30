@@ -2,7 +2,7 @@
 
 <div class="pull-xs-right">
 <%= link_to 'create survey item category templates', new_polymorphic_path([@survey_template, SurveyItemCategoryTemplate.new]) %> |
-<%= link_to fa_icon('pencil'), edit_survey_template_path(@survey_template) %> | 
+<%= link_to fa_icon('pencil'), edit_polymorphic_path([@poly_ref, @survey_template]) %> |
 <%= link_to fa_icon('trash'), @survey_template, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Survey Template" %>
 </div>
 <h4>
@@ -21,8 +21,8 @@
         <th>Section: <%= survey_item_category_template.title %></th>
         <td colspan="3" class="pull-xs-right"><%= link_to 'create survey item templates', new_polymorphic_path([survey_item_category_template, SurveyItemTemplate.new]) %> |
         	<%= link_to fa_icon("pencil"), edit_survey_item_category_template_path(survey_item_category_template), title: "Edit Section", data: { toggle: "tooltip"} %> |
-        	<%= link_to fa_icon("trash"), survey_item_category_template, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Section"%>
-        		
+        	<%= link_to fa_icon("trash"), polymorphic_path([@survey_template, survey_item_category_template]), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Section"%>
+
         	</td>
       </tr>
   </thead>
@@ -43,7 +43,7 @@
 			        <th class="row"><%= i+1 %>. </th>
 			        <td><%= survey_item_template.question_title %></td>
 			        <td><%= link_to fa_icon('pencil'), edit_survey_item_template_path(survey_item_template) %></td>
-			        <td><%= link_to fa_icon('trash'), survey_item_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			        <td><%= link_to fa_icon('trash'), polymorphic_path([survey_item_template]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			      </tr>
 				<% if survey_item_template.survey_data_types.exists? %>
 			      <tr>

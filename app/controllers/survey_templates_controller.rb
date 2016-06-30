@@ -1,6 +1,6 @@
 class SurveyTemplatesController < ApplicationController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
-  before_action :set_polymorphic_ref, only: [:index, :new, :create]
+  before_action :set_polymorphic_ref, only: [:index, :new, :create, :edit, :show]
 
   # GET /survey_templates
   # GET /survey_templates.json
@@ -70,11 +70,11 @@ class SurveyTemplatesController < ApplicationController
     end
 
     def set_polymorphic_ref
-      if params[:system_id]
-        @poly_ref = @system = System.find(params[:system_id])
-      elsif params[:business_id]
-        @poly_ref = @business = Business.find(params[:business_id])
-      end
+        if params[:system_id]
+          @poly_ref = @system = System.find(params[:system_id])
+        elsif params[:business_id]
+          @poly_ref = @business = Business.find(params[:business_id])
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

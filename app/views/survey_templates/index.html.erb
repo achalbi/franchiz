@@ -7,7 +7,7 @@
     <tr>
       <th>Survey Templates
         <div class="pull-xs-right">
-        <%= link_to 'New', new_polymorphic_path([@poly_ref, SurveyTemplate.new]) %> | 
+        <%= link_to 'New', new_polymorphic_path([@poly_ref, SurveyTemplate.new]) %> |
         <%= link_to 'Import', new_business_import_survey_template_path(@poly_ref) %>
         </div>
       </th>
@@ -18,7 +18,7 @@
     <% @survey_templates.each do |survey_template| %>
       <tr>
         <td>
-        <%= link_to survey_template.title, survey_template %><br>
+        <%= link_to survey_template.title,  polymorphic_path([@poly_ref, survey_template]) %><br>
         <small><%= survey_template.description %></small>
         </td>
       </tr>
