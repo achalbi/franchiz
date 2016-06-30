@@ -30,9 +30,12 @@ gem 'monban'
 gem 'bcrypt'
 gem 'nested_form_fields'
 gem 'quiet_assets', group: :development
+gem 'habtm_generator', :group => :development
+gem "font-awesome-rails"
 
 gem 'kaminari'
 gem 'annotate'
+gem 'amoeba'
 
 #gem 'roadie'
 #gem 'roadie-rails', '~> 1.0'

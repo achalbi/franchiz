@@ -1,0 +1,28 @@
+<%= form_for(@survey_template) do |f| %>
+  <% if @survey_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey_template.errors.count, "error") %> prohibited this survey_template from being saved:</h2>
+
+      <ul>
+      <% @survey_template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , class: "form-control", placeholder: "Title" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description , class: "form-control", placeholder: "Description" %>
+  </div>
+    <%= f.hidden_field :surveyable_id %>
+    <%= f.hidden_field :surveyable_type %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+     <%= link_to 'Cancel', @survey_template, class: "btn btn-secondary active", role: "button"  %>
+  </div>
+<% end %>

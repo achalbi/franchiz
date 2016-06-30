@@ -1,0 +1,7 @@
+$("#sua_dis_<%= @survey_user_answer.id %>").html("<%= j render 'show' %>");
+$("#sua_dis_<%= @survey_user_answer.id %>").show();
+$("#sua_upt_<%= @survey_user_answer.id %>").hide();
+  $("a[id*=sua_a_]").click(function(){
+    $(this).parent().next().show();
+    $(this).parent().hide();
+  });

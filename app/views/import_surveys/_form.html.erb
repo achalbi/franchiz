@@ -1,0 +1,13 @@
+
+<%= form_tag(new_inquiry_survey_path(@inquiry), method: :get) do  %>
+  <%= select_tag "survey_template_id", options_for_select(@survey_templates.map{|i| [i.title ,i.id]}), prompt: "select", id: "survey_select" %>
+  <%= submit_tag  "import"%>
+<% end %>
+<div id="survey_template"></div>
+<script>
+  $("#survey_select").change(function(){
+    $.get('/import_surveys/'+$(this).val(), function(data){
+      $("#survey_template").html($(data).find("#content-body"));
+    });
+  });
+</script>

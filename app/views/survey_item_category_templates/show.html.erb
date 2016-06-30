@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @survey_item_category_template.title %>
+</p>
+
+<p>
+  <strong>Survey template:</strong>
+  <%= @survey_item_category_template.survey_template %>
+</p>
+
+<%= link_to 'Edit', edit_survey_item_category_template_path(@survey_item_category_template) %> |
+<%= link_to 'Back', survey_item_category_templates_path %>

@@ -1,0 +1,2 @@
+module SurveyItemCategoryTemplatesHelper
+end

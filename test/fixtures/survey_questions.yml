@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: survey_questions
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  business_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  global      :boolean
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

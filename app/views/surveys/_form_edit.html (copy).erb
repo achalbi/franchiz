@@ -1,0 +1,78 @@
+<%= form_for(@survey, url: business_inquiry_survey_path(@business, @inquiry, @survey) ) do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <% if logged_in?  && (@business.biz_users.to_a.include? current_user)%>
+      <th>Visible</th>
+      <th>Status</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+          <%= f.fields_for :survey_items do |si| %>
+      <tr>
+        <td scope="row"><%= si.index+1 %>. </td>
+        <td><%= si.object.survey_question.title %><br>
+           <%= si.hidden_field :survey_question_id, value: si.object.survey_question.id %>
+            <% if @business.biz_users.to_a.include? current_user %>
+              <%= si.fields_for :survey_biz_user_answer do |sa| %>
+                  <div class="form-group">
+                    <%= sa.label :answer, "Business Answer:" %>
+                    <%= sa.text_area :answer, class: "form-control", placeholder: "Business Answer" %>
+                  </div>
+              <% end %>
+              <div><%= "Franchisee Answer:" %></div>
+              <div class="text-success" ><%=  si.object.survey_user_answer.answer.blank? ? "-N/A-" : si.object.survey_user_answer.answer %></div>
+              <%= si.fields_for :survey_user_answer do |sa| %>
+                    <%= sa.hidden_field :answer %>
+              <% end %>
+            <% else %>
+              <div><%= "Business Answer:" %></div>
+              <div class="text-success" ><%=  si.object.survey_biz_user_answer.answer.blank? ? "-N/A-" : si.object.survey_biz_user_answer.answer %></div>
+              <%= si.fields_for :survey_user_answer do |sa| %>
+                  <div class="form-group">
+                    <%= sa.label :answer, "Franchisee Answer:" %>
+                    <%= sa.text_area :answer, class: "form-control", placeholder: "Franchisee Answer" %>
+                  </div>
+              <% end %>
+            <% end %>
+        </td>
+       <% if logged_in?  && (@business.biz_users.to_a.include? current_user)%>
+        <td><%= si.check_box :visible %></td>
+        <td><%= si.select "status", options_for_select([['Business pending', 'biz_pending'], ['User pending', 'user_pending'], ['Mismatch', 'mismatch'], ['Reject', 'reject'], ['Accept', 'accept']]),{}, class: "form-control" %></td>
+      <% end %>
+      </tr>
+          <% end %>
+      
+
+
+  </tbody>
+</table>
+
+    <%= f.hidden_field :inquiry_id %>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Cancel', @inquiry, class: "btn btn-secondary active", role: "button"  %>
+  </div>
+<% end %>
+
+<script>
+  //  $('#survey_survey_items_visible').bootstrapToggle();
+</script>

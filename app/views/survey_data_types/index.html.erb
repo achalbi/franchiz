@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Survey Data Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @survey_data_types.each do |survey_data_type| %>
+      <tr>
+        <td><%= survey_data_type.title %></td>
+        <td><%= link_to 'Show', survey_data_type %></td>
+        <td><%= link_to 'Edit', edit_survey_data_type_path(survey_data_type) %></td>
+        <td><%= link_to 'Destroy', survey_data_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Survey data type', new_survey_data_type_path %>

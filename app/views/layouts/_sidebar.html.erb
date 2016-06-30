@@ -1,9 +1,9 @@
       <% if logged_in? %>
           <div class="list-group">
-            <%= link_to 'Home', @business, class: "list-group-item", id: "home_menu" %>
+            <%= link_to 'Home', business_path(session[:business_id]), class: "list-group-item", id: "home_menu" %>
             <%= link_to 'Inquiries', business_inquiries_path(session[:business_id]), class: "list-group-item", id: "inquiries_menu" %>
             <%= link_to 'Inquiry questions', business_inquiry_questions_path(session[:business_id]), class: "list-group-item", id: "iq_menu" %>
-            <%= link_to 'Survey questions',  business_survey_questions_path(session[:business_id]), class: "list-group-item", id: "sq_menu" %>
+            <%= link_to 'Survey templates',  business_survey_templates_path(session[:business_id]), class: "list-group-item", id: "st_menu" %>
             
           </div>
       <% else %>

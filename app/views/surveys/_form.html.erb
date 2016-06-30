@@ -1,5 +1,4 @@
-<% if @business.survey_questions.present? %>
-<%= form_for(@survey, url: business_inquiry_surveys_path(@business, @inquiry) ) do |f| %>
+<%= form_for(@survey, url: inquiry_survey_path(@inquiry, @survey) ) do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
@@ -12,63 +11,67 @@
     </div>
   <% end %>
 
-
-<table class="table table-hover">
-  <thead class="thead-default">
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Visible</th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% @business.survey_questions.each_with_index do |q, i| %>
-          <tr>
-              <%= f.fields_for :survey_items, @survey.survey_items.build do |si| %>
-            <td scope="row"><%= i+1 %>. </td>
-            <td><%= q.title %><br>
-                <%= si.hidden_field :survey_question_id, value: q.id %>
-    
-                  <%= si.fields_for :survey_biz_user_answer, si.object.build_survey_biz_user_answer do |sa| %>
-                      <div class="form-group">
-                        <%= sa.label :answer, "Business Answer:" %>
-                        <%= sa.text_area :answer, class: "form-control", placeholder: "Business Answer" %>
-                      </div>
-                  <% end %>
-     
-                <div class="hidden-xl-down">
-                  <%= si.fields_for :survey_user_answer, si.object.build_survey_user_answer do |sa| %>
-                      <div class="form-group">
-                        <%= sa.label :answer, "Franchisee Answer:" %>
-                        <%= sa.text_area :answer, class: "form-control", placeholder: "Franchisee Answer" %>
-                      </div>
-                  <% end %>
-                </div>
-            </td>
-            <td><%= si.check_box :visible, {checked: true} %></td>
-              <% end %>
-          </tr>
+      <%= f.fields_for :survey_item_categories do |sic| %>
+    <table class="table table-bordered">
+        <thead>
           
-    <% end %>
-
-
-  </tbody>
-</table>
+          <tr class="table-info">
+            <th><b>Section:</b> <%= sic.text_field :title , class: "form-control" , placeholder: "Section title" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+            <table class="mt10 width-100pt">
+              <thead>
+                <tr>
+                  <th class="wd10"># </th>
+                  <th>Survey Items</th>
+                </tr>
+              </thead>
+              <%= sic.fields_for :survey_items do |si| %>
+              <tbody>
+                <tr>
+                  <th class="row"><%= si.index + 1 %>. </th>
+                  <td><%= si.text_field :title, class: "form-control", placeholder: "Survey item title" %><br>
+                  <% if si.object.survey_data_types.exists? %>
+                    <strong>Survey data types:</strong>
+                      <% si.object.survey_data_types.each do |dt| %>
+                         <kbd> <kbd><%= dt.title %></kbd></kbd>
+                      <% end %>
+                  <% end %>
+                      <%= si.fields_for :survey_biz_user_answer do |sa| %>
+                        <div class="form-group">
+                          <strong><%= sa.label :answer, "Business Answer:" %></strong>
+                          <%= sa.text_area :answer, class: "form-control", placeholder: "Business Answer" %>
+                        </div>
+                      <% end %>
+                  <% unless si.object.survey_user_answer.answer.blank? %>
+                    <strong>Franchisee Answer:</strong>
+                    <p>
+                      <%= si.object.survey_user_answer.answer %><br>
+                    </p>
+                  <% end %>
+                  <!--<%= si.fields_for :survey_user_answer do |sa| %>
+                        <div class="form-group">
+                          <%= sa.label :answer, "Franchishee Answer:" %>
+                          <%= sa.text_area :answer, class: "form-control", placeholder: "Franchishee Answer" %>
+                        </div>
+                      <% end %> -->
+                  </td></tr>
+              </tbody>
+            <% end %>
+            </table>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <% end %>
 
     <%= f.hidden_field :inquiry_id %>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
     <%= link_to 'Cancel', @inquiry, class: "btn btn-secondary active", role: "button"  %>
-
   </div>
 <% end %>
-
-<% else %>
-  <h3 class="mt10">No survey questions are present</h3>
-<% end %>
-<script>
-  //  $('#survey_survey_items_visible').bootstrapToggle();
-</script>

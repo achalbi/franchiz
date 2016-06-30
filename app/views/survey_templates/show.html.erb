@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<div class="pull-xs-right">
+<%= link_to 'create survey item category templates', new_polymorphic_path([@survey_template, SurveyItemCategoryTemplate.new]) %> |
+<%= link_to fa_icon('pencil'), edit_survey_template_path(@survey_template) %> | 
+<%= link_to fa_icon('trash'), @survey_template, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Survey Template" %>
+</div>
+<h4>
+  <%= @survey_template.title.capitalize %>
+</h4>
+
+<p>
+  <!-- <strong>Description:</strong> -->
+  <small><%= @survey_template.description %></small>
+</p>
+
+<% @survey_template.survey_item_category_templates.each do |survey_item_category_template| %>
+<table class="table table-bordered">
+  <thead>
+      <tr class="table-info ">
+        <th>Section: <%= survey_item_category_template.title %></th>
+        <td colspan="3" class="pull-xs-right"><%= link_to 'create survey item templates', new_polymorphic_path([survey_item_category_template, SurveyItemTemplate.new]) %> |
+        	<%= link_to fa_icon("pencil"), edit_survey_item_category_template_path(survey_item_category_template), title: "Edit Section", data: { toggle: "tooltip"} %> |
+        	<%= link_to fa_icon("trash"), survey_item_category_template, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Section"%>
+        		
+        	</td>
+      </tr>
+  </thead>
+  <tbody>
+      <tr><td colspan="2" class="p0">
+			<% if survey_item_category_template.survey_item_templates.exists? %>
+			<table class="width-100pt" >
+			  <thead >
+			    <tr >
+			      <th class="width-20"># </th>
+			      <th class="width-100pt">Survey Items</th>
+			      <th colspan="2">Action</th>
+			    </tr>
+			  </thead>
+			<% survey_item_category_template.survey_item_templates.each_with_index do |survey_item_template, i| %>
+			  <tbody>
+			      <tr>
+			        <th class="row"><%= i+1 %>. </th>
+			        <td><%= survey_item_template.question_title %></td>
+			        <td><%= link_to fa_icon('pencil'), edit_survey_item_template_path(survey_item_template) %></td>
+			        <td><%= link_to fa_icon('trash'), survey_item_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			      </tr>
+				<% if survey_item_template.survey_data_types.exists? %>
+			      <tr>
+			      		<td colspan="4" >
+							<p class="ml50">
+			      			  <strong>Survey data types:</strong>
+								  <% survey_item_template.survey_data_types.each do |dt| %>
+								  	<kbd> <kbd><%= dt.title %></kbd></kbd>
+								  <% end %>
+							</p>
+			      		</td>
+			      </tr>
+				<% end %>
+			  </tbody>
+			<% end %>
+			</table>
+			<% end %>
+      </td></tr>
+  </tbody>
+</table>
+<% end %>

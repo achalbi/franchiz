@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question title:</strong>
+  <%= @survey_item_template.question_title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @survey_item_template.description %>
+</p>
+
+<p>
+  <strong>Survey template:</strong>
+  <%= @survey_item_template.survey_template %>
+</p>
+
+<p>
+  <strong>Survey item category:</strong>
+  <%= @survey_item_template.survey_item_category %>
+</p>
+
+  <strong>Survey data types:</strong>
+<p>
+  <% @survey_item_template.survey_data_types.each do |dt| %>
+  	<%= dt.title %><br>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_survey_item_template_path(@survey_item_template) %> |
+<%= link_to 'Back', survey_item_templates_path %>

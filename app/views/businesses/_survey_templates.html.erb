@@ -1,0 +1,8 @@
+<%= link_to 'create new template', new_polymorphic_path([@business, SurveyTemplate.new]) %> | 
+<%= link_to 'import template', new_business_import_survey_template_path(@business) %>
+<h4>Templates list</h4>
+<div>
+	<% @business.survey_templates.each do |st| %>
+		<%= link_to st.title, st %><br>
+	<% end %>
+</div>

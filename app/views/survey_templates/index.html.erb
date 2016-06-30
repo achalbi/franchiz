@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Survey Templates
+        <div class="pull-xs-right">
+        <%= link_to 'New', new_polymorphic_path([@poly_ref, SurveyTemplate.new]) %> | 
+        <%= link_to 'Import', new_business_import_survey_template_path(@poly_ref) %>
+        </div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @survey_templates.each do |survey_template| %>
+      <tr>
+        <td>
+        <%= link_to survey_template.title, survey_template %><br>
+        <small><%= survey_template.description %></small>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+    $("#st_menu").addClass('active');
+</script>
