@@ -1,0 +1,1 @@
+$("#comments_td_<%= @survey_item.id %>").html("<%= j render partial: 'comments/comment', locals: { survey_item: @survey_item, inquiry: @inquiry } %>")

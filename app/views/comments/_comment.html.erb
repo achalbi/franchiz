@@ -1,0 +1,25 @@
+<div>
+  <% survey_item.comments.each do |comment|  %>
+    <p class="mb0 comment_p" id="comment_<%= comment.id  %>"><%= comment.userable.name %>: <%= comment.content %>
+      <% if logged_in? && (comment.userable == current_user) %>
+        <span class="pull-xs-right"><%= link_to fa_icon("close"), comment, remote: true, method: :delete, data: { confirm: 'Are you sure?'} %></span>
+      <% elsif !logged_in? && (comment.userable_type == 'User')  %>
+        <span class="pull-xs-right"><%= link_to fa_icon("close"), comment, remote: true, method: :delete, data: { confirm: 'Are you sure?'} %></span>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<div>
+  <%= form_for(Comment.new, url: "/survey_items/#{survey_item.id}/comments", remote: true) do |f| %>
+        <%= hidden_field_tag :inquiry_id, inquiry.id  %>
+        <%= hidden_field_tag :survey_item_id, survey_item.id  %>
+    <div class="col-xs-11 plr0">
+        <%= f.text_area :content, class: "form-control custom-control width-100pt border-right-radius-0", placeholder: "Comment", rows: "1" %>
+    </div>
+    <div class="col-xs-1 pl0">
+        <%= f.submit "Go", class: "btn btn-primary border-left-radius-0" %>
+    </div>
+  <% end %>
+</div>
+<script>
+</script>

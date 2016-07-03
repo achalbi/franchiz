@@ -38,7 +38,18 @@
             <tbody>
                 <tr>
                   <th class="row"><%= i+1 %>. </th>
-                  <td><%= survey_item.title %><br>
+                  <td><%= survey_item.title %>
+                  <% if logged_in? %>
+                    <%= form_for(survey_item, remote: true) do |f| %>
+                  <p>Status:
+                      <%= f.select :status, options_for_select([ "Business pending", "Franchisee input pending","Mismatch", "Reject", "Accept" ], survey_item.status) , { include_blank: "select"}, class: "form-control-sm status", id: "si_status_#{}" %>
+                  </p>
+                    <% end %>
+                  <% else %>
+                  <p>Status:
+                    <%= survey_item.status %>
+                  </p>
+                  <% end %>
                   <% if survey_item.survey_data_types.exists? %>
                     <strong>Survey data types:</strong>
                       <% survey_item.survey_data_types.each do |dt| %>
@@ -76,6 +87,11 @@
                   <% end %>
                   </td>
                 </tr>
+                <tr>
+                  <td colspan="2" id="comments_td_<%= survey_item.id %>">
+                        <%= render partial: 'comments/comment', locals: { survey_item: survey_item, inquiry: @inquiry } %>
+                  </td>
+                </tr>
             </tbody>
           <% end %>
           </table>
@@ -103,5 +119,9 @@
   $(".cancel_survey_ans").click(function(){
     $(this).parent().parent().hide();
     $(this).parent().parent().next().show();
+  });
+
+  $(".status").change(function(){
+    $(this).parent().parent('form').submit();
   });
 </script>

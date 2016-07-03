@@ -21,13 +21,18 @@
             <tbody>
                 <tr>
                   <th class="row"><%= i+1 %>. </th>
-                  <td><%= survey_item.title %><br>
-<!--                   <% if survey_item.survey_data_types.exists? %>
+                  <td><%= survey_item.title %>
+                    <% unless survey_item.status.blank? %>
+                      <p><b>Status: </b><span class="text-muted"><%= survey_item.status %></span></p>
+                    <% end %>
+                  <!--
+                  <% if survey_item.survey_data_types.exists? %>
                     <strong>Survey data types:</strong>
                       <% survey_item.survey_data_types.each do |dt| %>
                         <kbd> <kbd><%= dt.title %></kbd></kbd>
                       <% end %>
-                  <% end %> -->
+                  <% end %>
+                  -->
                     <% unless survey_item.survey_biz_user_answer.answer.blank? %>
                     <p>
                     <strong>Business Answer:</strong><br>
@@ -52,6 +57,11 @@
                       </div>
                   <% end %>
                   </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" id="comments_td_<%= survey_item.id %>">
+                        <%= render partial: 'comments/comment', locals: { survey_item: survey_item, inquiry: @survey.inquiry } %>
                   </td>
                 </tr>
             </tbody>

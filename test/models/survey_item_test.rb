@@ -12,6 +12,8 @@
 #  updated_at                :datetime         not null
 #  survey_id                 :integer
 #  status                    :string
+#  survey_item_category_id   :integer
+#  title                     :string
 #
 
 require 'test_helper'

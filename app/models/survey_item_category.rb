@@ -7,6 +7,7 @@
 #  survey_template_id :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  survey_id          :integer
 #
 
 class SurveyItemCategory < ActiveRecord::Base

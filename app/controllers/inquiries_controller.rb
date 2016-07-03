@@ -9,7 +9,6 @@ class InquiriesController < ApplicationController
   # GET /inquiries.json
   def index
     @locations = Inquiry.where(business_id: @business.id).includes(:location).collect{|x| x.location.city unless x.location.nil?}.uniq
-    @locations = Inquiry.where(business_id: @business.id).includes(:location).collect{|x| x.location.city unless x.location.nil?}.uniq
     @inquiries, session[:status_filter]  = Inquiry
       .status_filter(params[:status_filter], session[:status_filter],
       @business.id, params[:page])
@@ -22,7 +21,6 @@ class InquiriesController < ApplicationController
     # @business.inquiry_questions.each do |q|
     #  q.inquiry_answers
     # end
-
   end
 
   # GET /inquiries/new

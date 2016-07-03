@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628054114) do
+ActiveRecord::Schema.define(version: 20160630101202) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "doorno"
@@ -66,13 +66,14 @@ ActiveRecord::Schema.define(version: 20160628054114) do
     t.text     "content"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "survey_item_id"
+    t.integer  "userable_id"
+    t.string   "userable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
-  add_index "comments", ["survey_item_id"], name: "index_comments_on_survey_item_id"
+  add_index "comments", ["userable_type", "userable_id"], name: "index_comments_on_userable_type_and_userable_id"
 
   create_table "inquiries", force: :cascade do |t|
     t.string   "token"

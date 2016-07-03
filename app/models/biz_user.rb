@@ -19,6 +19,8 @@ class BizUser < ActiveRecord::Base
   belongs_to :business
   has_secure_password
 
+  has_many :comments, as: :userable
+
   validates_presence_of :fname, :on => :create
   validates_presence_of :lname, :on => :create
   validates_presence_of :password_digest, :on => :create

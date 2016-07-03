@@ -42,6 +42,7 @@ class SurveyItemsController < ApplicationController
   def update
     respond_to do |format|
       if @survey_item.update(survey_item_params)
+        format.js {head :ok }
         format.html { redirect_to @survey_item, notice: 'Survey item was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey_item }
       else
@@ -69,6 +70,6 @@ class SurveyItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_item_params
-      params.require(:survey_item).permit(:survey_question_id, :survey_user_answer_id, :survey_biz_user_answer_id, :inquiry_id, :visible)
+      params.require(:survey_item).permit(:survey_question_id, :survey_user_answer_id, :survey_biz_user_answer_id, :inquiry_id, :visible, :status)
     end
 end

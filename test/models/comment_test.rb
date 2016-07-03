@@ -6,7 +6,8 @@
 #  content          :text
 #  commentable_id   :integer
 #  commentable_type :string
-#  survey_item_id   :integer
+#  userable_id      :integer
+#  userable_type    :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

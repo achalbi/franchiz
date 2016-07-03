@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inquiry Filters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inquiry_filters.each do |inquiry_filter| %>
+      <tr>
+        <td><%= link_to 'Show', inquiry_filter %></td>
+        <td><%= link_to 'Edit', edit_inquiry_filter_path(inquiry_filter) %></td>
+        <td><%= link_to 'Destroy', inquiry_filter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inquiry filter', new_inquiry_filter_path %>
