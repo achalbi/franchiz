@@ -4,7 +4,7 @@
 
 <% if @inquiry_questions.present? %>
   <p class="lead" >Inquiry Questions</p>
-  
+
 <table class="table table-hover">
   <thead class="thead-default">
     <tr>
@@ -14,15 +14,15 @@
     </tr>
   </thead>
   <tbody>
-    
+
       <% @inquiry_questions.each_with_index do |q, i| %>
-      
+
       <tr>
         <th scope="row"><%= i+1 %>. </th>
         <td><%= q.title %></td>
         <td><%= link_to "Edit", "#",id: "edit_question_#{i+1}", class: "text-md-right" %></td>
       </tr>
-      
+
       <script>
           $("#edit_question_<%= i+1 %>").click(function(){
             $.get("<%= edit_inquiry_question_path(q) %>", function(data){
@@ -35,7 +35,7 @@
   </tbody>
 </table>
 <% else %>
-<h4> No Inquiry questions present.</h4>
+<small> No Inquiry questions present.</small>
 <% end %>
 
 </div>

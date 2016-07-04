@@ -10,7 +10,7 @@
 
 class Survey < ActiveRecord::Base
   belongs_to :inquiry
-  
-  has_many :survey_item_categories  
+
+  has_many :survey_item_categories, dependent: :destroy
   accepts_nested_attributes_for :survey_item_categories
 end

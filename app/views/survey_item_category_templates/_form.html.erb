@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title %><br>
+    <%= f.label :title, class: "sr-only"  %>
     <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
   </div>
     <%= f.hidden_field :survey_template_id %>
   <div class="form-group">
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit "Create", class: "btn btn-primary" %>
     <%= link_to 'Cancel', @survey_item_category_template.survey_template, class: "btn btn-secondary active", role: "button"  %>
   </div>
 <% end %>

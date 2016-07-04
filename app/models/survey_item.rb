@@ -25,7 +25,7 @@ class SurveyItem < ActiveRecord::Base
   belongs_to :inquiry
   belongs_to :survey_item_category
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   accepts_nested_attributes_for :survey_biz_user_answer
   accepts_nested_attributes_for :survey_user_answer

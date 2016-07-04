@@ -21,8 +21,8 @@ class BizUser < ActiveRecord::Base
 
   has_many :comments, as: :userable
 
-  validates_presence_of :fname, :on => :create
-  validates_presence_of :lname, :on => :create
+  validates_presence_of :fname
+  validates_presence_of :lname
   validates_presence_of :password_digest, :on => :create
 
 

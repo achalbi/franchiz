@@ -14,7 +14,9 @@
 class SurveyTemplate < ActiveRecord::Base
   belongs_to :surveyable, polymorphic: true
 #  has_many :survey_item_templates
-  has_many :survey_item_category_templates
+  has_many :survey_item_category_templates, dependent: :destroy
+
+  validates_presence_of :title
 
   amoeba do
     enable

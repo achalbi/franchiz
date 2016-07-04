@@ -14,6 +14,8 @@ class SurveyItemTemplate < ActiveRecord::Base
 #  belongs_to :survey_template
   belongs_to :survey_item_category_template
 
+  validates_presence_of :question_title
+
   amoeba do
     enable
   end

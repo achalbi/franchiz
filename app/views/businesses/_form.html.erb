@@ -1,5 +1,5 @@
 <div class="row-5-padding-rec ">
-  
+
 <%= form_for(@business) do |f| %>
   <% if @business.errors.any? %>
     <div id="error_explanation">
@@ -14,20 +14,20 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name, "Company Name:", class: "sr-only1" %>
+    <%= f.label :name, "Company Name:", class: "sr-only" %>
     <%= f.text_field :name, class: "form-control", placeholder: "Company Name" %>
   </div>
   <div class="form-group">
-    <%= f.label :detail, "Description:",class: "sr-only1" %>
+    <%= f.label :detail, "Description:",class: "sr-only" %>
     <%= f.text_area :detail, class: "form-control", placeholder: "Description", rows: 4 %>
   </div>
       <div class="form-group">
-    <%= f.label :website, "Website:", class: "sr-only1" %>
+    <%= f.label :website, "Website:", class: "sr-only" %>
     <%= f.text_field :website, class: "form-control", placeholder: "Website" %>
   </div>
-  
+
   <h4 class="mt30 mb20" >User details</h4>
-  
+
         <%= f.fields_for :biz_users, @biz_users do |biz_user_field| %>
             <div class="col-md-2 col-xs-12">
               <div class="form-group">
@@ -71,7 +71,7 @@
           </div>
       <% end %>
   <div class="actions">
-  <%= link_to 'Back', @business , class: "btn btn-warning" %>
+  <%= link_to 'Back', new_session_path , class: "btn btn-warning" %>
     <%= f.submit class: "btn btn-primary pull-right" %>
   </div>
 <% end %>

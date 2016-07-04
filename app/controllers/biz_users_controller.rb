@@ -25,12 +25,12 @@ class BizUsersController < ApplicationController
   # POST /biz_users
   # POST /biz_users.json
   def create
-    
+
     @biz_user = @business.biz_users.build(biz_user_params)
 
     respond_to do |format|
       if @biz_user.save
-        format.html { redirect_to business_biz_users_url(@business), notice: 'Biz user was successfully created.' }
+        format.html { redirect_to business_biz_users_url(@business), notice: 'Business user was successfully created.' }
         format.json { render :show, status: :created, location: @biz_user }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class BizUsersController < ApplicationController
   def update
     respond_to do |format|
       if @biz_user.update(biz_user_params)
-        format.html { redirect_to @biz_user, notice: 'Biz user was successfully updated.' }
+        format.html { redirect_to @biz_user, notice: 'Business user was successfully updated.' }
         format.json { render :show, status: :ok, location: @biz_user }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class BizUsersController < ApplicationController
   def destroy
     @biz_user.destroy
     respond_to do |format|
-      format.html { redirect_to biz_users_url, notice: 'Biz user was successfully destroyed.' }
+      format.html { redirect_to biz_users_url, notice: 'Business user was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -53,6 +53,7 @@
           </div>
     <%= biz_user_field.hidden_field :business_id %>
   <div class="form-group col-md-12">
-    <%= biz_user_field.submit class: "btn btn-primary" %>
+    <%= biz_user_field.submit "Update", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', @biz_user, class: "btn btn-secondary active" %>
   </div>
 <% end %>

@@ -1,6 +1,15 @@
-<%= link_to 'create new template', new_polymorphic_path([@business, SurveyTemplate.new]) %> | 
-<%= link_to 'import template', new_business_import_survey_template_path(@business) %>
-<h4>Templates list</h4>
+<div class="pull-xs-right mt10 mr10">
+	<%= link_to 'create new template', new_polymorphic_path([@business, SurveyTemplate.new]) %> |
+	<%= link_to 'import template', new_business_import_survey_template_path(@business) %>
+</div>
+
+<div class="mt10 ml10" >
+	<% if @business.survey_templates.exists? %>
+		<h4>Templates list</h4>
+	<% else %>
+		<small>No Survey templates present.</small>
+	<% end %>
+</div>
 <div>
 	<% @business.survey_templates.each do |st| %>
 		<%= link_to st.title, st %><br>

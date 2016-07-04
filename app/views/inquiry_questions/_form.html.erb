@@ -1,4 +1,4 @@
-  
+
 <%= form_for(@inquiry_question, url: business_inquiry_questions_path(@business), method: :post) do |f| %>
   <% if @inquiry_question.errors.any? %>
     <div id="error_explanation">
@@ -19,7 +19,8 @@
     <%= f.hidden_field :business_id %>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
-    <button type="button" id="cancel_sq" class="btn btn-secondary active">Cancel</button>
+    <%= link_to "Cancel", @business, class: "btn btn-secondary active" %>
+   <!-- <button type="button" id="cancel_sq" class="btn btn-secondary active">Cancel</button>-->
   </div>
 <% end %>
 <script>

@@ -17,9 +17,9 @@ class Inquiry < ActiveRecord::Base
 
   belongs_to :business
   belongs_to :user
-  has_many :inquiry_answers
-  has_one :survey
-  has_one :location
+  has_many :inquiry_answers, dependent: :destroy
+  has_one :survey, dependent: :destroy
+  has_one :location, dependent: :destroy
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :inquiry_answers

@@ -24,11 +24,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :inquiry
 
-  validates_presence_of :fname, :on => :create
-  validates_presence_of :lname, :on => :create
-  validates_presence_of :mobile, :on => :create
+  validates_presence_of :fname
+  validates_presence_of :lname
+  validates_presence_of :mobile
 
-  validates_presence_of :address, :on => :create
+  validates_presence_of :address
   validates_associated :address
 
 

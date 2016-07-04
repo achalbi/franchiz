@@ -20,4 +20,6 @@
 
 class Location < ActiveRecord::Base
 	belongs_to :inquiry
+
+	validates_presence_of :address
 end

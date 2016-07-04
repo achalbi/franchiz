@@ -1,7 +1,7 @@
 // Create an immediately invoked functional expression to wrap our code
 (function() {
 
-  // Define our constructor 
+  // Define our constructor
   this.Modal = function() {
 
     // Create global element references
@@ -12,13 +12,13 @@
     // Determine proper prefix
     this.transitionEnd = transitionSelect();
 
-    // Define option defaults 
+    // Define option defaults
     var defaults = {
       autoOpen: false,
       className: 'fade-and-drop',
       closeButton: true,
       content: "",
-      maxWidth: 900,
+      maxWidth: 975,
       minWidth: 280,
       overlay: true
     }
