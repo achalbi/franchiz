@@ -24,6 +24,11 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
+
+gem 'ruby-oci8', '~> 2.2', '>= 2.2.2'
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.6', '>= 1.6.7'
+
 gem 'nested_scaffold'
 gem 'schema_to_scaffold'
 gem 'monban'

@@ -10,5 +10,5 @@
 
 class SurveyDataType < ActiveRecord::Base
   has_and_belongs_to_many :survey_items
-  has_and_belongs_to_many :survey_item_templates
+  has_and_belongs_to_many :survey_item_templates, join_table: :srvy_data_types_item_templates 
 end

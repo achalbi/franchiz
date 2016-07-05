@@ -4,7 +4,7 @@ class CreateSurveyItemTemplates < ActiveRecord::Migration
       t.string :question_title
       t.text :description
       t.references :survey_template, index: true, foreign_key: true
-      t.references :survey_item_category, index: true, foreign_key: true
+      t.references :srvy_item_category_template, references: :survey_item_category_templates, index: {name: "SICT_SIT_index"}
 
       t.timestamps null: false
     end
