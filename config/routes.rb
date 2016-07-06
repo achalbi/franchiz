@@ -244,6 +244,8 @@
 #                                                         PATCH  /import_surveys/:id(.:format)                                                                              import_surveys#update
 #                                                         PUT    /import_surveys/:id(.:format)                                                                              import_surveys#update
 #                                                         DELETE /import_surveys/:id(.:format)                                                                              import_surveys#destroy
+#                           business_inquiry_filters_view POST   /businesses/:business_id/inquiry_filters/view(.:format)                                                    inquiry_filters#view
+#                          business_inquiry_filters_index GET    /businesses/:business_id/inquiry_filters/index(.:format)                                                   inquiry_filters#index
 #                        business_import_survey_templates GET    /businesses/:business_id/import_survey_templates(.:format)                                                 import_survey_templates#index
 #                                                         POST   /businesses/:business_id/import_survey_templates(.:format)                                                 import_survey_templates#create
 #                     new_business_import_survey_template GET    /businesses/:business_id/import_survey_templates/new(.:format)                                             import_survey_templates#new

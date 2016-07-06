@@ -59,7 +59,7 @@
                   <div id="sbua_dis_<%= survey_item.survey_biz_user_answer.id %>" >
                   <% unless survey_item.survey_biz_user_answer.answer.blank? %>
                     <strong>Business Answer:</strong>
-                    <%= link_to "Edit", "#sbua_dis_#{survey_item.survey_biz_user_answer.id}", id: "sbua_a_#{survey_item.survey_biz_user_answer.id}", class: "pull-xs-right" %>
+                    <%= button_tag "Edit", id: "sbua_a_#{survey_item.survey_biz_user_answer.id}", class: "pull-xs-right btn btn-primary" %>
                     <br>
                     <p>
                       <%= survey_item.survey_biz_user_answer.answer %><br>
@@ -74,7 +74,7 @@
                       </div>
                       <div class="form-group">
                         <%= sa.submit class: "btn btn-primary" %>
-                        <%= link_to 'Cancel', "#sbua_upt_#{survey_item.survey_biz_user_answer.id}", class: "btn btn-secondary active cancel_survey_ans" %>
+                        <%= button_tag 'Cancel', class: "btn btn-secondary active cancel_survey_ans" %>
                       </div>
                     <% end %>
                   </div>
@@ -111,17 +111,19 @@
 <% end %>
 
 <script type="text/javascript">
-  $("a[id*=sbua_a_]").parent().next().hide();
-  $("a[id*=sbua_a_]").click(function(){
+  $("button[id*=sbua_a_]").parent().next().hide();
+  $("button[id*=sbua_a_]").click(function(){
     $(this).parent().next().show();
     $(this).parent().hide();
   });
   $(".cancel_survey_ans").click(function(){
-    $(this).parent().parent().hide();
-    $(this).parent().parent().next().show();
+    $(this).parent().parent().parent().hide();
+    $(this).parent().parent().parent().prev().show();
   });
 
   $(".status").change(function(){
     $(this).parent().parent('form').submit();
   });
+
+
 </script>

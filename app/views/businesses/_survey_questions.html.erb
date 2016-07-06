@@ -1,6 +1,6 @@
 <div id="survey_question" class="mb20" ></div>
 <div>
-<%= link_to 'Add Survey Questions', "#survey_question", id: "add_survey_question", class: "pull-xs-right" %>
+<%= button_tag 'Add Survey Questions', id: "add_survey_question", class: "pull-xs-right" %>
 <% if @business.survey_questions.global.present? %>
   <p class="lead" >Survey Questions</p>
   
@@ -19,7 +19,7 @@
       <tr>
         <th scope="row"><%= i+1 %>. </th>
         <td><%= q.title %></td>
-        <td><%= link_to "Edit", "#survey_question",id: "edit_survey_question_#{i+1}", class: "text-md-right" %></td>
+        <td><%= button_tag "Edit", id: "edit_survey_question_#{i+1}", class: "text-md-right" %></td>
       </tr>
       
       <script>

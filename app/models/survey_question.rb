@@ -3,7 +3,7 @@
 # Table name: survey_questions
 #
 #  id          :integer          not null, primary key
-#  title       :string
+#  title       :string(255)
 #  business_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

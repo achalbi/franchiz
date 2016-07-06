@@ -1,3 +1,14 @@
 <strong>Business Answer:</strong>
-<%= link_to "Edit", "#", id: "sbua_a_#{@survey_biz_user_answer.id}", class: "pull-xs-right" %><br>
+<%= button_tag "Edit", id: "sbua_a_#{@survey_biz_user_answer.id}", class: "pull-xs-right btn btn-primary" %><br>
 <p><%= @survey_biz_user_answer.answer %><br></p>
+<script type="text/javascript">
+  $("button[id*=sbua_a_]").parent().next().hide();
+  $("button[id*=sbua_a_]").click(function(){
+    $(this).parent().next().show();
+    $(this).parent().hide();
+  });
+  $(".cancel_survey_ans").click(function(){
+    $(this).parent().parent().parent().hide();
+    $(this).parent().parent().parent().prev().show();
+  });
+</script>

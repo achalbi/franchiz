@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
-
+gem 'actionmailer-with-request'
 gem 'ruby-oci8', '~> 2.2', '>= 2.2.2'
 gem 'activerecord-oracle_enhanced-adapter', '~> 1.6', '>= 1.6.7'
 

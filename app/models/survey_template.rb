@@ -3,10 +3,10 @@
 # Table name: survey_templates
 #
 #  id              :integer          not null, primary key
-#  title           :string
+#  title           :string(255)
 #  description     :text
 #  surveyable_id   :integer
-#  surveyable_type :string
+#  surveyable_type :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

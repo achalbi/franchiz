@@ -20,7 +20,7 @@
     <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
   </div>
   <div class="form-group width-200 hidden-xs-up">
-    <%= f.hidden_field :survey_item_category_template_id  %>
+    <%= f.hidden_field :srvy_item_category_template_id  %>
     <%= f.label :survey_data_types %><br>
     <%= f.collection_select :survey_data_type_ids, SurveyDataType.all, :id, :title, {},
     {:multiple => true, class: "form-control"} %>

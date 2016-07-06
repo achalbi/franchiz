@@ -42,7 +42,7 @@
                   <div id="sua_dis_<%= survey_item.survey_user_answer.id %>" >
                   <% unless survey_item.survey_user_answer.answer.blank? %>
                       <strong>Franchisee Answer:</strong>
-                      <a href="#sua_dis_<%= survey_item.survey_user_answer.id %>" id="sua_a_<%= survey_item.survey_user_answer.id %>" class="pull-xs-right" >Edit</a>
+                      <a  id="sua_a_<%= survey_item.survey_user_answer.id %>" class="pull-xs-right btn btn-primary" >Edit</a>
                       <p><%= survey_item.survey_user_answer.answer %><br></p>
                   <% end %>
                   </div>

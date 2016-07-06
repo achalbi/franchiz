@@ -7,6 +7,8 @@ GEM
       activejob (= 4.2.5)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionmailer-with-request (0.4.0)
+      rails (>= 3)
     actionpack (4.2.5)
       actionview (= 4.2.5)
       activesupport (= 4.2.5)
@@ -215,6 +217,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  actionmailer-with-request
   activerecord-oracle_enhanced-adapter (~> 1.6, >= 1.6.7)
   amoeba
   annotate

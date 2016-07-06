@@ -11,9 +11,9 @@
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #  survey_id                 :integer
-#  status                    :string
+#  status                    :string(255)
 #  survey_item_category_id   :integer
-#  title                     :string
+#  title                     :string(255)
 #
 
 class SurveyItem < ActiveRecord::Base

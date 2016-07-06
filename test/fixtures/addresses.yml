@@ -3,12 +3,12 @@
 # Table name: addresses
 #
 #  id         :integer          not null, primary key
-#  doorno     :string
-#  street     :string
-#  city       :string
-#  state      :string
-#  country    :string
-#  pincode    :string
+#  doorno     :string(255)
+#  street     :string(255)
+#  city       :string(255)
+#  state      :string(255)
+#  country    :string(255)
+#  pincode    :string(255)
 #  latitude   :float
 #  longitude  :float
 #  created_at :datetime         not null
