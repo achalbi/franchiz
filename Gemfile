@@ -79,3 +79,11 @@ group :development do
   gem 'spring'
 end
 
+# Use Capistrano for deployment
+group :development do
+	gem 'capistrano'
+	gem 'capistrano-ext'
+	gem 'capistrano-passenger'
+	gem 'capistrano-rails'
+	gem 'capistrano-rvm'
+end

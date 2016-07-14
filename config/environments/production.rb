@@ -78,13 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => ENV['domain'],
-    :user_name => ENV['username'],
-    :password => ENV['password']
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "gmail.com",
+    :user_name            => "mc@justbooksclc.com",
+    :password             => "justbooks12",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
 end
 
