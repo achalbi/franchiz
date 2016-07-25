@@ -50,16 +50,16 @@ development:
   encoding: unicode
   database: franchiz_development
   pool: 5
-  username: franchiz
-  password: password
+  # username: franchiz
+  # password: password
 
 test:
   adapter: postgresql
   encoding: unicode
   database: franchiz_test
   pool: 5
-  username: franchiz
-  password: password
+  # username: franchiz
+  # password: password
 
 
 # default: &default
