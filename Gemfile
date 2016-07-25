@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,18 +20,18 @@ gem 'jquery-rails'
 # Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+#gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
 gem 'actionmailer-with-request'
-gem 'ruby-oci8', '~> 2.2', '>= 2.2.2'
-gem 'activerecord-oracle_enhanced-adapter', '~> 1.6', '>= 1.6.7'
+#gem 'ruby-oci8', '~> 2.2', '>= 2.2.2'
+#gem 'activerecord-oracle_enhanced-adapter', '~> 1.6', '>= 1.6.7'
 
 gem 'nested_scaffold'
 gem 'schema_to_scaffold'
-gem 'monban'
+#gem 'monban'
 gem 'bcrypt'
 gem 'nested_form_fields'
 gem 'quiet_assets', group: :development
@@ -41,6 +41,7 @@ gem "font-awesome-rails"
 gem 'kaminari'
 gem 'annotate'
 gem 'amoeba'
+gem 'pg'
 
 #gem 'roadie'
 #gem 'roadie-rails', '~> 1.0'
@@ -80,10 +81,10 @@ group :development do
 end
 
 # Use Capistrano for deployment
-group :development do
-	gem 'capistrano'
-	gem 'capistrano-ext'
-	gem 'capistrano-passenger'
-	gem 'capistrano-rails'
-	gem 'capistrano-rvm'
-end
+#group :development do
+#	gem 'capistrano'
+#	gem 'capistrano-ext'
+#	gem 'capistrano-passenger'
+#	gem 'capistrano-rails'
+#	gem 'capistrano-rvm'
+#end
