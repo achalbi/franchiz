@@ -44,14 +44,37 @@
 #  prefetch_rows: 100
 #  cursor_sharing: similar
 #
-default: &default
-  adapter: oracle_enhanced
-  username: franchiz
-  password: pass
 
 development:
-  <<: *default
-  database: localhost:1521/xe
+  adapter: postgresql
+  encoding: unicode
+  database: franchiz_development
+  pool: 5
+  username: franchiz
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: franchiz_test
+  pool: 5
+  username: franchiz
+  password: password
+
+
+# default: &default
+#   adapter: oracle_enhanced
+#   username: franchiz
+#   password: pass
+
+# development:
+#   <<: *default
+#   database: localhost:1521/xe
+
+
+
+
+
 #	url: "oracle://franchiz:pass@//localhost:1521/xe"
 
 # Warning: The database defined as "test" will be erased and
